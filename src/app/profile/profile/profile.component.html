@@ -1,0 +1,129 @@
+<div class="container profile">
+    <div class="row" *ngIf="url =='profile'">
+        <div class="col-12">
+            <div class="row">
+                <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12 text-center">
+                    <div>
+                        <img src="../../../assets/img/bg_image.jpg" class="profileimg" />
+                    </div>
+                </div>
+                <div class="col-xxl-8 col-xl-8 col-lg-8 col-md-8 col-sm-8 col-xs-12"
+                    style="margin-top: 4rem !important;">
+                    <div class="row">
+                        <div class="col-12" style="margin-left: 4rem;">
+                            <h4 class="fs-18 ls-1">Dilli Babu</h4>
+                            <p class="txt-mute">@dilli</p>
+                        </div>
+
+                        <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xs-3 text-center">
+                            <label>120</label>
+                            <p>Post</p>
+                        </div>
+                        <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xs-3 text-center">
+                            <label>1.1k</label>
+                            <p>Followers</p>
+                        </div>
+                        <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xs-3 text-center">
+                            <label>121</label>
+                            <p>Following</p>
+                        </div>
+                        <div class="col-12" style="margin-left: 4rem;">
+
+                            <div style="display: none;" class="follow-btn">
+                                Follow
+                            </div>
+                            
+                            <div class="follow-btn" [routerLink]="['/edit_profile']">
+                                
+                                <i class="far fa-edit mar-r-1"></i> Edit Profile
+                            </div>
+                           <span class="setting-icon"><i class="fas fa-cog   mar-r-1"></i></span> 
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="w-50" style="margin-left: 4rem">
+                <h4 class="fs-18 ls-1">Content Creator</h4>
+                <p class="txt-mute">💢OFFICIAL ACCOUNT
+                </p>
+                <p class="txt-mute">
+                    🍁Flirty
+                </p>
+                <p class="txt-mute">
+                    🎉 Murders Cake on January 31
+                </p>
+                <p class="txt-mute">
+
+                    👑King by heart👸</p>
+            </div>
+        </div>
+
+        <div class="col-12">
+            <div class="col-12">
+                <tabset [justified]="true" class="highlight">
+                    <tab heading="Post">
+                        <div style="margin-top: 3rem;">
+                            <h3 class="txt-mute">Coming soon</h3>
+                        </div>
+                    </tab>
+                    <tab heading="Likes">
+                        <div style="margin-top: 3rem;">
+                            <h3 class="txt-mute">Coming soon</h3>
+                        </div>
+                    </tab>
+                    <tab heading="Tags">
+                        <div style="margin-top: 3rem;">
+                            <h3 class="txt-mute">Coming soon</h3>
+                        </div>
+                    </tab>
+                </tabset>
+            </div>
+        </div>
+    </div>
+    <div class="row" *ngIf="url =='edit_profile'">
+        <div class="col-6 pad-1">
+            <h4 class="fs-18 ls-1 font-weight-bold">Edit Profile</h4>
+        </div>
+        <div class="col-6 pad-1 text-end">
+            <h4 class="fs-13" style="cursor: pointer;" [routerLink]="['/profile']">Back</h4>
+        </div>
+        <div class="col-12">
+            <div class="row">
+                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-12 text-center pad-1">
+                    <div>
+                        <img src="../../../assets/img/bg_image.jpg" class="profileimg" />
+                    </div>
+                    <div>
+                        <label>
+                            Edit profile Image
+                        </label>
+                    </div>
+                </div>
+
+                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-12 text-center pad-1">
+                    <form [formGroup]="edit_profileform" novalidate class="sign-in-formm">
+                        <div class="input-field">
+                            <i class="fas fa-user"></i>
+                            <input type="text" placeholder="Name" formControlName="Name" />
+                        </div>
+                        <div class="input-field">
+                            <i class="fas fa-user"></i>
+                            <input type="text" placeholder="Username" formControlName="username" />
+                        </div>
+                        <div class="input-field">
+                            <i class="fas fa-user"></i>
+                            <textarea type="text" placeholder="Bio" formControlName="bio">
+                            </textarea>
+                        </div>
+                        <input type="submit" value="Update" (click)="editSave(edit_profileform.value)" class="btn solid" />
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>

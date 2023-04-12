@@ -1,0 +1,80 @@
+.profile {
+    padding: 1rem;
+    background: #fff;
+
+}
+
+.profileimg {
+    width: 60%;
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+    padding: 1rem;
+}
+
+.follow-btn {
+    border: 1px solid;
+    width: 30%;
+    padding: 4px 0px 4px 0px;
+    position: absolute;
+    margin-left: 1rem;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 1rem;
+    background: #56a8ef;
+    color: #f9f9f9;
+    font-size: 15px;
+    cursor: pointer;
+
+}
+
+.follow-btn:hover {
+    background: rgb(9, 132, 214);
+    color: #fffffff8;
+    /* font-weight: bold; */
+}
+
+.pad-1 {
+    padding: 1rem;
+}
+
+.fs-13 {
+    font-size: 13px !important;
+}
+
+.text-end {
+    text-align: end !important;
+}
+
+.input-field input {
+    width: 100%;
+    padding: 10px 0px 9px 0px;
+    padding-left: 0px;
+    margin-bottom: 1.5rem;
+    border-radius: 7px;
+    padding-left: 1rem;
+    border: 1px solid #adb4bb;
+}
+
+.input-field textarea {
+    width: 100%;
+    padding: 10px 0px 9px 0px;
+    padding-left: 0px;
+    margin-bottom: 1.5rem;
+    border-radius: 7px;
+    padding-left: 1rem;
+    border: 1px solid #adb4bb;
+}
+
+.btn {
+    border: 1px solid green;
+    background: #057705;
+    color: #fff;
+    border-radius: 20px;
+    padding: 6px 20px 8px 20px;
+}
+
+.setting-icon {
+    position: relative;
+    top: 80%;
+    left: 57%;
+}

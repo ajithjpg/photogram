@@ -1,0 +1,16 @@
+/* .header {
+    background: #fff;
+    color: rgb(0, 0, 0);
+    box-shadow: 1px 1px 1px 1px #f1eded;
+} */
+
+.header {
+    background: #fff;
+    color: rgb(0, 0, 0);
+    padding: 0.7rem 0;
+    /* position: fixed; */
+    top: 0;
+    z-index: 10;
+    position: fixed;
+    width: 100%;
+}

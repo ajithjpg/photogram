@@ -1,0 +1,120 @@
+<div class="container {{change}}">
+    <div class="forms-container">
+        <div class="signin-signup">
+            <ng-template [ngIf]="type=='login'">
+            <form [formGroup]="loginform" novalidate class="sign-in-formm"  *ngIf="type=='login'">
+                <p>
+                    <img class="logo" src="../../../assets/img/logo-changes.png" />
+                </p>
+                <h2 class="title">Log in</h2>
+                <div class="input-field">
+                    <i class="fas fa-user"></i>
+                    <input type="text" placeholder="Username" formControlName="username" />
+                </div>
+                <div class="input-field">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" placeholder="Password" formControlName="password" />
+                </div>
+                <input type="submit" value="Login" (click)="login_save(loginform.value)" class="btn solid" />
+                <p class="social-text">Or Sign in with social platforms</p>
+                <div class="social-media">
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-google"></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                </div>
+            </form>
+            </ng-template>
+            <ng-template [ngIf]="type=='Change_password'">
+                <div>
+                <p>
+                    <img  src="../../../assets/img/logo-changes.png" />
+                </p>
+                <h2 class="title">Reset your password</h2>
+                <P>Enter your email and check your inbox for instructions. Please also check your spam folder.</P>
+                <div class="input-field">
+                    <i class="fas fa-lock"></i>
+                    <input type="email" placeholder="Password"  />
+                </div>
+                <input type="submit"  class="btn" value="Send" />
+            </div>
+            </ng-template>
+
+            <form [formGroup]="registerform" novalidate class="sign-up-form" *ngIf="type=='signin'">
+                <ng-template [ngIf]="step == 0">
+                    <p>
+                        <img class="logo" src="../../../assets/img/logo-changes.png" />
+                    </p>
+                    <h2 class="title">Create Account</h2>
+                    <div class="input-field">
+                        <i class="fas fa-user"></i>
+                        <input type="text" [(ngModel)]="name" formControlName="name" placeholder="Username" />
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" [(ngModel)]="email_id" formControlName="email_id" placeholder="Email" />
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        <input type="tel" [(ngModel)]="phone_number" formControlName="phone_number"
+                            placeholder="Phone Number" />
+                    </div>
+                    <input type="submit" (click)="register(registerform.value,1)" class="btn" value="Sign up" />
+                </ng-template>
+                <ng-template [ngIf]="step == 1">
+                    <p>
+                        <img class="logo" src="../../../assets/img/logo-changes.png" />
+                    </p>
+                    <h2 class="title">Set PassWord</h2>
+                    <div class="input-field">
+                        <i class="fas fa-user"></i>
+                        <input type="password" [(ngModel)]="set_password" formControlName="set_password"
+                            placeholder="PassWord" />
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-envelope"></i>
+                        <input type="password" [(ngModel)]="confirm_password" formControlName="confirm_password"
+                            placeholder="Confirm Password" />
+                    </div>
+                    <input type="submit" (click)="register(registerform.value,2)" class="btn" value="Sign up" />
+                </ng-template>
+
+
+
+            </form>
+        </div>
+    </div>
+
+    <div class="panels-container">
+        <div class="panel left-panel">
+            <div class="content">
+                <h3 class="mb-2">New To Photogram ?</h3>
+                <button class="btn transparent" id="sign-up-btn" (click)="createacc()">
+                    Create An Account
+                </button>
+                <p style="padding: unset !important;">Or</p>
+                <p style="cursor: pointer;" [routerLink]="['/pages/Change_password']">Forgot Password</p>
+            </div>
+            <img src="img/log.svg" class="image" alt="" />
+        </div>
+        <div class="panel right-panel">
+            <div class="content">
+                <h3 class="mb-2">Already Have A Photogram Account ?</h3>
+
+                <button class="btn transparent" id="sign-in-btn" (click)="login()">
+                    Log In
+                </button>
+            </div>
+            <img src="img/register.svg" class="image" alt="" />
+        </div>
+    </div>
+
+</div>

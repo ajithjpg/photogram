@@ -1,0 +1,218 @@
+<div class="row">
+        <div class="col-xxl-3 col-xl-3  col-md-3 col-sm-3 col-xs-0 col-12">
+                <div class="left">
+                        <div class="profile" (click)="route_change('profile')">
+                                <div class="">
+                                        <img src="../../../assets/img/cam.jpg" class="profile-img" />
+                                </div>
+                                <div class="handle">
+                                        <h4>Dilli Babu</h4>
+                                        <p class="usr-name">@Dilli</p>
+                                </div>
+                        </div>
+                </div>
+                <div class="side-nav  row">
+                        <div class="col-12 menu-item {{homeactive}}" (click)="route_change('home')">
+                                <span><i class="fas fa-home   mar-r-1"></i></span> <label>Home</label>
+                        </div>
+                        <div class="col-12 menu-item {{exploreactive}}" (click)="route_change('explore')">
+                                <span><i class="fas fa-compass   mar-r-1"></i>
+                                </span> <label>Explore</label>
+                        </div>
+                        <div class="col-12 menu-item {{notificationactive}}" (click)="route_change('notification')">
+                                <span><i class="fas fa-bell   mar-r-1"></i></span> <label>Notifications</label>
+                        </div>
+                        <div class="col-12 menu-item {{messageactive}}" (click)="route_change('message')">
+                                <span><i class="fab fa-facebook-messenger   mar-r-1"></i>
+                                </span> <label>Messages</label>
+                        </div>
+                        <div class="col-12 menu-item {{createactive}}" (click)="route_change('Create_post')">
+                                <span><i class="fas fa-plus-circle  mar-r-1"></i>
+                                </span> <label>Create Post</label>
+                        </div>
+                        <div class="col-12 menu-item {{analyticsactive}}" (click)="route_change('analytics')">
+                                <span><i class="fas fa-home   mar-r-1"></i></span> <label>Analytics</label>
+                                
+                        </div>
+
+                </div>
+        </div>
+        <div class="col-xxl-6 col-xl-6  col-md-6 col-sm-6 col-xs-12 col-12">
+                <div *ngIf="action =='home'">
+                        <div class="feed" *ngFor="let feed of feeds_data">
+                                <div class="row mb-2">
+                                        <div class="col-12 d-flex">
+                                                <div class="pro-img">
+                                                        <img src="{{feed.profile_img}}" class="profile-img" />
+                                                </div>
+                                                <div>
+                                                        <h4 class="fs-18 ls-1 font-weight-bold">{{feed.name}}</h4>
+                                                        <small>Toronto, 19 MINUTES AGO</small>
+                                                </div>
+                                        </div>
+                                        <div class="col-12 mt-2">
+                                                <img src="{{feed.post}}" width="100%" class="photo" />
+                                        </div>
+                                        <div class=" col-12">
+                                                <p><b>Georgina Cambel</b> Lorem ipsum, dolor sit amet consectetur. <span
+                                                                class="hashtag">#lifestyle</span>
+                                                </p>
+                                        </div>
+                                        <div class=" col-12">
+                                                <p class="txt-mute">View all 277 comments</p>
+                                        </div>
+                                </div>
+                        </div>
+                </div>
+
+                <div *ngIf="action =='explore'">
+                        <div class="profile container">
+                                <div class="row">
+                                        <div class="col-12">
+                                                <div style="margin-top: 3rem;">
+                                                        <h3 class="txt-mute">Coming soon</h3>
+                                                </div>
+                                        </div>
+                                </div>
+                        </div>
+                </div>
+
+                <div *ngIf="action =='notification'">
+                        <div class="profile container">
+                                <div class="row">
+                                        <div class="col-12">
+                                                <div style="margin-top: 3rem;">
+                                                        <h3 class="txt-mute">Coming soon</h3>
+                                                </div>
+                                        </div>
+                                </div>
+                        </div>
+                </div>
+
+                <div *ngIf="action =='message'">
+                        <div class="profile container">
+                                <div class="row">
+                                        <div class="col-12">
+                                                <div style="margin-top: 3rem;">
+                                                        <h3 class="txt-mute">Coming soon</h3>
+                                                </div>
+                                        </div>
+                                </div>
+                        </div>
+                </div>
+
+                <div *ngIf="action =='Create_post'">
+                        <div class="profile container">
+                                <div class="row">
+                                        <div class="col-12">
+                                                <div style="margin-top: 3rem;">
+                                                        <h3 class="txt-mute">Coming soon</h3>
+                                                </div>
+                                        </div>
+                                </div>
+                        </div>
+                </div>
+
+                <div *ngIf="action =='analytics'">
+                        <div class="profile container">
+                                <div class="row">
+                                        <div class="col-12">
+                                                <div style="margin-top: 3rem;">
+                                                        <h3 class="txt-mute">Coming soon</h3>
+                                                </div>
+                                        </div>
+                                </div>
+                        </div>
+                </div>
+        </div>
+        <div class="col-xxl-3 col-xl-3  col-md-3 col-sm-3 col-xs-0 col-12">
+                <div class="right">
+                        <div class="row">
+                                <div class="col-12">
+                                        <h4>Messages</h4>
+                                        <span>edit</span>
+                                </div>
+                                <div class="col-12 mt-2">
+                                        <input class="form-control me-2" type="search" placeholder="Search"
+                                                aria-label="Search">
+                                </div>
+                                <div class="col-4 mt-2">
+                                        <h4 class="fs-18 messageactive">Primary</h4>
+                                </div>
+                                <div class="col-4 mt-2">
+                                        <h4 class="fs-18">General</h4>
+                                </div>
+                                <div class="col-4 mt-2">
+                                        <h4 class="fs-18">Request</h4>
+                                </div>
+                        </div>
+                        <!--profile message-->
+                        <div class="">
+                                <div class="row pa-1">
+                                        <div class="col-3 ">
+                                                <div class="">
+                                                        <img src="../../../assets/img/cam.jpg" class="profile-img" />
+
+                                                </div>
+
+                                        </div>
+                                        <div class="col-9">
+                                                <label class="fs-13 font-bold ">Dilli Babu </label><span
+                                                        class="online"></span>
+                                                <p class="usr-name">Just do it bruh</p>
+                                        </div>
+                                </div>
+                                <div class="row pa-1">
+                                        <div class="col-3 ">
+                                                <div class="">
+                                                        <img src="../../../assets/img/cam.jpg" class="profile-img" />
+                                                </div>
+
+                                        </div>
+                                        <div class="col-9">
+                                                <h4 class="fs-13 font-bold">Dilli Babu</h4>
+                                                <p class="usr-name">Just do it bruh</p>
+                                        </div>
+                                </div>
+                                <div class="row pa-1">
+                                        <div class="col-3 ">
+                                                <div class="">
+                                                        <img src="../../../assets/img/cam.jpg" class="profile-img" />
+                                                </div>
+
+                                        </div>
+                                        <div class="col-9">
+                                                <h4 class="fs-13 font-bold">Dilli Babu</h4>
+                                                <p class="usr-name">Just do it bruh</p>
+                                        </div>
+                                </div>
+                                <div class="row pa-1">
+                                        <div class="col-3 ">
+                                                <div class="">
+                                                        <img src="../../../assets/img/cam.jpg" class="profile-img" />
+                                                </div>
+
+                                        </div>
+                                        <div class="col-9">
+                                                <h4 class="fs-13 font-bold">Dilli Babu</h4>
+                                                <p class="usr-name">Just do it bruh</p>
+                                        </div>
+                                </div>
+                                <div class="row pa-1">
+                                        <div class="col-3 ">
+                                                <div class="">
+                                                        <img src="../../../assets/img/cam.jpg" class="profile-img" />
+                                                </div>
+
+                                        </div>
+                                        <div class="col-9">
+                                                <h4 class="fs-13 font-bold">Dilli Babu</h4>
+                                                <p class="usr-name">Just do it bruh</p>
+                                        </div>
+                                </div>
+                        </div>
+
+                        <!--profile message-->
+                </div>
+        </div>
+</div>

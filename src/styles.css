@@ -1,0 +1,46 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+
+body {
+    background: red;
+}
+
+.profile-img {
+    overflow: hidden;
+    width: 50px;
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+}
+
+.mt-2 {
+    margin-top: 1rem !important;
+}
+
+.txt-mute {
+    color: hsl(253.6, 11.6%, 62.7%);
+}
+
+.fs-18 {
+    font-size: 18px !important;
+}
+
+.ls-1 {
+    letter-spacing: 1px !important;
+}
+
+.font-weight-bold {
+    font-weight: bold !important;
+}
+
+.text-center {
+    text-align: center !important;
+}
+
+/* .nav-tabs.nav-link.active {
+    border-color: unset !important;
+    border-bottom: 1px solid green !important;
+} */
+
+.mar-r-1{
+    margin-right: .5rem;
+}

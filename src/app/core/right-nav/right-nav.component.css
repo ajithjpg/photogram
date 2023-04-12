@@ -1,0 +1,57 @@
+.right {
+    margin-top: 1.5rem;
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 1rem;
+
+}
+
+.active {
+    border-bottom: 3px solid #4dae4d;
+    color: #000;
+    font-weight: bold;
+}
+
+.fs-18 {
+    font-size: 18px;
+}
+
+.mt-2 {
+    margin-top: 1rem !important;
+}
+
+.profile-img {
+    width: 2.7rem;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.pa-1 {
+    padding: .5rem;
+}
+
+.usr-name {
+    color: hsl(253.6, 11.6%, 62.7%);
+}
+
+.fs-13 {
+    font-size: 15px;
+}
+
+.font-bold {
+    font-weight: bold;
+}
+
+.online {
+    width: 10px;
+height: 10px;
+border-radius: 50%;
+border: 2px solid #61d761;
+background: #6ace6a;
+position: absolute;
+
+/* right: 276Px; */
+
+/* top: 84%; */
+}
