@@ -1,7 +1,9 @@
 .body {
     background: red !important;
 }
-
+.pad-l-1{
+    padding-left: 1rem !important;
+}
 .feed {
     background: #fff;
     border-radius: 20px;
