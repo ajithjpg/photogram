@@ -422,3 +422,33 @@ form.sign-in-form {
 	width: 100%;
 	height: 20vh;
 }
+
+.name_error{
+	border: 2px solid red;
+	font-size: 13px;
+	color: rgb(226, 105, 105);
+}
+
+.email_error{
+	border: 2px solid red;
+	font-size: 13px;
+	color: rgb(226, 105, 105);
+}
+
+.phone_number_error{
+	border: 2px solid red;
+	font-size: 13px;
+	color: rgb(226, 105, 105);
+}
+
+.name_error{
+	border: 2px solid red;
+	font-size: 13px;
+	color: rgb(226, 105, 105);
+}
+
+.name_error{
+	border: 2px solid red;
+	font-size: 13px;
+	color: rgb(226, 105, 105);
+}

@@ -20,6 +20,7 @@ export class ComponentsComponent implements OnInit {
   public name = '';
   public email_id = '';
   public phone_number = '';
+  
   public set_password = '';
   public confirm_password = '';
   public initialCountry = 'in';
@@ -33,9 +34,9 @@ export class ComponentsComponent implements OnInit {
     private router: Router,
   ) {
     if (isNullOrUndefined(localStorage.getItem("access_token"))) {
-     this.appState.getmethod('getaccess/token','').subscribe(res =>{
-      console.log(res);
-     })
+      this.appState.getmethod('getaccess/token', '').subscribe(res => {
+        console.log(res);
+      })
     }
   }
 
@@ -56,9 +57,11 @@ export class ComponentsComponent implements OnInit {
       this.change = "sign-up-mode"
       this.type = action[2];
       this.registerform = this.formBuilder.group({
-        name: [''],
-        email_id: [''],
-        phone_number: [''],
+        name: ['', [Validators.required]],
+        email_id: ['', [Validators.required,Validators.email]],
+        phone_number: ['', [Validators.required]],
+        set_password: [''],
+        confirm_password: ['']
       })
     } else if (action[2] == 'Change_password') {
       this.change = ""
@@ -85,13 +88,17 @@ export class ComponentsComponent implements OnInit {
 
   register(datas: any, step: any) {
     console.log(datas)
-    this.step = step;
-    if (step == 2) {
-      this.change = "";
-      setTimeout(() => {
-        this.router.navigate(['pages/login'])
-      }, 2000);
+    
+    if (this.registerform.valid) {
+      this.step = step;
+      if (step == 2) {
+        this.change = "";
+        setTimeout(() => {
+          this.router.navigate(['pages/login'])
+        }, 2000);
+      }
     }
+
   }
 
   onCell1CountryChange(e: any) {
@@ -99,8 +106,8 @@ export class ComponentsComponent implements OnInit {
     this.initialCountry = e.iso2;
     this.cellnumber1DialCode = e.dialCode;
   }
-login_save(datas:any){
-  localStorage.setItem('Loggin',"allow");
-  this.router.navigate(['home'])
-}
+  login_save(datas: any) {
+    localStorage.setItem('Loggin', "allow");
+    this.router.navigate(['home'])
+  }
 }
