@@ -1,0 +1,110 @@
+.bg_temp {
+    background: #f0eef6;
+
+}
+
+.img-outlint {
+    padding-left: unset;
+    background: #0b4d43c7;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+}
+
+.border-outline {
+    border: 1px solid transparent;
+    background: #fff;
+    /* border-radius: 20px; */
+    padding: 3rem;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+
+.ma-3r {
+    margin: 3rem !important;
+}
+
+.text-end {
+    text-align: end !important;
+}
+
+.title_txt {
+    font-size: 35px;
+    font-weight: 900;
+    color: #339a8b;
+}
+
+.label_txt {
+    font-size: 14px;
+    font-weight: bold;
+    color: #767272;
+    margin-bottom: 7px;
+}
+
+
+.form-control {
+    width: 100%;
+    height: 50px;
+    border-radius: 8px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.txt-center {
+    text-align: center !important;
+}
+
+.ma-bt-5 {
+    margin-bottom: 5rem !important;
+}
+
+.mar-bt-1d5 {
+    margin-bottom: 1.5rem;
+}
+
+.btn {
+    width: 18%;
+    border-radius: 20px;
+}
+
+.memory-txt {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.left {
+    animation-name: slide1;
+    animation-duration: 1.2s;
+}
+
+.right {
+    animation-name: slide2;
+    animation-duration: 1.4s;
+}
+
+.account-txt {
+    color: #767272;
+    font-size: 14px;
+}
+.link_txt{
+    color: #339a8b;
+    cursor: pointer;
+}
+@keyframes slide1 {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slide2 {
+    0% {
+        transform: translateX(100%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}

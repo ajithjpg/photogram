@@ -1,8 +1,10 @@
 import { Routes } from '@angular/router';
 // app
-import {ComponentsComponent} from '../session/components/components.component'
 import {NotFoundComponent} from '../session/not-found/not-found.component'
 
+import {ChangePasswordComponent} from '../session/change-password/change-password.component'
+import {LoginComponent} from '../session/login/login.component'
+import {SigninComponent} from '../session/signin/signin.component'
 export const SessionRoutes: Routes = [
     {
         path: '',
@@ -11,25 +13,25 @@ export const SessionRoutes: Routes = [
             path: "404",
             component: NotFoundComponent
           },
-          {
-            path: "error",
-            component: ComponentsComponent
-          },
+          // {
+          //   path: "error",
+          //   component: ComponentsComponent
+          // },
           {
             path: "forgot",
-            component: ComponentsComponent
+            component: ChangePasswordComponent
           },
           {
             path: "Change_password",
-            component: ComponentsComponent
+            component: ChangePasswordComponent
           },
           {
             path: "signin",
-            component: ComponentsComponent
+            component: SigninComponent
           },
           {
             path: 'login',
-            component: ComponentsComponent
+            component: LoginComponent
           }, 
         
           

@@ -4,6 +4,14 @@
 body {
     background: red;
 }
+.btn-primary{
+    background-color: #6e989e !important;
+    color: #fff;
+    border: unset !important;
+}
+.btn-primary:hover{
+    background-color: #339a8b !important;
+}
 
 .profile-img {
     overflow: hidden;

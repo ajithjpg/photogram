@@ -27,7 +27,7 @@ public action ='';
 
     public getHeaders() {
         let headers = new HttpHeaders();
-        headers.append('Accept', 'text/html');
+        headers.append('Accept', 'application/json');
 
 
         return headers;
@@ -35,7 +35,7 @@ public action ='';
 
 
     public postMethod(data: any, apiLink: string, query: string): Observable<any> {
-        return this.http.post(this.api_url + apiLink + '?token=' + localStorage.getItem('oauth_token') + query, data);
+        return this.http.post(this.api_url + apiLink + '?token=' + localStorage.getItem('oauth_token') + query, data , { headers: this.getHeaders()});
         //return this.http.post(this.api_url + apiLink + '?token=' + localStorage.getItem('oauth_token') + query, data, { headers: this.getHeaders() });
 
         // .subscribe((response: Response) => {
