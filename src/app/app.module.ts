@@ -18,6 +18,7 @@ import { AuthService } from './shared/authentication.service';
 import { RightNavComponent } from './core/right-nav/right-nav.component';
 import { LeftNavComponent } from './core/left-nav/left-nav.component';
 import { TabsModule } from 'ngx-bootstrap/tabs';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,11 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
     LeftNavComponent
   ],
   imports: [
+    ToastrModule.forRoot({
+      timeOut: 15000, // 15 seconds
+      closeButton: true,
+      progressBar: false,
+    }),
     TabsModule,
     BrowserAnimationsModule,
     BrowserModule,

@@ -8,6 +8,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { SigninComponent } from './signin/signin.component';
 import { LoginComponent } from './login/login.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,11 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
     ChangePasswordComponent
   ],
   imports: [
+    ToastrModule.forRoot({
+      timeOut: 15000, // 15 seconds
+      closeButton: true,
+      progressBar: false,
+    }),
     CommonModule,
     RouterModule.forChild(SessionRoutes),
     FormsModule,

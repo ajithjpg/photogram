@@ -72,14 +72,6 @@ export class SigninComponent {
     return this.registerform.controls;
   }
 
-
-
-
-
-
-
-
-
   register(datas: any) {
     console.log(datas)
     this.submitted = true;
@@ -96,14 +88,12 @@ export class SigninComponent {
 
       this.appState.postMethod(post_data,'createUser','').subscribe(res =>{
         if(res.error == false){
-          
+          this.appState.showSuccess(res.message);
+          this.router.navigate(['pages/login'])
+        }else{
+          this.appState.showError(res.message);
         }
-        console.log(res);
       })
-
-      setTimeout(() => {
-        this.router.navigate(['pages/login'])
-      }, 2000);
 
     } else {
       return;

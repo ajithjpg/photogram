@@ -3,6 +3,7 @@ import { FormBuilder, Validators, ReactiveFormsModule, FormGroup, FormControl, F
 import { Router, ActivatedRoute, UrlSegment } from '@angular/router';
 import { AppState } from '../../app.service';
 import { isNullOrUndefined } from '@swimlane/ngx-datatable';
+import { DeviceDetectorService } from 'ngx-device-detector';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -10,7 +11,7 @@ import { isNullOrUndefined } from '@swimlane/ngx-datatable';
 })
 export class LoginComponent {
   submitted = false;
-
+  public deviceinfo:any;
   public loginform: any;
 
   public username = '';
@@ -21,6 +22,7 @@ export class LoginComponent {
     private formBuilder: FormBuilder,
     public route: ActivatedRoute,
     private router: Router,
+    private deviceService: DeviceDetectorService
   ) {
     if (isNullOrUndefined(localStorage.getItem("access_token"))) {
       this.appState.getmethod('getaccess/token', '').subscribe(res => {
@@ -38,19 +40,16 @@ export class LoginComponent {
 
   ngOnInit(): void {
 
-    console.log(window.location)
-
-    var action = window.location.pathname.split('/')
-    console.log(action)
-    if (action[2] == 'login') {
+    
+    
+      this.deviceinfo =  this.deviceService.getDeviceInfo();
+      console.log(this.deviceinfo)
       this.loginform = this.formBuilder.group({
         username: ['', Validators.required],
         password: ['', Validators.required],
       })
-    } 
+    
   }
-
-  
 
   get l(): { [key: string]: AbstractControl } {
     return this.loginform.controls;
@@ -58,9 +57,26 @@ export class LoginComponent {
 
   save_login(datas: any) {
     this.submitted = true;
+    console.log(datas);
     if (this.loginform.valid) {
-      localStorage.setItem('Loggin', "allow");
-      this.router.navigate(['home'])
+      
+      datas['brower'] = this.deviceinfo.browser;
+      datas['user_agent'] = this.deviceinfo.userAgent;
+      console.log(datas);
+
+      this.appState.postMethod(datas,'UserLogin','').subscribe(res =>{
+        if(res.error == false){
+          this.appState.showSuccess(res.message);
+         //this.router.navigate(['pages/login'])
+        }else{
+          this.appState.showError(res.message);
+        }
+        
+      },error =>{
+
+      })
+      // localStorage.setItem('Loggin', "allow");
+      // this.router.navigate(['home'])
     } else {
       return;
     }

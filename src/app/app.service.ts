@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { isNullOrUndefined } from '@swimlane/ngx-datatable';
 import { Router, ActivatedRoute } from '@angular/router';
 import { throwError as observableThrowError, Observable, Subject } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
 import {
     Component,
     OnInit,
@@ -19,6 +20,7 @@ public action ='';
         private http: HttpClient,
         public router: Router,
         public route: ActivatedRoute,
+        public toastrService:ToastrService
 
     ) {
 
@@ -47,6 +49,22 @@ public action ='';
         // , { headers: this.getJWTHeaders() }
         return this.http.get(this.api_url + apiLink + query,{ headers: this.getHeaders() });
     }
+
+    public showSuccess(Message:any): void {
+        this.toastrService.success(Message, 'Success!');
+      }
+    
+      public showInfo(Message:any): void {
+        this.toastrService.info(Message, ' Info!');
+      }
+    
+      public showWarning(Message:any): void {
+        this.toastrService.warning(Message, ' Warning!');
+      }
+    
+      public showError(Message:any): void {
+        this.toastrService.error(Message, 'Error!');
+      }
 
     
 

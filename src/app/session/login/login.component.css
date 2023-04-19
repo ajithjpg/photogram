@@ -22,6 +22,9 @@
 .ma-3r {
     margin: 3rem !important;
 }
+.border-margin{
+    margin: 1rem 3rem 1rem 3rem ;
+}
 
 .text-end {
     text-align: end !important;
