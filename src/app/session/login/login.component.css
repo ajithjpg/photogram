@@ -77,6 +77,7 @@
 .left {
     animation-name: slide1;
     animation-duration: 1.2s;
+    
 }
 
 .right {
@@ -90,11 +91,13 @@
 .link_txt{
     color: #339a8b;
     cursor: pointer;
+    margin-left: .5rem;
 }
 
 @keyframes slide1 {
     0% {
         transform: translateX(-100%);
+        
     }
 
     100% {

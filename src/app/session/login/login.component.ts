@@ -28,7 +28,7 @@ export class LoginComponent {
       this.appState.getmethod('getaccess/token', '').subscribe(res => {
 
         if (res.error == false) {
-          localStorage.setItem('oauth_token', res['Access-Token'])
+          localStorage.setItem('access_token', res['Access-Token'])
         }
         console.log(res);
       },
@@ -66,8 +66,12 @@ export class LoginComponent {
 
       this.appState.postMethod(datas,'UserLogin','').subscribe(res =>{
         if(res.error == false){
-          this.appState.showSuccess(res.message);
-         //this.router.navigate(['pages/login'])
+          localStorage.setItem('user_id',res.id);
+          localStorage.setItem('user_name',res.User_name);
+          localStorage.setItem('Loggin', "allow");
+          localStorage.setItem('access_token',res.access_token);
+          this.appState.showSuccess("Loggin Success");
+         this.router.navigate(['home']);
         }else{
           this.appState.showError(res.message);
         }

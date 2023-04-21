@@ -59,7 +59,7 @@
 }
 
 .active {
-    border-left: 5px solid #4dae4d;
+    border-left: 5px solid #339a8b;
     background-color: #f0eef6;
 }
 
@@ -102,7 +102,7 @@
 }
 
 .messageactive {
-    border-bottom: 3px solid #4dae4d;
+    border-bottom: 3px solid #339a8b;
     color: #000;
     font-weight: bold;
 }

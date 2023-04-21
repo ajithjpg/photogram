@@ -37,7 +37,7 @@ public action ='';
 
 
     public postMethod(data: any, apiLink: string, query: string): Observable<any> {
-        return this.http.post(this.api_url + apiLink + '?token=' + localStorage.getItem('oauth_token') + query, data , { headers: this.getHeaders()});
+        return this.http.post(this.api_url + apiLink + '?token=' + localStorage.getItem('access_token') + query, data , { headers: this.getHeaders()});
         //return this.http.post(this.api_url + apiLink + '?token=' + localStorage.getItem('oauth_token') + query, data, { headers: this.getHeaders() });
 
         // .subscribe((response: Response) => {
@@ -47,7 +47,7 @@ public action ='';
 
     public getmethod(apiLink: string, query: string): Observable<any> {
         // , { headers: this.getJWTHeaders() }
-        return this.http.get(this.api_url + apiLink + query,{ headers: this.getHeaders() });
+        return this.http.get(this.api_url + apiLink + '?token=' + localStorage.getItem('access_token') + query,{ headers: this.getHeaders() });
     }
 
     public showSuccess(Message:any): void {
@@ -64,6 +64,11 @@ public action ='';
     
       public showError(Message:any): void {
         this.toastrService.error(Message, 'Error!');
+      }
+
+      public signout(){
+        localStorage.clear();
+        this.router.navigate(["/pages/login"])
       }
 
     

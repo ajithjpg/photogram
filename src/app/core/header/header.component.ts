@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {AppState} from '../../app.service'
 
 @Component({
   selector: 'app-header',
@@ -7,4 +8,12 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
 
+  constructor(
+    public appservice : AppState
+  ){
+
+  }
+  public logout(){
+this.appservice.signout();
+  }
 }

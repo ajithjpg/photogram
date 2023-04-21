@@ -88,6 +88,7 @@
 .link_txt{
     color: #339a8b;
     cursor: pointer;
+    margin-left: .5rem;
 }
 @keyframes slide1 {
     0% {
