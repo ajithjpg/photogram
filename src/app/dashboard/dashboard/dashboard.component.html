@@ -54,7 +54,7 @@
                                                 <img src="{{feed.post}}" width="100%" class="photo" />
                                         </div>
                                         <div class=" col-12">
-                                                <div class="row pad-l-1" >
+                                                <div class="row pad-l-1">
                                                         <div class="col-1">
                                                                 <i class="far fa-heart   mar-r-1"></i>
                                                         </div>
@@ -121,14 +121,95 @@
                 </div>
 
                 <div *ngIf="action =='Create_post'">
-                        <div class="profile container">
-                                <div class="row">
-                                        <div class="col-12">
-                                                <div style="margin-top: 3rem;">
-                                                        <h3 class="txt-mute">Coming soon</h3>
-                                                </div>
+                        <div class="post container">
+
+                                <div class="col-12 animation_content" *ngIf="imageshow == 0">
+                                        <div class="row" class="upload_outlet">
+                                                <diV class="col-4 text-xs-center">
+                                                        <svg class="upload-icon" viewBox="0 0 24 24" width="24px"
+                                                                height="24px" aria-hidden="true">
+                                                                <g fill="none" stroke="hsl(223,90%,50%)"
+                                                                        stroke-width="2" stroke-linecap="round"
+                                                                        stroke-linejoin="round">
+                                                                        <circle class="modal__icon-sdo69" cx="12"
+                                                                                cy="12" r="11"
+                                                                                stroke-dasharray="69.12 69.12"></circle>
+                                                                        <polyline class="modal__icon-sdo14"
+                                                                                points="7 12 12 7 17 12"
+                                                                                stroke-dasharray="14.2 14.2"></polyline>
+                                                                        <line class="modal__icon-sdo10" x1="12" y1="7"
+                                                                                x2="12" y2="17"
+                                                                                stroke-dasharray="10 10"></line>
+                                                                </g>
+                                                        </svg>
+                                                </diV>
+                                                <diV class="col-8 text-xs-center">
+                                                        <div>
+                                                                <label class="upload_title">Upload a File</label>
+                                                        </div>
+                                                        <div>
+                                                                <label class="upload_message">Select a file to upload
+                                                                        from your computer or device.</label>
+                                                        </div>
+                                                        <diV class="upload_action">
+                                                                <button class=" btn  upload-button upload-button-upload"
+                                                                        type="button" data-action="file">Choose
+                                                                        File</button>
+                                                                <input class="upload-file"
+                                                                        (change)="onFileSelected($event)" id="file"
+                                                                        type="file" />
+                                                        </diV>
+                                                </diV>
+                                        </div>
+
+                                </div>
+
+                                <div class="col-12 animation_content" *ngIf="imageshow == 1">
+                                        <div class="avatar-preview">
+                                                <img [src]="imageUrl" class="post-preview" />
+                                        </div>
+                                        <div class="modal__actions mar-t-3" style="display: flex;">
+                                                <svg class="close_btn" viewBox="0 0 24 24" width="24px" height="24px"
+                                                        aria-hidden="true">
+                                                        <g fill="none" stroke="currentColor" stroke-width="2"
+                                                                stroke-linecap="round" stroke-linejoin="round">
+                                                                <polygon points="4 1 12 1 20 8 20 23 4 23">
+                                                                </polygon>
+                                                                <polyline points="12 1 12 8 20 8">
+                                                                </polyline>
+                                                        </g>
+                                                </svg>
+                                                <div class="file_txt" data-file="">{{selectedFile[0].name}}</div>
+                                                <span>
+                                                        <svg class="close_btn" viewBox="0 0 16 16" width="16px"
+                                                                height="16px" aria-hidden="true">
+                                                                <g fill="none" stroke="currentColor" stroke-width="2"
+                                                                        stroke-linecap="round">
+                                                                        <polyline points="4,4 12,12">
+                                                                        </polyline>
+                                                                        <polyline points="12,4 4,12">
+                                                                        </polyline>
+                                                                </g>
+                                                        </svg>
+                                                </span>
+                                                <!-- <button class="modal__button" type="button"
+                                                        data-action="upload">Upload</button> -->
+                                        </div>
+                                       
+                                        <div style="width: 100%;" class="show_recurter mar-t-3">
+                                                <mat-label style="width: 100%" class="file_txt mt-2">Descripition</mat-label>
+                                                <mat-form-field class="w-100" appearance="outline">
+                                                        <textarea style="width: 100% ;min-height: 15vh" matInput [ngModelOptions]="{ standalone: true }"
+                                                                [(ngModel)]="desc"
+                                                                placeholder="Descripition">
+                                                    </textarea>
+                                                </mat-form-field>
+                                        </div>
+                                        <div class="mar-t-3 ">
+                                                <button style="width: 100%" (click)="create_post()" class="btn btn-primary">Create Post</button>
                                         </div>
                                 </div>
+
                         </div>
                 </div>
 
