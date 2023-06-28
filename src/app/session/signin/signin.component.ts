@@ -4,6 +4,7 @@ import { Router, ActivatedRoute, UrlSegment } from '@angular/router';
 import { AppState } from '../../app.service';
 import { isNullOrUndefined } from '@swimlane/ngx-datatable';
 import Validation from '../../shared/validation';
+import { DeviceDetectorService } from 'ngx-device-detector';
 
 @Component({
   selector: 'app-signin',
@@ -20,19 +21,20 @@ export class SigninComponent {
 
   public set_password = '';
   public confirm_password = '';
-
+ public ismob;
 
   constructor(
     public appState: AppState,
     private formBuilder: FormBuilder,
     public route: ActivatedRoute,
     private router: Router,
+    private deviceService: DeviceDetectorService
   ) {
 
   }
 
   ngOnInit(): void {
-
+    this.ismob = this.deviceService.isMobile();
     console.log(window.location)
 
     var action = window.location.pathname.split('/')

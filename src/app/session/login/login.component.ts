@@ -16,7 +16,7 @@ export class LoginComponent {
 
   public username = '';
   public password = '';
-
+  public ismob;
   constructor(
     public appState: AppState,
     private formBuilder: FormBuilder,
@@ -41,7 +41,7 @@ export class LoginComponent {
   ngOnInit(): void {
 
     
-    
+    this.ismob = this.deviceService.isMobile();
       this.deviceinfo =  this.deviceService.getDeviceInfo();
       console.log(this.deviceinfo)
       this.loginform = this.formBuilder.group({

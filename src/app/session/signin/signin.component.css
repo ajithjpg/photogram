@@ -109,3 +109,50 @@
         transform: translateX(0);
     }
 }
+
+@media only screen and (max-width: 900px) {
+    .border-margin {
+        margin: .5rem !important;
+    }
+
+    .border-outline {
+        border: 1px solid transparent;
+        background: #fff;
+        /* border-radius: 20px; */
+        padding: 3rem;
+        border-radius: 30px !important;
+
+    }
+
+    .ma-bt-5 {
+        margin-bottom: 1rem !important;
+    }
+
+
+    .title_txt {
+        font-size: 24px;
+        font-weight: 900;
+        color: #339a8b;
+    }
+    .btn {
+        width: 60%;
+        border-radius: 20px;
+    }
+    .ma-3r {
+        margin: .5rem !important;
+    }
+
+    .right {
+        animation-name: slide2;
+        animation-duration: 1.4s;
+    }
+    @keyframes slide1 {
+        0% {
+            transform: scale3d(0) !important;
+        }
+    
+        100% {
+            transform: scale3d(1) !important;
+        }
+    }
+}

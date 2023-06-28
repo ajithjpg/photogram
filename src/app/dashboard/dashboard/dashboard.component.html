@@ -1,5 +1,5 @@
 <div class="row">
-        <div class="col-xxl-3 col-xl-3  col-md-3 col-sm-3 col-xs-0 col-12">
+        <div class="col-xxl-3 col-xl-3  col-md-3 col-sm-3 col-xs-0 col-12 d-none d-md-block">
                 <div class="left">
                         <div class="profile" (click)="route_change('profile')">
                                 <div class="">
@@ -195,18 +195,20 @@
                                                 <!-- <button class="modal__button" type="button"
                                                         data-action="upload">Upload</button> -->
                                         </div>
-                                       
+
                                         <div style="width: 100%;" class="show_recurter mar-t-3">
-                                                <mat-label style="width: 100%" class="file_txt mt-2">Descripition</mat-label>
+                                                <mat-label style="width: 100%"
+                                                        class="file_txt mt-2">Descripition</mat-label>
                                                 <mat-form-field class="w-100" appearance="outline">
-                                                        <textarea style="width: 100% ;min-height: 15vh" matInput [ngModelOptions]="{ standalone: true }"
-                                                                [(ngModel)]="desc"
-                                                                placeholder="Descripition">
+                                                        <textarea style="width: 100% ;min-height: 15vh" matInput
+                                                                [ngModelOptions]="{ standalone: true }"
+                                                                [(ngModel)]="desc" placeholder="Descripition">
                                                     </textarea>
                                                 </mat-form-field>
                                         </div>
                                         <div class="mar-t-3 ">
-                                                <button style="width: 100%" (click)="create_post()" class="btn btn-primary">Create Post</button>
+                                                <button style="width: 100%" (click)="create_post()"
+                                                        class="btn btn-primary">Create Post</button>
                                         </div>
                                 </div>
 
@@ -225,7 +227,7 @@
                         </div>
                 </div>
         </div>
-        <div class="col-xxl-3 col-xl-3  col-md-3 col-sm-3 col-xs-0 col-12">
+        <div class="col-xxl-3 col-xl-3  col-md-3 col-sm-3 col-xs-0 col-12 d-none d-md-block">
                 <div class="right">
                         <div class="row">
                                 <div class="col-12">

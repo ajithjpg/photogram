@@ -22,8 +22,9 @@
 .ma-3r {
     margin: 3rem !important;
 }
-.border-margin{
-    margin: 1rem 3rem 1rem 3rem ;
+
+.border-margin {
+    margin: 1rem 3rem 1rem 3rem;
 }
 
 .text-end {
@@ -77,18 +78,20 @@
 .left {
     animation-name: slide1;
     animation-duration: 1.2s;
-    
+
 }
 
 .right {
     animation-name: slide2;
     animation-duration: 1.4s;
 }
+
 .account-txt {
     color: #767272;
     font-size: 14px;
 }
-.link_txt{
+
+.link_txt {
     color: #339a8b;
     cursor: pointer;
     margin-left: .5rem;
@@ -97,7 +100,7 @@
 @keyframes slide1 {
     0% {
         transform: translateX(-100%);
-        
+
     }
 
     100% {
@@ -112,5 +115,35 @@
 
     100% {
         transform: translateX(0);
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    .border-margin {
+        margin: .5rem !important;
+    }
+
+    .border-outline {
+        border: 1px solid transparent;
+        background: #fff;
+        /* border-radius: 20px; */
+        padding: 3rem;
+        border-radius: 30px !important;
+
+    }
+
+    .ma-bt-5 {
+        margin-bottom: 1rem !important;
+    }
+
+
+    .title_txt {
+        font-size: 24px;
+        font-weight: 900;
+        color: #339a8b;
+    }
+    .btn {
+        width: 60%;
+        border-radius: 20px;
     }
 }

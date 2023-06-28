@@ -1,18 +1,24 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary header">
   <div class="container col-12">
     <div class="row" style="width: 100% !important;">
-      <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xs-6 col-12">
+      <div  class="col-xxl-3 col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xs-2 col-2 d-md-none">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      </div>
+      <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-3 col-sm-6 col-xs-8 col-8">
         <a class="navbar-brand" href="#">
           <img src="../../../assets/img/photogram-logo.png" width="75%"/>
         </a>
       </div>
-      <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-0 col-12">
+      <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-0 col-12 d-none d-md-block" >
         <form class="d-flex" role="search">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
       </div>
-      <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xs-6 col-12">
+      <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xs-2 col-2">
 
 
         <div ngbDropdown class="dropdown">
@@ -26,13 +32,9 @@
             
           </ul>
         </div>
-
-
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
       </div>
     </div>
   </div>
 </nav>
+
+
