@@ -64,8 +64,7 @@ export const AppRoutes: Routes = [{
       canActivate: [AuthGuard]
     },
     
-  ]
-}, 
+  ]}, 
 {
   path: '',
   component: LayoutComponent,
