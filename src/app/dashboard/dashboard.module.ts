@@ -6,6 +6,9 @@ import {DashboardRoutes} from './dashboard.routes'
 import { RouterModule } from '@angular/router';
 
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { FormBuilder, FormGroup, Validators, FormControl, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     DashboardComponent
@@ -13,7 +16,10 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
   imports: [
     CommonModule,
     RouterModule.forChild(DashboardRoutes),
-    BsDropdownModule
-  ]
+    BsDropdownModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
+  providers: [FormBuilder]
 })
 export class DashboardModule { }

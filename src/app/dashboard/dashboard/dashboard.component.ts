@@ -114,14 +114,14 @@ export class DashboardComponent implements OnInit {
   }
 
   create_post() {
-
+   
     const params = new FormData();
 
     params.append('desc', this.desc);
     params.append('file', this.selectedFile[0]);
 
-    this.appstate.postMethod(params,'post/1','').subscribe(res =>{
-      
+    this.appstate.postMethod(params, 'post/1', '').subscribe(res => {
+        
     })
   }
 
