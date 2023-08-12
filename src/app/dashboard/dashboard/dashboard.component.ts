@@ -1,6 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { AppState } from '../../app.service'
 import { Router } from '@angular/router';
+import { isNullOrUndefined } from '@swimlane/ngx-datatable';
 
 @Component({
   selector: 'app-dashboard',
@@ -114,14 +115,21 @@ export class DashboardComponent implements OnInit {
   }
 
   create_post() {
-   
+
     const params = new FormData();
 
     params.append('desc', this.desc);
     params.append('file', this.selectedFile[0]);
 
-    this.appstate.postMethod(params, 'post/1', '').subscribe(res => {
-        
+    if(!isNullOrUndefined(localStorage.getItem('user_id'))){
+      var id = JSON.parse(localStorage.getItem('user_id'))
+    }
+    this.appstate.postMethod(params, 'post/'+id, '').subscribe(res => {
+
+    }, err => {
+      if (err.status == 401) {
+         this.appstate.signout();
+      }
     })
   }
 

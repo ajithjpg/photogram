@@ -49,8 +49,10 @@ export class ProfileComponent implements OnInit {
         if(res.error ==false){
 
         }
-      },error =>{
-        
+      }, err => {
+        if (err.status == 401) {
+           this.appservice.signout();
+        }
       })
     }
   }
