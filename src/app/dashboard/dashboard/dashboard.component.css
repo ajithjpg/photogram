@@ -114,9 +114,17 @@
 
 }
 
-.messageactive {
+.messageactive_tab {
     border-bottom: 3px solid #339a8b;
-    color: #000;
+    width: 100px;
+    border-radius: 3%;
+    font-weight: bold;
+}
+
+.message_tab:hover {
+    border-bottom: 3px solid #339a8b;
+    width: 100px;
+    border-radius: 3%;
     font-weight: bold;
 }
 
@@ -225,6 +233,9 @@
     cursor: pointer;
 }
 
+.cursor{
+    cursor: pointer;
+}
 .upload-icon {
     width: 80px;
     height: 70px;

@@ -24,6 +24,14 @@ export class DashboardComponent implements OnInit {
     { name: 'dilli', post: '../../../assets/img/feed-4.jpg', profile_img: '../../../assets/img/feed-4.jpg', post_desc: '' },
     { name: 'dilli', post: '../../../assets/img/feed-5.jpg', profile_img: '../../../assets/img/feed-5.jpg', post_desc: '' },
   ];
+
+  public chat_data = [
+    { name: 'dilli', profile_img: '../../../assets/img/feed-1.jpg', msg: 'Hiii' },
+    { name: 'dilli', profile_img: '../../../assets/img/feed-2.jpg', msg: 'Hello' },
+    { name: 'dilli', profile_img: '../../../assets/img/feed-3.jpg', msg: 'Hello' },
+    { name: 'dilli', profile_img: '../../../assets/img/feed-4.jpg', msg: 'Hello' },
+    { name: 'dilli', profile_img: '../../../assets/img/feed-5.jpg', msg: 'Hiiii' },
+  ];
   selectedFile = [];
   imageUrl;
   imageshow = 0;
@@ -113,6 +121,8 @@ export class DashboardComponent implements OnInit {
       this.router.navigate(["/profile"]);
     }
   }
+
+
 
   create_post() {
 

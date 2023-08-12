@@ -110,10 +110,45 @@
 
                 <div *ngIf="action =='message'">
                         <div class="profile container">
-                                <div class="row">
-                                        <div class="col-12">
-                                                <div style="margin-top: 3rem;">
-                                                        <h3 class="txt-mute">Coming soon</h3>
+                                <div class="col-12">
+                                        <div class="row">
+                                                <div class="col-12">
+                                                        <h3 class="txt-mute">Message</h3>
+                                                </div>
+                                                <div class="col-12">
+                                                        <input class="w-100" type="search" />
+                                                </div>
+                                                <div class="col-12 mt-2">
+                                                        <div class="row">
+                                                                <div class="col-4 text-xs-center">
+                                                                        <label
+                                                                                class="message_tab messageactive_tab cursor">Primary</label>
+                                                                </div>
+                                                                <div class="col-4 text-xs-center">
+                                                                        <label
+                                                                                class=" message_tab cursor">General</label>
+                                                                </div>
+                                                                <div class="col-4 text-xs-center">
+                                                                        <label
+                                                                                class=" message_tab cursor">Request</label>
+                                                                </div>
+                                                        </div>
+                                                </div>
+                                                <div class="col-12 mt-3">
+                                                        <div  class="row pa-1" *ngFor="let chat of chat_data">
+                                                                <div class="col-1">
+                                                                        <div>
+                                                                                <img src="{{chat.profile_img}}"class="profile-img">
+                                                                        </div>
+                                                                </div>
+                                                                <div  class="col-11">
+                                                                        <label class="fs-13 font-bold">
+                                                                                {{chat.name}}
+                                                                        </label>
+                                                                        <span class="online"></span>
+                                                                        <p  class="usr-name">{{chat.msg}}</p>
+                                                                </div>
+                                                        </div>
                                                 </div>
                                         </div>
                                 </div>
@@ -200,8 +235,9 @@
                                                 <mat-label style="width: 100%"
                                                         class="file_txt mt-2">Descripition</mat-label>
                                                 <mat-form-field class="w-100" appearance="outline">
-                                                        <textarea style="width: 100% ;min-height: 15vh" matInput type="text"
-                                                        [(ngModel)]="desc" placeholder="Descripition">
+                                                        <textarea style="width: 100% ;min-height: 15vh" matInput
+                                                                type="text" [(ngModel)]="desc"
+                                                                placeholder="Descripition">
                                                     </textarea>
                                                 </mat-form-field>
                                         </div>
