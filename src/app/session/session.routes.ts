@@ -18,11 +18,17 @@ export const SessionRoutes: Routes = [
           //   component: ComponentsComponent
           // },
           {
-            path: "forgot",
+            path: "forgotten_password",
             component: ChangePasswordComponent
           },
           {
             path: "Change_password",
+            component: ChangePasswordComponent
+          }, {
+            path: "email_confirm",
+            component: ChangePasswordComponent
+          },{
+            path: "email_verify/:id",
             component: ChangePasswordComponent
           },
           {

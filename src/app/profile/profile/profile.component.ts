@@ -10,6 +10,7 @@ import { DeviceDetectorService } from 'ngx-device-detector';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
+  public profiledata;
   url = '';
   public edit_profileform: any;
   constructor(
@@ -44,10 +45,10 @@ export class ProfileComponent implements OnInit {
     if(!isNullOrUndefined(localStorage.getItem('user_id'))){
       var id = localStorage.getItem("user_id");
 
-      this.appservice.getmethod('profile/'+id,'').subscribe(res =>{
+      this.appservice.getmethod('getprofile/'+id,'').subscribe(res =>{
         console.log(res);
-        if(res.error ==false){
-
+        if(res.code  ==0){
+          this.profiledata = res.data
         }
       }, err => {
         if (err.status == 401) {

@@ -39,19 +39,19 @@
         </div>
         <div class="col-xxl-9 col-xl-9  col-md-9 col-sm-9 col-xs-12 col-12">
                 <div *ngIf="action =='home'">
-                        <div class="feed" *ngFor="let feed of feeds_data">
+                        <div class="feed" *ngFor="let feed of postDetails, let i = index">
                                 <div class="row mb-2">
                                         <div class="col-12 d-flex">
                                                 <div class="pro-img">
-                                                        <img src="{{feed.profile_img}}" class="profile-img" />
+                                                        <img src="{{feed.user_profile_image_url}}" class="profile-img" />
                                                 </div>
                                                 <div>
-                                                        <h4 class="fs-18 ls-1 font-weight-bold">{{feed.name}}</h4>
+                                                        <h4 class="fs-18 ls-1 font-weight-bold">{{feed.user_full_name}}</h4>
                                                         <small>Toronto, 19 MINUTES AGO</small>
                                                 </div>
                                         </div>
                                         <div class="col-12 mt-2">
-                                                <img src="{{feed.post}}" width="100%" class="photo" />
+                                                <img src="{{feed.img_url}}" width="100%" class="photo" />
                                         </div>
                                         <div class=" col-12">
                                                 <div class="row pad-l-1">

@@ -14,7 +14,7 @@ export class LoginComponent {
   public deviceinfo:any;
   public loginform: any;
 
-  public username = '';
+  public email_id = '';
   public password = '';
   public ismob;
   constructor(
@@ -24,18 +24,7 @@ export class LoginComponent {
     private router: Router,
     private deviceService: DeviceDetectorService
   ) {
-    if (isNullOrUndefined(localStorage.getItem("access_token"))) {
-      this.appState.getmethod('getaccess/token', '').subscribe(res => {
-
-        if (res.error == false) {
-          localStorage.setItem('access_token', res['Access-Token'])
-        }
-        console.log(res);
-      },
-        (error) => {
-          alert(1)
-        })
-    }
+    
   }
 
   ngOnInit(): void {
@@ -45,10 +34,9 @@ export class LoginComponent {
       this.deviceinfo =  this.deviceService.getDeviceInfo();
       console.log(this.deviceinfo)
       this.loginform = this.formBuilder.group({
-        username: ['', Validators.required],
+        email_id: ['', Validators.required],
         password: ['', Validators.required],
       })
-    
   }
 
   get l(): { [key: string]: AbstractControl } {
@@ -64,8 +52,8 @@ export class LoginComponent {
       datas['user_agent'] = this.deviceinfo.userAgent;
       console.log(datas);
 
-      this.appState.postMethod(datas,'UserLogin','').subscribe(res =>{
-        if(res.error == false){
+      this.appState.postMethod(datas,'users/signin','').subscribe(res =>{
+        if(res.code == 0){
           localStorage.setItem('user_id',res.id);
           localStorage.setItem('user_name',res.User_name);
           localStorage.setItem('Loggin', "allow");

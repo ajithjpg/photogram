@@ -6,17 +6,30 @@
 .img-outlint {
     padding-left: unset;
     background: #0b4d43c7;
-    border-top-left-radius: 30px;
-    border-bottom-left-radius: 30px;
+    /* border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px; */
+}
+
+.login_outlet {
+    margin-top: 8%;
+    margin-bottom: 1%;
+}
+
+.font-class {
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+    color: aliceblue;
+    font-family: initial;
 }
 
 .border-outline {
     border: 1px solid transparent;
     background: #fff;
-    /* border-radius: 20px; */
+    border-radius: 20px;
     padding: 3rem;
-    border-top-right-radius: 30px;
-    border-bottom-right-radius: 30px;
+    /* border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px; */
 }
 
 .ma-3r {
@@ -76,14 +89,14 @@
 }
 
 .left {
-    animation-name: slide1;
-    animation-duration: 1.2s;
+    /* animation-name: slide1;
+    animation-duration: 1.2s; */
 
 }
 
 .right {
-    animation-name: slide2;
-    animation-duration: 1.4s;
+    /* animation-name: slide2;
+    animation-duration: 1.4s; */
 }
 
 .account-txt {
@@ -128,7 +141,7 @@
         background: #fff;
         /* border-radius: 20px; */
         padding: 3rem;
-        border-radius: 30px !important;
+        /* border-radius: 30px !important; */
 
     }
 
@@ -142,6 +155,7 @@
         font-weight: 900;
         color: #339a8b;
     }
+
     .btn {
         width: 60%;
         border-radius: 20px;

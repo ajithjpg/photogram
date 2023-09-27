@@ -11,7 +11,7 @@ import { DeviceDetectorService } from 'ngx-device-detector';
   templateUrl: './signin.component.html',
   styleUrls: ['./signin.component.css']
 })
-export class SigninComponent {
+export class SigninComponent implements OnInit {
   submitted = false;
   public registerform: any;
 
@@ -43,14 +43,6 @@ export class SigninComponent {
 
       this.registerform = this.formBuilder.group({
         name: ['', Validators.required],
-        username: [
-          '',
-          [
-            Validators.required,
-            Validators.minLength(6),
-            Validators.maxLength(20),
-          ],
-        ],
         email_id: ['', [Validators.required, Validators.email]],
         phone_number: ['', [Validators.required, Validators.minLength(10),
         Validators.maxLength(15),]],
@@ -68,6 +60,7 @@ export class SigninComponent {
         validators: [Validation.match('set_password', 'confirm_password')],
       })
     }
+
   }
 
   get f(): { [key: string]: AbstractControl } {
@@ -82,16 +75,16 @@ export class SigninComponent {
 
       var post_data = {
         'name': datas.name,
-        'user_name': datas.username,
-        'email': datas.email_id,
-        'mobile': datas.phone_number,
+        'email_id': datas.email_id,
+        'phone_number': datas.phone_number,
         'password': datas.set_password,
       }
 
-      this.appState.postMethod(post_data,'createUser','').subscribe(res =>{
-        if(res.error == false){
+      this.appState.postBeforeMethod(post_data,'users/register','').subscribe(res =>{
+        if(res.code == 0){
           this.appState.showSuccess(res.message);
-          this.router.navigate(['pages/login'])
+          this.appState.email = datas.email_id
+          this.router.navigate(['pages/email_confirm'])
         }else{
           this.appState.showError(res.message);
         }
@@ -102,6 +95,5 @@ export class SigninComponent {
     }
 
   }
-
 
 }

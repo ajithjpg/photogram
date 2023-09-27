@@ -1,86 +1,70 @@
 <div class="bg_temp">
-    <div class="row border-margin">
-        <div class="col-xxl-4 col-xl-4  col-md-4 col-sm-4 col-xs-12 col-12 img-outlint left" *ngIf="ismob ==false">
-            <div class="memory-txt ma-bt-5">
-                <!-- <label>Share Your</label>
-                <h3> Memories</h3> -->
-            </div>
-
-            <img src="../../../assets/img/team-3d.png" width="100%" />
-        </div>
-        <div class="col-xxl-8 col-xl-8  col-md-8 col-sm-8 col-xs-12 col-12 border-outline right">
-            <form [formGroup]="loginform" novalidate class="sign-in-formm" (ngSubmit)="save_login(loginform.value)">
-                <div class="row">
-                    <div class="col-xxl-6 col-xl-6  col-md-6 col-sm-6 col-xs-6 col-12 ma-bt-5">
-                        <div>
-                          <img src="../../../assets/img/photogram-logo.png" width="75%" />
-                        </div>
-
+    <div class="row ">
+        <div class="col-12 img-outlint left" *ngIf="ismob ==false">
+            <div class="row">
+                <div class="col-xxl-6 col-xl-6  col-md-6 col-sm-6 col-xs-12 col-12 login_outlet">
+                    <div class="font-class">
+                       <p>Let's Make Memory</p>
+                       <p>Together</p>
                     </div>
-                    <div class="col-xxl-6 col-xl-6  col-md-6 col-sm-6 col-xs-6 col-12 text-end ma-bt-5">
-                        <label class="account-txt">Don't have an account?</label>
-                        <span class="link_txt" [routerLink]="['/pages/signin']">Sign Up</span>
+                    <div>
+                        <img src="../../../assets/img/team-3d.png" width="100%" />
                     </div>
-                    <div class="col-12 txt-center mar-bt-1d5">
-                        <label class="title_txt">Login to your account</label>
-                    </div>
-                    <div class="col-xxl-12 col-xl-12  col-md-5 col-sm-5 col-xs-12 col-12">
-                        <div class="row">
-                            <div class="col-xxl-3 col-xl-3  col-md-3 col-sm-3 col-xs-0 col-12">
-
-                            </div>
-                            <div class="col-xxl-6 col-xl-6  col-md-6 col-sm-6 col-xs-12 col-12">
-                                <div class="col-xxl-12 col-xl-12  col-md-5 col-sm-5 col-xs-12 col-12 mar-bt-1d5">
-                                    <label class="label_txt">Username</label>
-                                    <input type="text" formControlName="username" class="form-control"
-                                        [ngClass]="{ 'is-invalid': submitted && l['username'].errors }" />
-                                    <div *ngIf="submitted && l['username'].errors" class="invalid-feedback">
-                                        <div *ngIf="l['username'].errors['required']">Username is required</div>
-
-                                    </div>
-                                </div>
-                                <div class="col-xxl-12 col-xl-12  col-md-12 col-sm-12 col-xs-12 col-12 mar-bt-1d5">
-                                    <label class="label_txt">Pass Word</label>
-                                    <input type="text" formControlName="password" class="form-control"
-                                        [ngClass]="{ 'is-invalid': submitted && l['password'].errors }" />
-                                    <div *ngIf="submitted && l['password'].errors" class="invalid-feedback">
-                                        <div *ngIf="l['password'].errors['required']">Pass Word is required</div>
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xxl-3 col-xl-3  col-md-3 col-sm-3 col-xs-0 col-12">
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xxl-12 col-xl-12  col-md-12 col-sm-12 col-xs-12 col-12 txt-center mar-bt-1d5">
-                        <button type="submit" class="btn btn-primary">Log In</button>
-                    </div>
-                    <div class="col-xxl-12 col-xl-12  col-md-12 col-sm-12 col-xs-12 col-12 txt-center">
-                        <label class="account-txt">Forgot PassWord ?</label>
-                        <span class="link_txt">click Here</span>
-                    </div>
+                    
                 </div>
-
-
-                <!-- <p class="social-text">Or Sign in with social platforms</p>
-                <div class="social-media">
-                    <a href="#" class="social-icon">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="#" class="social-icon">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    <a href="#" class="social-icon">
-                        <i class="fab fa-google"></i>
-                    </a>
-                    <a href="#" class="social-icon">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                </div> -->
-            </form>
-
+                <div class="col-xxl-5 col-xl-5  col-md-5 col-sm-5 col-xs-12 col-12 border-outline login_outlet">
+                    <form [formGroup]="loginform" novalidate class="sign-in-formm" (ngSubmit)="save_login(loginform.value)">
+                        <div class="row">
+                            <div class="col-xxl-6 col-xl-6  col-md-6 col-sm-6 col-xs-6 col-12 ma-bt-5">
+                                <div>
+                                  <img src="../../../assets/img/photogram-logo.png" width="75%" />
+                                </div>
+        
+                            </div>
+                            <div class="col-xxl-6 col-xl-6  col-md-6 col-sm-6 col-xs-6 col-12 text-end ma-bt-5">
+                                <label class="account-txt">Don't have an account?</label>
+                                <span class="link_txt" [routerLink]="['/pages/signin']">Sign Up</span>
+                            </div>
+                            <div class="col-12 txt-center mar-bt-1d5">
+                                <label class="title_txt">Login to your account</label>
+                            </div>
+                            <div class="col-xxl-12 col-xl-12  col-md-5 col-sm-5 col-xs-12 col-12">
+                                <div class="row">
+                                    
+                                    <div class=" col-12">
+                                        <div class="col-xxl-12 col-xl-12  col-md-5 col-sm-5 col-xs-12 col-12 mar-bt-1d5">
+                                            <label class="label_txt">Email Id</label>
+                                            <input type="text" formControlName="email_id" class="form-control"
+                                                [ngClass]="{ 'is-invalid': submitted && l['email_id'].errors }" />
+                                            <div *ngIf="submitted && l['email_id'].errors" class="invalid-feedback">
+                                                <div *ngIf="l['email_id'].errors['required']">email_id is required</div>
+        
+                                            </div>
+                                        </div>
+                                        <div class="col-xxl-12 col-xl-12  col-md-12 col-sm-12 col-xs-12 col-12 mar-bt-1d5">
+                                            <label class="label_txt">Pass Word</label>
+                                            <input type="text" formControlName="password" class="form-control"
+                                                [ngClass]="{ 'is-invalid': submitted && l['password'].errors }" />
+                                            <div *ngIf="submitted && l['password'].errors" class="invalid-feedback">
+                                                <div *ngIf="l['password'].errors['required']">Pass Word is required</div>
+        
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xxl-12 col-xl-12  col-md-12 col-sm-12 col-xs-12 col-12 txt-center mar-bt-1d5">
+                                <button type="submit" class="btn btn-primary">Log In</button>
+                            </div>
+                            <div class="col-xxl-12 col-xl-12  col-md-12 col-sm-12 col-xs-12 col-12 txt-center">
+                                <label class="account-txt" [routerLink]="['/pages/forgotten_password']">Forgot PassWord ?</label>
+                                <span class="link_txt" [routerLink]="['/pages/forgotten_password']">click Here</span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
+       
     </div>
 </div>

@@ -9,6 +9,8 @@ import { isNullOrUndefined } from '@swimlane/ngx-datatable';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
+
+  public postDetails = [];
   public action = '';
   public homeactive = '';
   public exploreactive = '';
@@ -48,7 +50,10 @@ export class DashboardComponent implements OnInit {
     this.action = action[1];
 
     if (this.action == 'home') {
-
+      if (!isNullOrUndefined(localStorage.getItem('user_id'))) {
+        var id = localStorage.getItem("user_id");
+        this.getpost(id);
+      }
     }
 
     var action = window.location.pathname.split('/');
@@ -79,6 +84,17 @@ export class DashboardComponent implements OnInit {
     }
   }
 
+  getpost(id) {
+    this.appstate.getmethod('posts//all/' + id, '').subscribe(res => {
+      if (res.code == 0) {
+        if(res.data.length !=0){
+          this.postDetails = res.data
+        }
+      } else {
+
+      }
+    })
+  }
   route_change(type: any) {
     this.appstate.action = type;
     if (type == 'home') {
@@ -122,23 +138,23 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-
-
   create_post() {
 
     const params = new FormData();
-
-    params.append('desc', this.desc);
+    params.append('user_id', localStorage.getItem('user_id'));
+    params.append('post_text', this.desc);
     params.append('file', this.selectedFile[0]);
 
-    if(!isNullOrUndefined(localStorage.getItem('user_id'))){
-      var id = JSON.parse(localStorage.getItem('user_id'))
-    }
-    this.appstate.postMethod(params, 'post/'+id, '').subscribe(res => {
+    this.appstate.postMethod(params, 'posts/upload', '').subscribe(res => {
+      if (res.code == 0) {
+        this.router.navigate(["/home"]);
+      } else {
+
+      }
 
     }, err => {
       if (err.status == 401) {
-         this.appstate.signout();
+        this.appstate.signout();
       }
     })
   }
