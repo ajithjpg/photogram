@@ -70,9 +70,12 @@
                                 class="col-xxl-3 col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xs-3 "
                                 *ngFor="let post of profiledata.posts,let i =index">
                                 <!-- <h3 class="txt-mute">{{post}}</h3> -->
-                                <img src="{{post.img_url}}" width="100%" />
+                                <img src="{{post.img_url}}" width="100%" height="300px" />
                             </div>
                         </div>
+
+
+
                     </tab>
                     <tab heading="Likes">
                         <div style="margin-top: 3rem;">
@@ -99,28 +102,29 @@
             <div class="row">
                 <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-12 text-center pad-1">
                     <div>
-                        <img src="../../../assets/img/bg_image.jpg" class="profileimg" />
+                        <img src="{{edit_Profile_img}}" class="profileimg" />
                     </div>
-                    <div>
-                        <label>
-                            Edit profile Image
-                        </label>
-                    </div>
+                    <diV class="upload_action" style="width: 50%;margin-left: 8rem;">
+                        <button class=" btn  upload-button upload-button-upload" type="button" data-action="file">Choose
+                            File</button>
+                        <input class="upload-file" (change)="onFileSelected($event)" id="file" type="file" />
+                    </diV>
                 </div>
 
                 <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-12 text-center pad-1">
                     <form [formGroup]="edit_profileform" novalidate class="sign-in-formm">
                         <div class="input-field">
                             <i class="fas fa-user"></i>
-                            <input type="text" placeholder="Name" formControlName="Name" />
+                            <input type="text" placeholder="Name" formControlName="Name" [(ngModel)]="Name" />
                         </div>
                         <div class="input-field">
                             <i class="fas fa-user"></i>
-                            <input type="text" placeholder="Username" formControlName="username" />
+                            <input type="text" placeholder="Username" formControlName="username"
+                                [(ngModel)]="username" />
                         </div>
                         <div class="input-field">
                             <i class="fas fa-user"></i>
-                            <textarea type="text" placeholder="Bio" formControlName="bio">
+                            <textarea type="text" placeholder="Bio" formControlName="bio" [(ngModel)]="bio">
                             </textarea>
                         </div>
                         <input type="submit" value="Update" (click)="editSave(edit_profileform.value)"
