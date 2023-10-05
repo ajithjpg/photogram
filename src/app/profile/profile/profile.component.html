@@ -33,7 +33,7 @@
                                 Follow
                             </div>
 
-                            <div class="follow-btn" [routerLink]="['/edit_profile']">
+                            <div class="follow-btn" [routerLink]="['/edit_profile',profiledata.User_Id]">
 
                                 <i class="far fa-edit mar-r-1"></i> Edit Profile
                             </div>
@@ -96,7 +96,7 @@
             <h4 class="fs-18 ls-1 font-weight-bold">Edit Profile</h4>
         </div>
         <div class="col-6 pad-1 text-end">
-            <h4 class="fs-13" style="cursor: pointer;" [routerLink]="['/profile']">Back</h4>
+            <h4 class="fs-13" style="cursor: pointer;" (click)="backClickedCommon()">Back</h4>
         </div>
         <div class="col-12">
             <div class="row">

@@ -22,9 +22,14 @@ export const AppRoutes: Routes = [{
       loadChildren: () =>
       import("./profile/profile.module").then(m => m.ProfileModule),
       canActivate: [AuthGuard]
+    },{
+      path: 'profile/:id',
+      loadChildren: () =>
+      import("./profile/profile.module").then(m => m.ProfileModule),
+      canActivate: [AuthGuard]
     },
     {
-      path: 'edit_profile',
+      path: 'edit_profile/:id',
       loadChildren: () =>
       import("./profile/profile.module").then(m => m.ProfileModule),
       canActivate: [AuthGuard]

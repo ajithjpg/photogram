@@ -29,6 +29,13 @@
     margin-right: 1rem;
 }
 
+.view_post_img {
+    overflow: hidden;
+    width: 40px;
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+}
+
 
 /* left nav */
 
@@ -201,6 +208,10 @@
     min-height: 3em;
 }
 
+.fs-24 {
+    font-size: 24px !important;
+}
+
 .upload_action {
     animation-delay: 0.2s;
     display: flex;
@@ -233,9 +244,10 @@
     cursor: pointer;
 }
 
-.cursor{
+.cursor {
     cursor: pointer;
 }
+
 .upload-icon {
     width: 80px;
     height: 70px;

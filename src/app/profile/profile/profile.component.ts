@@ -18,7 +18,7 @@ export class ProfileComponent implements OnInit {
   public Name = '';
   public bio = '';
   public selectedFile = [];
-
+  public type = ''
 
 
   constructor(
@@ -33,6 +33,7 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     var action = window.location.pathname.split('/');
     this.url = action[1];
+    this.type = action[2]
 
 
 
@@ -50,11 +51,12 @@ export class ProfileComponent implements OnInit {
     }
 
   }
+
   editSave(datas: any) {
     datas['image_url'] = this.edit_Profile_img
     console.log(datas)
-    var id = localStorage.getItem("user_id");
-    this.appservice.postMethod(datas, 'profile/update/' + id, '').subscribe(res => {
+
+    this.appservice.postMethod(datas, 'profile/update/' + this.type, '').subscribe(res => {
       if (res.code == 0) {
         this.router.navigate(['/profile'])
       }
@@ -62,9 +64,9 @@ export class ProfileComponent implements OnInit {
   }
 
   edit_profile() {
-    if (!isNullOrUndefined(localStorage.getItem('user_id'))) {
-      var id = localStorage.getItem("user_id");
-      this.appservice.getmethod('profile/edit/' + id, "").subscribe(res => {
+    if (!isNullOrUndefined(this.type)) {
+ 
+      this.appservice.getmethod('profile/edit/' + this.type, "").subscribe(res => {
         if (res.code == 0) {
           this.edit_Profile_img = res.data.profile_picture_url;
           this.Name = res.data.full_name;
@@ -78,11 +80,14 @@ export class ProfileComponent implements OnInit {
     }
   }
 
+  backClickedCommon() {
+    window.history.back();
+  }
   public onload_data() {
-    if (!isNullOrUndefined(localStorage.getItem('user_id'))) {
-      var id = localStorage.getItem("user_id");
+    if (!isNullOrUndefined(this.type)) {
+     
 
-      this.appservice.getmethod('getprofile/' + id, '').subscribe(res => {
+      this.appservice.getmethod('getprofile/' + this.type, '').subscribe(res => {
         console.log(res);
         if (res.code == 0) {
           this.profiledata = res.data
@@ -105,10 +110,9 @@ export class ProfileComponent implements OnInit {
   }
   uploadimage() {
     var params = new FormData()
-    var id = localStorage.getItem('user_id')
     params.append('file', this.selectedFile[0]);
 
-    this.appservice.postMethod(params, 'editprofile/images/' + id, '').subscribe(res => {
+    this.appservice.postMethod(params, 'editprofile/images/' + this.type, '').subscribe(res => {
 
       if (res.code == 0) {
         this.edit_Profile_img = res.imageURL

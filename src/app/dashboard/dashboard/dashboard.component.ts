@@ -1,15 +1,15 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, ViewChild, TemplateRef } from '@angular/core';
 import { AppState } from '../../app.service'
 import { Router } from '@angular/router';
 import { isNullOrUndefined } from '@swimlane/ngx-datatable';
-
+import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-
+  public profiledata;
   public postDetails = [];
   public action = '';
   public homeactive = '';
@@ -38,10 +38,18 @@ export class DashboardComponent implements OnInit {
   imageUrl;
   imageshow = 0;
   desc = '';
+  explore_data = [];
+  closeResult: string;
+  @ViewChild('content') private modalContent: TemplateRef<DashboardComponent>
+  private modalRef: NgbModalRef
+  commend_txt = '';
+  viewdata;
+  viewdata_comments = [];
   constructor(
     public router: Router,
     public appstate: AppState,
-    private cd: ChangeDetectorRef
+    private cd: ChangeDetectorRef,
+    private modalService: NgbModal
   ) {
 
   }
@@ -53,12 +61,42 @@ export class DashboardComponent implements OnInit {
       if (!isNullOrUndefined(localStorage.getItem('user_id'))) {
         var id = localStorage.getItem("user_id");
         this.getpost(id);
+        // this.getprofile()
       }
     }
+
+    if (this.action == 'explore') {
+      if (!isNullOrUndefined(localStorage.getItem('user_id'))) {
+        var id = localStorage.getItem("user_id");
+        this.explore_list();
+      }
+    }
+
 
     var action = window.location.pathname.split('/');
     this.url = action[1];
     this.route_change(this.url);
+  }
+
+  viewpost(id) {
+    this.appstate.getmethod('view_posts/getdata/' + id, '').subscribe(res => {
+      if (res.code == 0) {
+
+        this.viewdata = res.data[0];
+        if(!isNullOrUndefined(res.comments)){
+          if(res.comments.length !=0){
+            this.viewdata_comments = res.comments
+          }else{
+            this.viewdata_comments = []
+          }
+        }else{
+          this.viewdata_comments = []
+        }
+      
+        this.modalRef = this.modalService.open(this.modalContent, { size: 'xl' })
+        this.modalRef.result.then()
+      }
+    })
   }
 
   onFileSelected(event: any) {
@@ -66,6 +104,26 @@ export class DashboardComponent implements OnInit {
     this.selectedFile.push(event.target.files[0]);
     console.log(this.selectedFile);
     this.image_render(event);
+  }
+
+  view_profile(id) {
+    this.modalRef.close()
+    this.router.navigate(['/profile', id])
+  }
+
+  addcommend(post_id, user_id) {
+
+    var datas = {
+      'comment_text': this.commend_txt
+    }
+
+    this.appstate.postMethod(datas, 'posts/commend/' + post_id + '/' + user_id, '').subscribe(res => {
+      if(res.code ==0){
+        this.modalRef.close()
+        this.viewpost(post_id)
+      }
+      
+    })
   }
 
   image_render(event) {
@@ -85,15 +143,42 @@ export class DashboardComponent implements OnInit {
   }
 
   getpost(id) {
-    this.appstate.getmethod('posts//all/' + id, '').subscribe(res => {
+    this.appstate.getmethod('posts/all/' + id, '').subscribe(res => {
       if (res.code == 0) {
-        if(res.data.length !=0){
+        if (res.data.length != 0) {
           this.postDetails = res.data
         }
       } else {
 
       }
     })
+  }
+
+  uplike(i, post_id, user_id) {
+
+    if (this.postDetails.length != 0) {
+      this.postDetails[i]['islike'] = 1;
+      this.postDetails[i]['likes'] = this.postDetails[i]['likes'] + 1;
+      this.appstate.postMethod('', 'posts/like/' + post_id + '/' + user_id, '').subscribe(res => {
+        if (res.code == 0) {
+
+        }
+      })
+    }
+
+  }
+
+  downlike(i, post_id, user_id) {
+    if (this.postDetails.length != 0) {
+      this.postDetails[i]['islike'] = 0;
+      this.postDetails[i]['likes'] = this.postDetails[i]['likes'] - 1;
+      this.appstate.postMethod('', 'posts/dislike/' + post_id + '/' + user_id, '').subscribe(res => {
+        if (res.code == 0) {
+
+        }
+      })
+    }
+
   }
   route_change(type: any) {
     this.appstate.action = type;
@@ -134,7 +219,8 @@ export class DashboardComponent implements OnInit {
       this.analyticsactive = '';
     }
     if (type == 'profile') {
-      this.router.navigate(["/profile"]);
+      var id = localStorage.getItem('user_id')
+      this.router.navigate(["profile/", id]);
     }
   }
 
@@ -157,6 +243,31 @@ export class DashboardComponent implements OnInit {
         this.appstate.signout();
       }
     })
+  }
+
+  explore_list() {
+    this.appstate.getmethod('posts/allposts', '').subscribe(res => {
+      if (res.code == 0) {
+        this.explore_data = res.data
+      }
+    })
+  }
+
+  getprofile() {
+    if (!isNullOrUndefined(localStorage.getItem('user_id'))) {
+      var id = localStorage.getItem("user_id");
+
+      this.appstate.getmethod('getprofile/' + id, '').subscribe(res => {
+        console.log(res);
+        if (res.code == 0) {
+          this.profiledata = res.data
+        }
+      }, err => {
+        if (err.status == 401) {
+          this.appstate.signout();
+        }
+      })
+    }
   }
 
 }

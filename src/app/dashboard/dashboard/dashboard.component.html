@@ -43,43 +43,52 @@
                                 <div class="row mb-2">
                                         <div class="col-12 d-flex">
                                                 <div class="pro-img">
-                                                        <img src="{{feed.user_profile_image_url}}" class="profile-img" />
+                                                        <img src="{{feed.user_profile_image_url}}"
+                                                                class="profile-img" />
                                                 </div>
                                                 <div>
-                                                        <h4 class="fs-18 ls-1 font-weight-bold">{{feed.user_full_name}}</h4>
-                                                        <small>Toronto, 19 MINUTES AGO</small>
+                                                        <h4 class="fs-18 ls-1 font-weight-bold">{{feed.user_full_name}}
+                                                        </h4>
+                                                        <small>{{feed.post_date | date :format:timezone}}</small>
                                                 </div>
                                         </div>
                                         <div class="col-12 mt-2" style="padding: 1.5rem 3rem 0rem 3rem;">
-                                                <img src="{{feed.img_url}}" width="100%" class="photo" style="object-fit: cover;" />
+                                                <img src="{{feed.img_url}}" width="100%" class="photo"
+                                                        style="object-fit: cover;" />
                                         </div>
                                         <div class=" col-12">
-                                                <div class="row pad-l-1">
-                                                        <div class="col-1">
-                                                                <i class="far fa-heart   mar-r-1"></i>
+                                                <div class="row " style="padding: .5rem 0rem .5rem 3rem;">
+                                                        <div
+                                                                class="col-xxl-2 col-xl-2  col-md-2 col-sm-2 col-xs-4 col-12 ">
+                                                                <i *ngIf="feed.islike == null || feed.islike == 0"
+                                                                        class="far fa-heart  mar-r-1 fs-24 cursor"
+                                                                        (click)="uplike(i,feed.post_id,feed.user_id)"></i>
+                                                                <i *ngIf="feed.islike == 1" style="color: red;"
+                                                                        class="fa fa-heart  mar-r-1 fs-24 cursor"
+                                                                        (click)="downlike(i,feed.post_id,feed.user_id)"></i>
+                                                                <p>{{feed.likes}} <b>likes</b></p>
                                                         </div>
-                                                        <div class="col-1">
-                                                                <i class="far fa-comment   mar-r-1"></i>
+                                                        <div
+                                                                class="col-xxl-2 col-xl-2  col-md-2 col-sm-2 col-xs-4 col-12">
+                                                                <i class="far fa-comment   mar-r-1 fs-24"></i>
+                                                                <p>{{feed.comments}} <b>commend</b></p>
                                                         </div>
-                                                        <div class="col-1">
-                                                                <i class="fas fa-location-arrow    mar-r-1"></i>
+                                                        <div
+                                                                class="col-xxl-2 col-xl-2  col-md-2 col-sm-2 col-xs-4 col-12">
+                                                                <i class="fas fa-location-arrow mar-r-1 fs-24"></i>
                                                         </div>
-                                                        <div class="col-9">
+                                                        <div
+                                                                class="col-xxl-6 col-xl-6  col-md-6 col-sm-6 col-xs-0 col-12 ">
 
                                                         </div>
                                                 </div>
                                         </div>
-                                        <div class=" col-12">
-                                                <p>Liked by capbeautydaily and 8,935 others</p>
-                                        </div>
-                                        <div class=" col-12">
-                                                <p><b>Georgina Cambel</b> Lorem ipsum, dolor sit amet consectetur. <span
-                                                                class="hashtag">#lifestyle</span>
+
+                                        <div class=" col-12" style="padding-left: 4rem;">
+                                                <p><b>{{feed.user_full_name}}</b> {{feed.post_text}}
                                                 </p>
                                         </div>
-                                        <div class=" col-12">
-                                                <p class="txt-mute">View all 277 comments</p>
-                                        </div>
+
                                 </div>
                         </div>
                 </div>
@@ -87,11 +96,84 @@
                 <div *ngIf="action =='explore'">
                         <div class="profile container">
                                 <div class="row">
-                                        <div class="col-12">
-                                                <div style="margin-top: 3rem;">
-                                                        <h3 class="txt-mute">Coming soon</h3>
-                                                </div>
+                                        <div class="col-4" *ngFor="let exp of explore_data">
+                                                <img (click)="viewpost(exp.post_id)" src="{{exp.img_url}}"
+                                                        width="100%" />
                                         </div>
+
+
+                                        <ng-template #content let-modal>
+                                                <div class="modal-header">
+                                                        <h4 class="modal-title">View Post</h4>
+                                                        <button type="button" class="btn-close" aria-label="Close"
+                                                                (click)="modal.dismiss('Cross click')"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                        <div class="row" style="height: 70vh;overflow: scroll;">
+                                                                <div
+                                                                        class="col-xxl-6 col-xl-6  col-md-6 col-sm-6 col-xs-12 col-12">
+                                                                        <p>
+                                                                                <img src="{{viewdata.img_url}}"
+                                                                                        width="100%" />
+                                                                        </p>
+                                                                </div>
+                                                                <div
+                                                                        class="col-xxl-6 col-xl-6  col-md-6 col-sm-6 col-xs-12 col-12">
+                                                                        <div>
+                                                                                <span style="margin-right: 10px;"
+                                                                                        (click)="view_profile(viewdata.user_id)">
+                                                                                        <img class="view_post_img"
+                                                                                                src="{{viewdata.user_profile_image_url}}" (click)="view_profile(viewdata.user_id)" />
+                                                                                </span>
+                                                                                <label
+                                                                                        style="margin-right: 10px;" (click)="view_profile(viewdata.user_id)"><b>{{viewdata.user_full_name}}</b></label>
+                                                                                <span>
+                                                                                        <label
+                                                                                                style="color: #40baba;font-weight: bold;font-size: 13px;">Follow</label>
+                                                                                </span>
+                                                                        </div>
+                                                                        <div>
+                                                                                <small>{{viewdata.post_date | date
+                                                                                        :format:timezone}}</small>
+                                                                                <p>{{viewdata.likes}} likes</p>
+                                                                        </div>
+                                                                        <div>
+                                                                                <small>{{viewdata.post_text}}
+                                                                                        Likes</small>
+                                                                        </div>
+                                                                        <div *ngIf="viewdata_comments.length != 0">
+                                                                                <h3><b>Comments</b></h3>
+                                                                        </div>
+                                                                        <div *ngIf="viewdata_comments.length != 0">
+                                                                                <diV *ngFor="let comments of viewdata_comments">
+                                                                                        <span style="margin-right: 10px;">
+                                                                                                <img src="{{comments.user_profile_image_url}}" class="view_post_img"  />
+                                                                                        </span>
+                                                                                        <label style="margin-right: 10px;"><b>{{comments.user_full_name}}</b></label>
+                                                                                        <span>
+                                                                                                <small>{{comments.comment_date | date :format:timezone}}</small>
+                                                                                        </span>
+                                                                                        <p>{{comments.comment_text}}</p>
+                                                                                </diV>
+                                                                        </div>
+                                                                </div>
+                                                        </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                        <div class="row" style="width: 100%;">
+                                                                <div class="col-10">
+                                                                        <input type="text" [(ngModel)]="commend_txt" style="width: 100%;border-radius: 8px;" />
+                                                                </div>
+                                                                <div class="col-2">
+                                                                        <button  type="button"
+                                                                                class="btn btn-light"
+                                                                                (click)="addcommend(viewdata.post_id,viewdata.user_id)">Send</button>
+                                                                </div>
+                                                        </div>
+
+
+                                                </div>
+                                        </ng-template>
                                 </div>
                         </div>
                 </div>
@@ -135,18 +217,19 @@
                                                         </div>
                                                 </div>
                                                 <div class="col-12 mt-3">
-                                                        <div  class="row pa-1" *ngFor="let chat of chat_data">
+                                                        <div class="row pa-1" *ngFor="let chat of chat_data">
                                                                 <div class="col-1">
                                                                         <div>
-                                                                                <img src="{{chat.profile_img}}"class="profile-img">
+                                                                                <img src="{{chat.profile_img}}"
+                                                                                        class="profile-img">
                                                                         </div>
                                                                 </div>
-                                                                <div  class="col-11">
+                                                                <div class="col-11">
                                                                         <label class="fs-13 font-bold">
                                                                                 {{chat.name}}
                                                                         </label>
                                                                         <span class="online"></span>
-                                                                        <p  class="usr-name">{{chat.msg}}</p>
+                                                                        <p class="usr-name">{{chat.msg}}</p>
                                                                 </div>
                                                         </div>
                                                 </div>
