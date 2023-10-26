@@ -55,9 +55,9 @@ export class LoginComponent {
       this.appState.postMethod(datas,'users/signin','').subscribe(res =>{
         if(res.code == 0){
           localStorage.setItem('user_id',res.id);
-          localStorage.setItem('user_name',res.User_name);
+          localStorage.setItem('user_name',res.name);
           localStorage.setItem('Loggin', "allow");
-          localStorage.setItem('access_token',res.access_token);
+          localStorage.setItem('access_token',res.token);
           this.appState.showSuccess("Loggin Success");
          this.router.navigate(['home']);
         }else{

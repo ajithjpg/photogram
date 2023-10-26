@@ -108,7 +108,7 @@
 .upload-file {
     position: absolute;
     opacity: 0;
-    width: 100%;
+    width: 20%;
     cursor: pointer;
 }
 
@@ -119,4 +119,18 @@
     width: 80px;
     height: 70px;
     margin-top: 50px;
+}
+.mt-4rm{
+    margin-top: 4rem;
+}
+.ml-4rm{
+    margin-left: 4rem;
+}
+@media only screen and (min-device-width : 320px) and (max-device-width : 768px) {
+    .mt-4rm{
+        margin-top: 0rem !important;
+    }
+    .ml-4rm{
+        margin-left: 0rem !important;
+    }
 }

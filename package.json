@@ -27,6 +27,7 @@
     "libphonenumber-js": "^1.10.26",
     "ngx-bootstrap": "^10.2.0",
     "ngx-device-detector": "^5.0.1",
+    "ngx-image-cropper": "^7.1.0",
     "ngx-intl-tel-input": "^3.2.0",
     "ngx-mat-intl-tel-input": "^5.0.0",
     "ngx-toastr": "^16.1.1",

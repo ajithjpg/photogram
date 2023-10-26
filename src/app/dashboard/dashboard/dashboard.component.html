@@ -39,58 +39,147 @@
         </div>
         <div class="col-xxl-9 col-xl-9  col-md-9 col-sm-9 col-xs-12 col-12">
                 <div *ngIf="action =='home'">
-                        <div class="feed" *ngFor="let feed of postDetails, let i = index">
-                                <div class="row mb-2">
-                                        <div class="col-12 d-flex">
-                                                <div class="pro-img">
-                                                        <img src="{{feed.user_profile_image_url}}"
-                                                                class="profile-img" />
-                                                </div>
-                                                <div>
-                                                        <h4 class="fs-18 ls-1 font-weight-bold">{{feed.user_full_name}}
-                                                        </h4>
-                                                        <small>{{feed.post_date | date :format:timezone}}</small>
-                                                </div>
-                                        </div>
-                                        <div class="col-12 mt-2" style="padding: 1.5rem 3rem 0rem 3rem;">
-                                                <img src="{{feed.img_url}}" width="100%" class="photo"
-                                                        style="object-fit: cover;" />
-                                        </div>
-                                        <div class=" col-12">
-                                                <div class="row " style="padding: .5rem 0rem .5rem 3rem;">
-                                                        <div
-                                                                class="col-xxl-2 col-xl-2  col-md-2 col-sm-2 col-xs-4 col-12 ">
-                                                                <i *ngIf="feed.islike == null || feed.islike == 0"
-                                                                        class="far fa-heart  mar-r-1 fs-24 cursor"
-                                                                        (click)="uplike(i,feed.post_id,feed.user_id)"></i>
-                                                                <i *ngIf="feed.islike == 1" style="color: red;"
-                                                                        class="fa fa-heart  mar-r-1 fs-24 cursor"
-                                                                        (click)="downlike(i,feed.post_id,feed.user_id)"></i>
-                                                                <p>{{feed.likes}} <b>likes</b></p>
+                        <div *ngIf="postDetails.length !=0">
+                                <div class="feed" *ngFor="let feed of postDetails, let i = index">
+                                        <div class="row mb-2">
+                                                <div class="col-12 d-flex cursor"
+                                                        [routerLink]="['/profile/'+feed.user_id]">
+                                                        <div class="pro-img">
+                                                                <img src="{{feed.user_profile_image_url}}"
+                                                                        class="profile-img" />
                                                         </div>
-                                                        <div
-                                                                class="col-xxl-2 col-xl-2  col-md-2 col-sm-2 col-xs-4 col-12">
-                                                                <i class="far fa-comment   mar-r-1 fs-24"></i>
-                                                                <p>{{feed.comments}} <b>commend</b></p>
-                                                        </div>
-                                                        <div
-                                                                class="col-xxl-2 col-xl-2  col-md-2 col-sm-2 col-xs-4 col-12">
-                                                                <i class="fas fa-location-arrow mar-r-1 fs-24"></i>
-                                                        </div>
-                                                        <div
-                                                                class="col-xxl-6 col-xl-6  col-md-6 col-sm-6 col-xs-0 col-12 ">
-
+                                                        <div>
+                                                                <h4 class="fs-18 ls-1 font-weight-bold">
+                                                                        {{feed.user_full_name}}
+                                                                </h4>
+                                                                <small>{{feed.post_date | date
+                                                                        :format:timezone}}</small>
                                                         </div>
                                                 </div>
-                                        </div>
+                                                <div class="col-12 mt-2" style="padding: 1.5rem 3rem 0rem 3rem;">
+                                                        <img src="{{feed.img_url}}" width="100%" class="photo"
+                                                                style="object-fit: cover;" />
+                                                </div>
+                                                <div class=" col-12">
+                                                        <div class="row " style="padding: .5rem 0rem .5rem 3rem;">
+                                                                <div
+                                                                        class="col-xxl-2 col-xl-2  col-md-2 col-sm-2 col-xs-4 col-4 ">
+                                                                        <i *ngIf="feed.islike == null || feed.islike == 0"
+                                                                                class="far fa-heart  mar-r-1 fs-24 cursor"
+                                                                                (click)="uplike(i,feed.post_id,feed.user_id)"></i>
+                                                                        <i *ngIf="feed.islike == 1" style="color: red;"
+                                                                                class="fa fa-heart  mar-r-1 fs-24 cursor"
+                                                                                (click)="downlike(i,feed.post_id,feed.user_id)"></i>
+                                                                        <p>{{feed.likes}} <b>likes</b></p>
+                                                                </div>
+                                                                <div class="col-xxl-2 col-xl-2  col-md-2 col-sm-2 col-xs-4 col-4">
+                                                                        <i (click)="viewpost(feed.post_id)"
+                                                                                class="far fa-comment   mar-r-1 fs-24"></i>
+                                                                        <p (click)="viewpost(feed.post_id)">
+                                                                                {{feed.comments}} <b>commend</b></p>
+                                                                </div>
+                                                                <div class="col-xxl-2 col-xl-2  col-md-2 col-sm-2 col-xs-4 col-4">
+                                                                        <i
+                                                                                class="fas fa-location-arrow mar-r-1 fs-24"></i>
+                                                                </div>
+                                                                <div class="col-xxl-6 col-xl-6  col-md-6 col-sm-6 col-xs-0 col-0 ">
 
-                                        <div class=" col-12" style="padding-left: 4rem;">
-                                                <p><b>{{feed.user_full_name}}</b> {{feed.post_text}}
-                                                </p>
-                                        </div>
+                                                                </div>
+                                                        </div>
+                                                </div>
 
+                                                <div class=" col-12" style="padding-left: 4rem;">
+                                                        <p><b>{{feed.user_full_name}}</b> {{feed.post_text}}
+                                                        </p>
+                                                </div>
+
+                                        </div>
+                                </div>
+                                <ng-template #content let-modal>
+                                        <div class="modal-header">
+                                                <h4 class="modal-title">View Post</h4>
+                                                <button type="button" class="btn-close" aria-label="Close"
+                                                        (click)="modal.dismiss('Cross click')"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                                <div class="row" style="height: 70vh;overflow: scroll;">
+                                                        <div
+                                                                class="col-xxl-6 col-xl-6  col-md-6 col-sm-6 col-xs-12 col-12">
+                                                                <p>
+                                                                        <img src="{{viewdata.img_url}}" width="100%" />
+                                                                </p>
+                                                        </div>
+                                                        <div class="col-xxl-6 col-xl-6  col-md-6 col-sm-6 col-xs-12 col-12"
+                                                                style="height: 80vh;-y: scroll;">
+                                                                <div>
+                                                                        <span style="margin-right: 10px;"
+                                                                                (click)="view_profile(viewdata.user_id)">
+                                                                                <img class="view_post_img"
+                                                                                        src="{{viewdata.user_profile_image_url}}"
+                                                                                        (click)="view_profile(viewdata.user_id)" />
+                                                                        </span>
+                                                                        <label style="margin-right: 10px;"
+                                                                                (click)="view_profile(viewdata.user_id)"><b>{{viewdata.user_full_name}}</b></label>
+                                                                        <span>
+                                                                                <label (click)="follow(viewdata.user_id)"
+                                                                                        style="color: #40baba;font-weight: bold;font-size: 13px;">Follow</label>
+                                                                        </span>
+                                                                </div>
+                                                                <div>
+                                                                        <small>{{viewdata.post_date | date
+                                                                                :format:timezone}}</small>
+                                                                        <p>{{viewdata.likes}} likes</p>
+                                                                </div>
+                                                                <div>
+                                                                        <small>{{viewdata.post_text}}
+                                                                                Likes</small>
+                                                                </div>
+                                                                <div *ngIf="viewdata_comments.length != 0">
+                                                                        <h3><b>Comments</b></h3>
+                                                                </div>
+                                                                <div *ngIf="viewdata_comments.length != 0">
+                                                                        <diV *ngFor="let comments of viewdata_comments">
+                                                                                <span style="margin-right: 10px;">
+                                                                                        <img src="{{comments.user_profile_image_url}}"
+                                                                                                class="view_post_img" />
+                                                                                </span>
+                                                                                <label
+                                                                                        style="margin-right: 10px;"><b>{{comments.user_full_name}}</b></label>
+                                                                                <span>
+                                                                                        <small>{{comments.comment_date
+                                                                                                | date
+                                                                                                :format:timezone}}</small>
+                                                                                </span>
+                                                                                <p>{{comments.comment_text}}</p>
+                                                                        </diV>
+                                                                </div>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                                <div class="row" style="width: 100%;">
+                                                        <div class="col-10">
+                                                                <input type="text" [(ngModel)]="commend_txt"
+                                                                        style="width: 100%;border-radius: 8px;" />
+                                                        </div>
+                                                        <div class="col-2">
+                                                                <button type="button" class="btn btn-light"
+                                                                        (click)="addcommend(viewdata.post_id)">Send</button>
+                                                        </div>
+                                                </div>
+
+
+                                        </div>
+                                </ng-template>
+                        </div>
+                        <div *ngIf="postDetails.length == 0">
+                                <div class="feed">
+                                        <div class=" col-12" style="text-align: center;">
+                                                <p><b>No Post Found</b> </p>
+                                        </div>
                                 </div>
                         </div>
+
                 </div>
 
                 <div *ngIf="action =='explore'">
@@ -123,12 +212,13 @@
                                                                                 <span style="margin-right: 10px;"
                                                                                         (click)="view_profile(viewdata.user_id)">
                                                                                         <img class="view_post_img"
-                                                                                                src="{{viewdata.user_profile_image_url}}" (click)="view_profile(viewdata.user_id)" />
+                                                                                                src="{{viewdata.user_profile_image_url}}"
+                                                                                                (click)="view_profile(viewdata.user_id)" />
                                                                                 </span>
-                                                                                <label
-                                                                                        style="margin-right: 10px;" (click)="view_profile(viewdata.user_id)"><b>{{viewdata.user_full_name}}</b></label>
+                                                                                <label style="margin-right: 10px;"
+                                                                                        (click)="view_profile(viewdata.user_id)"><b>{{viewdata.user_full_name}}</b></label>
                                                                                 <span>
-                                                                                        <label
+                                                                                        <label (click)="follow(viewdata.user_id)"
                                                                                                 style="color: #40baba;font-weight: bold;font-size: 13px;">Follow</label>
                                                                                 </span>
                                                                         </div>
@@ -145,13 +235,19 @@
                                                                                 <h3><b>Comments</b></h3>
                                                                         </div>
                                                                         <div *ngIf="viewdata_comments.length != 0">
-                                                                                <diV *ngFor="let comments of viewdata_comments">
-                                                                                        <span style="margin-right: 10px;">
-                                                                                                <img src="{{comments.user_profile_image_url}}" class="view_post_img"  />
+                                                                                <diV
+                                                                                        *ngFor="let comments of viewdata_comments">
+                                                                                        <span
+                                                                                                style="margin-right: 10px;">
+                                                                                                <img src="{{comments.user_profile_image_url}}"
+                                                                                                        class="view_post_img" />
                                                                                         </span>
-                                                                                        <label style="margin-right: 10px;"><b>{{comments.user_full_name}}</b></label>
+                                                                                        <label
+                                                                                                style="margin-right: 10px;"><b>{{comments.user_full_name}}</b></label>
                                                                                         <span>
-                                                                                                <small>{{comments.comment_date | date :format:timezone}}</small>
+                                                                                                <small>{{comments.comment_date
+                                                                                                        | date
+                                                                                                        :format:timezone}}</small>
                                                                                         </span>
                                                                                         <p>{{comments.comment_text}}</p>
                                                                                 </diV>
@@ -162,12 +258,12 @@
                                                 <div class="modal-footer">
                                                         <div class="row" style="width: 100%;">
                                                                 <div class="col-10">
-                                                                        <input type="text" [(ngModel)]="commend_txt" style="width: 100%;border-radius: 8px;" />
+                                                                        <input type="text" [(ngModel)]="commend_txt"
+                                                                                style="width: 100%;border-radius: 8px;" />
                                                                 </div>
                                                                 <div class="col-2">
-                                                                        <button  type="button"
-                                                                                class="btn btn-light"
-                                                                                (click)="addcommend(viewdata.post_id,viewdata.user_id)">Send</button>
+                                                                        <button type="button" class="btn btn-light"
+                                                                                (click)="addcommend(viewdata.post_id)">Send</button>
                                                                 </div>
                                                         </div>
 
@@ -274,8 +370,8 @@
                                                                         type="button" data-action="file">Choose
                                                                         File</button>
                                                                 <input class="upload-file"
-                                                                        (change)="onFileSelected($event)" id="file"
-                                                                        type="file" />
+                                                                        (change)="onFileSelected($event);fileChangeEvent($event)"
+                                                                        id="file" type="file" />
                                                         </diV>
                                                 </diV>
                                         </div>
@@ -283,7 +379,7 @@
                                 </div>
 
                                 <div class="col-12 animation_content" *ngIf="imageshow == 1">
-                                        <div class="avatar-preview">
+                                        <!-- <div class="avatar-preview">
                                                 <img [src]="imageUrl" class="post-preview" />
                                         </div>
                                         <div class="modal__actions mar-t-3" style="display: flex;">
@@ -310,39 +406,55 @@
                                                                 </g>
                                                         </svg>
                                                 </span>
-                                                <!-- <button class="modal__button" type="button"
-                                                        data-action="upload">Upload</button> -->
-                                        </div>
+                                                <button class="modal__button" type="button"
+                                                        data-action="upload">Upload</button>
+                                        </div> -->
 
-                                        <div style="width: 100%;" class="show_recurter mar-t-3">
-                                                <mat-label style="width: 100%"
-                                                        class="file_txt mt-2">Descripition</mat-label>
-                                                <mat-form-field class="w-100" appearance="outline">
-                                                        <textarea style="width: 100% ;min-height: 15vh" matInput
-                                                                type="text" [(ngModel)]="desc"
-                                                                placeholder="Descripition">
+                                        <div class="row" style="margin-top: 5%;">
+                                                <div class="text-center col-md-8">
+                                                        <h5>Crop Image</h5>
+                                                        <image-cropper [imageChangedEvent]="imageChangedEvent"
+                                                                [maintainAspectRatio]="true" [aspectRatio]="4 / 4"
+                                                                [resizeToWidth]="256" format="png" outputType="base64"
+                                                                (imageCropped)="imageCropped($event)"
+                                                                (imageLoaded)="imageLoaded()"
+                                                                (cropperReady)="cropperReady()"
+                                                                (loadImageFailed)="loadImageFailed()"></image-cropper>
+                                                </div>
+                                                <div class="text-center col-md-4">
+                                                        <h5>Preview</h5>
+                                                        <img [src]="croppedImage" />
+                                                </div>
+
+                                                <div style="width: 100%;" class="show_recurter mar-t-3">
+                                                        <mat-label style="width: 100%"
+                                                                class="file_txt mt-2">Descripition</mat-label>
+                                                        <mat-form-field class="w-100" appearance="outline">
+                                                                <textarea style="width: 100% ;min-height: 15vh" matInput
+                                                                        type="text" [(ngModel)]="desc"
+                                                                        placeholder="Descripition">
                                                     </textarea>
-                                                </mat-form-field>
+                                                        </mat-form-field>
+                                                </div>
+                                                <div class="mar-t-3 ">
+                                                        <button style="width: 100%" (click)="create_post()"
+                                                                class="btn btn-primary">Create Post</button>
+                                                </div>
                                         </div>
-                                        <div class="mar-t-3 ">
-                                                <button style="width: 100%" (click)="create_post()"
-                                                        class="btn btn-primary">Create Post</button>
-                                        </div>
+
                                 </div>
-
                         </div>
-                </div>
 
-                <div *ngIf="action =='analytics'">
-                        <div class="profile container">
-                                <div class="row">
-                                        <div class="col-12">
-                                                <div style="margin-top: 3rem;">
-                                                        <h3 class="txt-mute">Coming soon</h3>
+                        <div *ngIf="action =='analytics'">
+                                <div class="profile container">
+                                        <div class="row">
+                                                <div class="col-12">
+                                                        <div style="margin-top: 3rem;">
+                                                                <h3 class="txt-mute">Coming soon</h3>
+                                                        </div>
                                                 </div>
                                         </div>
                                 </div>
                         </div>
                 </div>
         </div>
-</div>

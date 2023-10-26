@@ -3,12 +3,20 @@ import { AppState } from '../../app.service'
 import { Router } from '@angular/router';
 import { isNullOrUndefined } from '@swimlane/ngx-datatable';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { ImageCroppedEvent } from 'ngx-image-cropper';
+import { DomSanitizer } from '@angular/platform-browser';
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
+
+  imageChangedEvent: any = '';
+  croppedImage: any = '';
+
+
   public profiledata;
   public postDetails = [];
   public action = '';
@@ -49,7 +57,8 @@ export class DashboardComponent implements OnInit {
     public router: Router,
     public appstate: AppState,
     private cd: ChangeDetectorRef,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private sanitizer: DomSanitizer
   ) {
 
   }
@@ -83,16 +92,16 @@ export class DashboardComponent implements OnInit {
       if (res.code == 0) {
 
         this.viewdata = res.data[0];
-        if(!isNullOrUndefined(res.comments)){
-          if(res.comments.length !=0){
+        if (!isNullOrUndefined(res.comments)) {
+          if (res.comments.length != 0) {
             this.viewdata_comments = res.comments
-          }else{
+          } else {
             this.viewdata_comments = []
           }
-        }else{
+        } else {
           this.viewdata_comments = []
         }
-      
+
         this.modalRef = this.modalService.open(this.modalContent, { size: 'xl' })
         this.modalRef.result.then()
       }
@@ -106,24 +115,44 @@ export class DashboardComponent implements OnInit {
     this.image_render(event);
   }
 
+  fileChangeEvent(event: any): void {
+    this.imageChangedEvent = event;
+  }
+  imageCropped(event: ImageCroppedEvent) {
+    this.croppedImage = this.sanitizer.bypassSecurityTrustUrl(event.objectUrl || event.base64 || '');
+    console.log(event)
+  }
+  imageLoaded() {
+    // show cropper
+  }
+  cropperReady() {
+    // cropper ready
+  }
+  loadImageFailed() {
+    // show message
+  }
+
   view_profile(id) {
     this.modalRef.close()
     this.router.navigate(['/profile', id])
   }
 
-  addcommend(post_id, user_id) {
+  addcommend(post_id) {
 
     var datas = {
       'comment_text': this.commend_txt
     }
-
-    this.appstate.postMethod(datas, 'posts/commend/' + post_id + '/' + user_id, '').subscribe(res => {
-      if(res.code ==0){
-        this.modalRef.close()
-        this.viewpost(post_id)
-      }
-      
-    })
+    if (!isNullOrUndefined(localStorage.getItem('user_id'))) {
+      var user_id = localStorage.getItem("user_id");
+      this.appstate.postMethod(datas, 'posts/commend/' + post_id + '/' + user_id, '').subscribe(res => {
+        if (res.code == 0) {
+          this.modalRef.close()
+          this.viewpost(post_id)
+        }
+  
+      })
+    }
+   
   }
 
   image_render(event) {
@@ -146,7 +175,9 @@ export class DashboardComponent implements OnInit {
     this.appstate.getmethod('posts/all/' + id, '').subscribe(res => {
       if (res.code == 0) {
         if (res.data.length != 0) {
-          this.postDetails = res.data
+          this.postDetails = res.data;
+        }else{
+          this.postDetails = [];
         }
       } else {
 
@@ -225,7 +256,7 @@ export class DashboardComponent implements OnInit {
   }
 
   create_post() {
-
+console.log(this.croppedImage)
     const params = new FormData();
     params.append('user_id', localStorage.getItem('user_id'));
     params.append('post_text', this.desc);
@@ -270,6 +301,25 @@ export class DashboardComponent implements OnInit {
     }
   }
 
+  follow(id){
+    if (!isNullOrUndefined(localStorage.getItem('user_id'))) {
+      var user_id = localStorage.getItem("user_id"); 
+      this.appstate.postMethod('','user/follow/'+ user_id+'/'+id,'').subscribe(res =>{
+
+      })
+    }
+   
+  }
+
+  unfollow(id){
+    if (!isNullOrUndefined(localStorage.getItem('user_id'))) {
+      var user_id = localStorage.getItem("user_id"); 
+      this.appstate.postMethod('','user/follow/'+ user_id+'/'+id,'').subscribe(res =>{
+
+      })
+    }
+   
+  }
 }
 
 
