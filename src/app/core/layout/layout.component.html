@@ -1,5 +1,4 @@
 <ng-template [ngIf]="loggedin == true">
-
     <app-header></app-header>
     <div class="container mt-5" >
        
@@ -16,7 +15,7 @@
 </ng-template>
 <ng-template [ngIf]="loggedin == false">
     <div class="row" *ngIf="loggedin == false">
-        <app-header></app-header>
+      
         <div class="col-xxl-12 col-xl-12  col-md-12 col-sm-12 col-xs-12 col-12">
             <router-outlet></router-outlet>
         </div>

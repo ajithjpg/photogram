@@ -13,10 +13,10 @@
         </a>
       </div>
       <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-0 col-12 d-none d-md-block" >
-        <form class="d-flex" role="search">
+        <!-- <form class="d-flex" role="search">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
+        </form> -->
       </div>
       <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xs-2 col-2">
 
@@ -27,8 +27,8 @@
             <img src="../../../assets/img/cam.jpg" class="profile-img" />
           </div>
           <ul ngbDropdownMenu aria-labelledby="dropdownMenuButton1">
-            <li><a ngbDropdownItem href="#">Account</a></li>
-            <li><a ngbDropdownItem href="#"(click)="logout()">Log Out</a></li>
+            <li (click)="route_change()"><a  ngbDropdownItem >Account</a></li>
+            <li><a ngbDropdownItem (click)="logout()">Log Out</a></li>
             
           </ul>
         </div>

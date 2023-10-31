@@ -72,17 +72,20 @@
                                                                                 (click)="downlike(i,feed.post_id,feed.user_id)"></i>
                                                                         <p>{{feed.likes}} <b>likes</b></p>
                                                                 </div>
-                                                                <div class="col-xxl-2 col-xl-2  col-md-2 col-sm-2 col-xs-4 col-4">
+                                                                <div
+                                                                        class="col-xxl-2 col-xl-2  col-md-2 col-sm-2 col-xs-4 col-4">
                                                                         <i (click)="viewpost(feed.post_id)"
                                                                                 class="far fa-comment   mar-r-1 fs-24"></i>
                                                                         <p (click)="viewpost(feed.post_id)">
                                                                                 {{feed.comments}} <b>commend</b></p>
                                                                 </div>
-                                                                <div class="col-xxl-2 col-xl-2  col-md-2 col-sm-2 col-xs-4 col-4">
+                                                                <div
+                                                                        class="col-xxl-2 col-xl-2  col-md-2 col-sm-2 col-xs-4 col-4">
                                                                         <i
                                                                                 class="fas fa-location-arrow mar-r-1 fs-24"></i>
                                                                 </div>
-                                                                <div class="col-xxl-6 col-xl-6  col-md-6 col-sm-6 col-xs-0 col-0 ">
+                                                                <div
+                                                                        class="col-xxl-6 col-xl-6  col-md-6 col-sm-6 col-xs-0 col-0 ">
 
                                                                 </div>
                                                         </div>
@@ -120,9 +123,14 @@
                                                                         </span>
                                                                         <label style="margin-right: 10px;"
                                                                                 (click)="view_profile(viewdata.user_id)"><b>{{viewdata.user_full_name}}</b></label>
-                                                                        <span>
-                                                                                <label (click)="follow(viewdata.user_id)"
+                                                                        <span
+                                                                                [hidden]="local_user_id == viewdata.user_id">
+                                                                                <label *ngIf="view_follow =='0'"
+                                                                                        (click)="follow(viewdata.user_id)"
                                                                                         style="color: #40baba;font-weight: bold;font-size: 13px;">Follow</label>
+                                                                                <label *ngIf="view_follow !='0'"
+                                                                                        (click)="follow(viewdata.user_id)"
+                                                                                        style="color: #40baba;font-weight: bold;font-size: 13px;">UnFollow</label>
                                                                         </span>
                                                                 </div>
                                                                 <div>
@@ -217,9 +225,14 @@
                                                                                 </span>
                                                                                 <label style="margin-right: 10px;"
                                                                                         (click)="view_profile(viewdata.user_id)"><b>{{viewdata.user_full_name}}</b></label>
-                                                                                <span>
-                                                                                        <label (click)="follow(viewdata.user_id)"
+                                                                                <span
+                                                                                        [hidden]="local_user_id == viewdata.user_id">
+                                                                                        <label *ngIf="view_follow =='0'"
+                                                                                                (click)="follow(viewdata.user_id)"
                                                                                                 style="color: #40baba;font-weight: bold;font-size: 13px;">Follow</label>
+                                                                                        <label *ngIf="view_follow !='0'"
+                                                                                                (click)="follow(viewdata.user_id)"
+                                                                                                style="color: #40baba;font-weight: bold;font-size: 13px;">UnFollow</label>
                                                                                 </span>
                                                                         </div>
                                                                         <div>

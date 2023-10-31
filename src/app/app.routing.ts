@@ -68,7 +68,12 @@ export const AppRoutes: Routes = [{
       import("./dashboard/dashboard.module").then(m => m.DashboardModule),
       canActivate: [AuthGuard]
     },
-    
+    {
+      path: 'direct/:action/:id',
+      loadChildren: () =>
+      import("./sendmessage/sendmessage.module").then(m => m.SendmessageModule),
+      canActivate: [AuthGuard]
+    },
   ]}, 
 {
   path: '',

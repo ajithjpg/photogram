@@ -27,6 +27,7 @@ export class DashboardComponent implements OnInit {
   public createactive = '';
   public analyticsactive = '';
   public url = '';
+  view_follow = ''
   public feeds_data = [
     { name: 'dilli', post: '../../../assets/img/feed-1.jpg', profile_img: '../../../assets/img/feed-1.jpg', post_desc: '' },
     { name: 'dilli', post: '../../../assets/img/feed-2.jpg', profile_img: '../../../assets/img/feed-2.jpg', post_desc: '' },
@@ -53,6 +54,7 @@ export class DashboardComponent implements OnInit {
   commend_txt = '';
   viewdata;
   viewdata_comments = [];
+  local_user_id = 0
   constructor(
     public router: Router,
     public appstate: AppState,
@@ -61,6 +63,11 @@ export class DashboardComponent implements OnInit {
     private sanitizer: DomSanitizer
   ) {
 
+    if(!isNullOrUndefined(localStorage.getItem('user_id'))){
+      this.local_user_id = JSON.parse(localStorage.getItem('user_id')) 
+    }else{
+      this.local_user_id = 0
+    }
   }
   ngOnInit(): void {
     var action = window.location.pathname.split('/');
@@ -90,7 +97,8 @@ export class DashboardComponent implements OnInit {
   viewpost(id) {
     this.appstate.getmethod('view_posts/getdata/' + id, '').subscribe(res => {
       if (res.code == 0) {
-
+        this.view_follow = res.isfollow
+        console.log(this.view_follow)
         this.viewdata = res.data[0];
         if (!isNullOrUndefined(res.comments)) {
           if (res.comments.length != 0) {

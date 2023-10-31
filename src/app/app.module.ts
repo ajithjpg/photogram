@@ -27,7 +27,8 @@ import { ToastrModule } from 'ngx-toastr';
     HeaderComponent,
     FooterComponent,
     RightNavComponent,
-    LeftNavComponent
+    LeftNavComponent,
+    
   ],
   imports: [
     ToastrModule.forRoot({

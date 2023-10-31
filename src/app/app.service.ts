@@ -14,7 +14,7 @@ import {
 export class AppState {
   public action = '';
   //public api_url = 'https://apiv1.selfmade.technology/'
-  public api_url = 'http://localhost:8080/'
+ public api_url = 'http://localhost:8080/'
   public domainirl = '';
  public email = ''
   constructor(

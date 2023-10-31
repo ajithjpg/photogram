@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import {AppState} from '../../app.service'
-
+import { AppState } from '../../app.service'
+import { Router } from '@angular/router';
+import { isNullOrUndefined } from '@swimlane/ngx-datatable';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -9,11 +10,20 @@ import {AppState} from '../../app.service'
 export class HeaderComponent {
 
   constructor(
-    public appservice : AppState
-  ){
+    public appservice: AppState,
+    public router: Router,
+  ) {
 
   }
-  public logout(){
-this.appservice.signout();
+
+  route_change() {
+    var id = localStorage.getItem('user_id')
+    this.router.navigate(["profile/", id]);
+  }
+
+
+
+  public logout() {
+    this.appservice.signout();
   }
 }
