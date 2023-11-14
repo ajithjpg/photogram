@@ -44,6 +44,7 @@ export class DashboardComponent implements OnInit {
     { name: 'dilli', profile_img: '../../../assets/img/feed-5.jpg', msg: 'Hiiii' },
   ];
   selectedFile = [];
+ post_image_url = ''
   imageUrl;
   imageshow = 0;
   desc = '';
@@ -129,7 +130,14 @@ export class DashboardComponent implements OnInit {
   imageCropped(event: ImageCroppedEvent) {
     this.croppedImage = this.sanitizer.bypassSecurityTrustUrl(event.objectUrl || event.base64 || '');
     console.log(event)
+    this.post_image_url = event.objectUrl
+
   }
+
+  getSanitizedURL(url) {
+    return this.sanitizer.bypassSecurityTrustUrl(url);
+  }
+
   imageLoaded() {
     // show cropper
   }
@@ -184,6 +192,11 @@ export class DashboardComponent implements OnInit {
       if (res.code == 0) {
         if (res.data.length != 0) {
           this.postDetails = res.data;
+          if(this.postDetails.length !=0){
+            for (let i = 0; i < this.postDetails.length; i++) {
+              this.postDetails[i]['img_url'] = this.getSanitizedURL(this.postDetails[i]['img_url'])
+            }
+          }
         }else{
           this.postDetails = [];
         }
@@ -268,9 +281,16 @@ console.log(this.croppedImage)
     const params = new FormData();
     params.append('user_id', localStorage.getItem('user_id'));
     params.append('post_text', this.desc);
-    params.append('file', this.selectedFile[0]);
+    params.append('file', this.post_image_url);
 
-    this.appstate.postMethod(params, 'posts/upload', '').subscribe(res => {
+    const datas  = {
+      "user_id":parseInt( localStorage.getItem('user_id')),
+      "post_text":this.desc,
+      "file":this.post_image_url
+     
+    }
+
+    this.appstate.postMethod(datas, 'posts/upload', '').subscribe(res => {
       if (res.code == 0) {
         this.router.navigate(["/home"]);
       } else {

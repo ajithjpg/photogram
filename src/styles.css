@@ -6,17 +6,91 @@
 
 
 
+@font-face {
+    font-family: normal_ff;
+    src: url(../src/assets/Fonts/Poppins/Poppins-Regular.ttf);
 
+}
+
+@font-face {
+    font-family: sidenav_ff;
+    src: url(../src/assets/Fonts/Mallanna/Mallanna-Regular.ttf);
+}
+
+@font-face {
+    font-family: bold_ff;
+    src: url(../src/assets/Fonts/Poppins/Poppins-SemiBold.ttf);
+    font-weight: bold;
+}
+
+
+.normal_ff {
+    font-family: normal_ff !important;
+}
+
+.sidenav_ff {
+    font-family: sidenav_ff !important;
+}
+
+.bold_ff {
+    font-family: bold_ff !important;
+}
+
+.fs-10 {
+    font-size: 10px;
+}
+
+.fs-11 {
+    font-size: 11px;
+}
+
+.fs-12 {
+    font-size: 12px;
+}
+
+.fs-13 {
+    font-size: 13px;
+}
+
+.fs-14 {
+    font-size: 14px;
+}
+
+.fs-15 {
+    font-size: 15px;
+}
+
+.fs-16 {
+    font-size: 16px;
+}
+
+.fs-17 {
+    font-size: 17px;
+}
+
+.fs-18 {
+    font-size: 18px;
+}
+
+.fs-19 {
+    font-size: 19px;
+}
+
+.fs-20 {
+    font-size: 20px;
+}
 
 body {
     background: red;
 }
-.btn-primary{
+
+.btn-primary {
     background-color: #6e989e !important;
     color: #fff;
     border: unset !important;
 }
-.btn-primary:hover{
+
+.btn-primary:hover {
     background-color: #339a8b !important;
 }
 
@@ -56,6 +130,6 @@ body {
     border-bottom: 1px solid green !important;
 } */
 
-.mar-r-1{
+.mar-r-1 {
     margin-right: .5rem;
 }
