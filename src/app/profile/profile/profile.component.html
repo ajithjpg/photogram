@@ -26,17 +26,36 @@
                             <label>{{profiledata.following}}</label>
                             <p>Following</p>
                         </div>
-                        <div class="col-12" style="margin-left: 4rem;">
+                        <div class="col-12" style="display: flex;">
 
-                            <div style="display: none;" class="follow-btn">
-                                Follow
-                            </div>
 
-                            <div class="follow-btn" [routerLink]="['/edit_profile',profiledata.User_Id]">
+
+                            <div *ngIf="profiledata.User_Id == user_id" class="follow-btn"
+                                [routerLink]="['/edit_profile',profiledata.User_Id]">
 
                                 <i class="far fa-edit mar-r-1"></i> Edit Profile
                             </div>
-                            <span class="setting-icon"><i class="fas fa-cog   mar-r-1"></i></span>
+
+
+                            <div *ngIf="profiledata.User_Id != user_id && profiledata.isfollow ==0 &&profiledata.isfollowing == 0"
+                                class="follow-btn" (click)="follow(profiledata.User_Id)">
+                                <i class="fa fa-user-plus" aria-hidden="true"></i> Follow
+                            </div>
+
+                            <div *ngIf="profiledata.isfollow ==1 || profiledata.isfollowing == 1" class="follow-btn"
+                                [routerLink]="['/direct/message/',profiledata.User_Id]">
+                                Message
+                            </div>
+                            <div *ngIf="profiledata.isfollow ==1 " class="follow-btn"
+                                (click)="unfollow(profiledata.User_Id)">
+                                <i class="fa fa-user-plus" aria-hidden="true"></i> UnFollow
+                            </div>
+                            <span (click)="follow(profiledata.User_Id)"
+                                *ngIf="profiledata.isfollow ==1 &&profiledata.isfollowing == 1 " class="setting-icon"><i
+                                    class="fa fa-user-plus" aria-hidden="true"></i></span>
+                            <span (click)="follow(profiledata.User_Id)"
+                                *ngIf="profiledata.isfollow ==0 && profiledata.isfollowing == 1 "
+                                class="setting-icon"><i class="fa fa-user-plus" aria-hidden="true"></i></span>
 
                         </div>
                     </div>

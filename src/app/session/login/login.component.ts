@@ -52,7 +52,7 @@ export class LoginComponent {
       datas['user_agent'] = this.deviceinfo.userAgent;
       console.log(datas);
 
-      this.appState.postMethod(datas,'users/signin','').subscribe(res =>{
+      this.appState.postBeforeMethod(datas,'users/signin','').subscribe(res =>{
         if(res.code == 0){
           localStorage.setItem('user_id',res.id);
           localStorage.setItem('user_name',res.name);

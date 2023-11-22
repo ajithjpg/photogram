@@ -19,7 +19,7 @@ export class ProfileComponent implements OnInit {
   public bio = '';
   public selectedFile = [];
   public type = ''
-
+  public user_id = ''
 
   constructor(
     public router: Router,
@@ -31,6 +31,7 @@ export class ProfileComponent implements OnInit {
 
   }
   ngOnInit(): void {
+    this.user_id = localStorage.getItem('user_id')
     var action = window.location.pathname.split('/');
     this.url = action[1];
     this.type = action[2]
@@ -60,6 +61,10 @@ export class ProfileComponent implements OnInit {
       if (res.code == 0) {
         this.router.navigate(['/profile'])
       }
+    }, err => {
+      if (err.status == 401) {
+        this.appservice.signout();
+      }
     })
   }
 
@@ -76,8 +81,40 @@ export class ProfileComponent implements OnInit {
 
         }
 
+      }, err => {
+        if (err.status == 401) {
+          this.appservice.signout();
+        }
       })
     }
+  }
+
+  follow(id){
+    if (!isNullOrUndefined(localStorage.getItem('user_id'))) {
+      var user_id = localStorage.getItem("user_id"); 
+      this.appservice.postMethod('','user/follow/'+ user_id+'/'+id,'').subscribe(res =>{
+
+      }, err => {
+        if (err.status == 401) {
+          this.appservice.signout();
+        }
+      })
+    }
+   
+  }
+
+  unfollow(id){
+    if (!isNullOrUndefined(localStorage.getItem('user_id'))) {
+      var user_id = localStorage.getItem("user_id"); 
+      this.appservice.postMethod('','user/unfollow/'+ user_id+'/'+id,'').subscribe(res =>{
+
+      }, err => {
+        if (err.status == 401) {
+          this.appservice.signout();
+        }
+      })
+    }
+   
   }
 
   backClickedCommon() {

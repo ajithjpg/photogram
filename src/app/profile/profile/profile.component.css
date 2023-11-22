@@ -15,7 +15,6 @@
     border: 1px solid;
     width: 30%;
     padding: 4px 0px 4px 0px;
-    position: absolute;
     margin-left: 1rem;
     border-radius: 10px;
     text-align: center;
@@ -74,9 +73,9 @@
 }
 
 .setting-icon {
-    position: relative;
-    top: 80%;
-    left: 57%;
+    margin-top: 21px;
+    margin-left: 10px;
+    opacity: 0.8;
 }
 
 .upload_action {
@@ -112,25 +111,30 @@
     cursor: pointer;
 }
 
-.cursor{
+.cursor {
     cursor: pointer;
 }
+
 .upload-icon {
     width: 80px;
     height: 70px;
     margin-top: 50px;
 }
-.mt-4rm{
+
+.mt-4rm {
     margin-top: 4rem;
 }
-.ml-4rm{
+
+.ml-4rm {
     margin-left: 4rem;
 }
+
 @media only screen and (min-device-width : 320px) and (max-device-width : 768px) {
-    .mt-4rm{
+    .mt-4rm {
         margin-top: 0rem !important;
     }
-    .ml-4rm{
+
+    .ml-4rm {
         margin-left: 0rem !important;
     }
 }

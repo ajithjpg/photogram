@@ -6,31 +6,31 @@
                                         <img src="../../../assets/img/cam.jpg" class="profile-img" />
                                 </div>
                                 <div class="handle">
-                                        <h4>Dilli Babu</h4>
-                                        <p class="usr-name">Dilli</p>
+                                        <h4 class="normal_ff">Dilli Babu</h4>
+                                        <p class="usr-name normal_ff">Dilli</p>
                                 </div>
                         </div>
                 </div>
                 <div class="side-nav  row">
-                        <div class="col-12 menu-item {{homeactive}}" (click)="route_change('home')">
+                        <div class="col-12 menu-item sidenav_ff {{homeactive}}" (click)="route_change('home')">
                                 <span><i class="fas fa-home   mar-r-1"></i></span> <label>Home</label>
                         </div>
-                        <div class="col-12 menu-item {{exploreactive}}" (click)="route_change('explore')">
+                        <div class="col-12 menu-item sidenav_ff {{exploreactive}}" (click)="route_change('explore')">
                                 <span><i class="fas fa-compass   mar-r-1"></i>
                                 </span> <label>Explore</label>
                         </div>
-                        <div class="col-12 menu-item {{notificationactive}}" (click)="route_change('notification')">
+                        <div class="col-12 menu-item sidenav_ff {{notificationactive}}" (click)="route_change('notification')">
                                 <span><i class="fas fa-bell   mar-r-1"></i></span> <label>Notifications</label>
                         </div>
-                        <div class="col-12 menu-item {{messageactive}}" (click)="route_change('message')">
+                        <div class="col-12 menu-item sidenav_ff {{messageactive}}" (click)="route_change('message')">
                                 <span><i class="fab fa-facebook-messenger   mar-r-1"></i>
                                 </span> <label>Messages</label>
                         </div>
-                        <div class="col-12 menu-item {{createactive}}" (click)="route_change('Create_post')">
+                        <div class="col-12 menu-item sidenav_ff {{createactive}}" (click)="route_change('Create_post')">
                                 <span><i class="fas fa-plus-circle  mar-r-1"></i>
                                 </span> <label>Create Post</label>
                         </div>
-                        <div class="col-12 menu-item {{analyticsactive}}" (click)="route_change('analytics')">
+                        <div class="col-12 menu-item sidenav_ff {{analyticsactive}}" (click)="route_change('analytics')">
                                 <span><i class="fas fa-home   mar-r-1"></i></span> <label>Analytics</label>
 
                         </div>
@@ -183,7 +183,7 @@
                         <div *ngIf="postDetails.length == 0">
                                 <div class="feed">
                                         <div class=" col-12" style="text-align: center;">
-                                                <p><b>No Post Found</b> </p>
+                                                <p class="normal_ff"><b>No Post Found</b> </p>
                                         </div>
                                 </div>
                         </div>
@@ -372,20 +372,20 @@
                                                 </diV>
                                                 <diV class="col-8 text-xs-center">
                                                         <div>
-                                                                <label class="upload_title">Upload a File</label>
+                                                                <label class="upload_title bold_ff ">Upload a File</label>
                                                         </div>
                                                         <div>
-                                                                <label class="upload_message">Select a file to upload
+                                                                <label class="upload_message normal_ff">Select a file to upload
                                                                         from your computer or device.</label>
                                                         </div>
-                                                        <diV class="upload_action">
+                                                        <div class="upload_action">
                                                                 <button class=" btn  upload-button upload-button-upload"
                                                                         type="button" data-action="file">Choose
                                                                         File</button>
                                                                 <input class="upload-file"
                                                                         (change)="onFileSelected($event);fileChangeEvent($event)"
                                                                         id="file" type="file" />
-                                                        </diV>
+                                                        </div>
                                                 </diV>
                                         </div>
 

@@ -28,9 +28,15 @@ export class AppState {
   }
 
   public getHeaders() {
-    let headers = new HttpHeaders();
-    headers.append('Accept', 'application/json');
-    headers.append('authorization', localStorage.getItem('access_token'));
+
+    let headers = new HttpHeaders({
+      'Accept': 'application/json',
+      'authorization':'Bearer_'+localStorage.getItem('access_token')
+    });
+
+    // let headers = new HttpHeaders();
+    // headers.append('Accept', 'application/json');
+    // headers.append('authorization', localStorage.getItem('access_token'));
     return headers;
   }
 

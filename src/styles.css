@@ -8,7 +8,7 @@
 
 @font-face {
     font-family: normal_ff;
-    src: url(../src/assets/Fonts/Poppins/Poppins-Regular.ttf);
+    src: url(../src/assets/Fonts/Poppins/Poppins-Medium.ttf);
 
 }
 
@@ -19,20 +19,20 @@
 
 @font-face {
     font-family: bold_ff;
-    src: url(../src/assets/Fonts/Poppins/Poppins-SemiBold.ttf);
+    src: url(../src/assets/Fonts/Poppins/Poppins-Bold.ttf);
     font-weight: bold;
 }
 
 
-.normal_ff {
+.normal_ff{
     font-family: normal_ff !important;
 }
 
-.sidenav_ff {
+.sidenav_ff{
     font-family: sidenav_ff !important;
 }
 
-.bold_ff {
+.bold_ff{
     font-family: bold_ff !important;
 }
 

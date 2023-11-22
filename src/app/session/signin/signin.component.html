@@ -6,8 +6,8 @@
             <div class="row">
                 <div class="col-xxl-6 col-xl-6  col-md-6 col-sm-6 col-xs-12 col-12 login_outlet">
                     <div class="font-class">
-                       <p>Let's Make Memory</p>
-                       <p>Together</p>
+                       <p class="bold_ff">Let's Make Memory</p>
+                       <p class="bold_ff">Together</p>
                     </div>
                     <div class="img_ani">
                         <img src="../../../assets/img/BT.png" width="100%" />
@@ -17,25 +17,25 @@
                 <div class="col-xxl-5 col-xl-5  col-md-5 col-sm-5 col-xs-12 col-12 border-outline login_outlet">
                     <form [formGroup]="registerform" novalidate class="sign-up-form" (ngSubmit)="register(registerform.value)">
                         <div class="row">
-                            <div class="col-xxl-6 col-xl-6  col-md-6 col-sm-6 col-xs-6 col-12 ma-bt-5">
+                            <div class="col-xxl-5 col-xl-5  col-md-5 col-sm-5 col-xs-5 col-12 ma-bt-5">
                                 <div>
                                     <img src="../../../assets/img/photogram-logo.png" width="75%" />
                                   </div>
         
                             </div>
-                            <div class="col-xxl-6 col-xl-6  col-md-6 col-sm-6 col-xs-6 col-12 text-end ma-bt-5">
-                                <label class="account-txt">Already have an account?
-                                    <span class="link_txt" [routerLink]="['/pages/login']">Log In</span>
+                            <div class="col-xxl-7 col-xl-7  col-md-7 col-sm-7 col-xs-7 col-12 text-end ma-bt-5">
+                                <label class="account-txt normal_ff">Already have an account?
+                                    <span class="link_txt normal_ff" [routerLink]="['/pages/login']">Log In</span>
                                 </label>
                             </div>
                             <div class="col-12 txt-center mar-bt-1d5">
-                                <label class="title_txt">Let's Set Up your account</label>
+                                <label class="title_txt bold_ff">Let's Set Up your account</label>
                             </div>
                             <div class="col-xxl-12 col-xl-12  col-md-5 col-sm-5 col-xs-12 col-12">
                                 <div class="row">
                                     <div class="col-xxl-6 col-xl-6  col-md-6 col-sm-6 col-xs-12 col-12 mar-bt-1d5">
                                         <div class="form-group">
-                                            <label class="label_txt">Full Name</label>
+                                            <label class="label_txt bold_ff">Full Name</label>
                                             <input type="text" [(ngModel)]="name" formControlName="name" class="form-control"
                                                 [ngClass]="{ 'is-invalid': submitted && f['name'].errors }" />
                                             <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
@@ -45,7 +45,7 @@
                                     </div>
                                     <div class="col-xxl-6 col-xl-6  col-md-6 col-sm-6 col-xs-12 col-12 mar-bt-1d5">
                                         <div class="form-group">
-                                            <label class="label_txt">Email</label>
+                                            <label class="label_txt bold_ff">Email</label>
                                             <input type="text" [(ngModel)]="email_id" formControlName="email_id"
                                                 class="form-control"
                                                 [ngClass]="{ 'is-invalid': submitted && f['email_id'].errors }" />
@@ -57,7 +57,7 @@
                                     </div>
                                     <div class="col-xxl-6 col-xl-6  col-md-6 col-sm-6 col-xs-12 col-12 mar-bt-1d5">
                                         <div class="form-group">
-                                            <label class="label_txt">Mobile Number</label>
+                                            <label class="label_txt bold_ff">Mobile Number</label>
                                             <input type="text" [(ngModel)]="phone_number" formControlName="phone_number"
                                                 class="form-control"
                                                 [ngClass]="{ 'is-invalid': submitted && f['phone_number'].errors }" />
@@ -75,7 +75,7 @@
                                     </div>
                                     <div class="col-xxl-6 col-xl-6  col-md-6 col-sm-6 col-xs-12 col-12 mar-bt-1d5">
                                         <div class="form-group">
-                                            <label class="label_txt">Pass Word</label>
+                                            <label class="label_txt bold_ff">Pass Word</label>
                                             <input type="password" [(ngModel)]="set_password" formControlName="set_password"
                                                 class="form-control"
                                                 [ngClass]="{ 'is-invalid': submitted && f['set_password'].errors }" />
@@ -93,7 +93,7 @@
                                     </div>
                                     <div class="col-xxl-6 col-xl-6  col-md-6 col-sm-6 col-xs-12 col-12 mar-bt-1d5">
                                         <div class="form-group">
-                                            <label class="label_txt">Confirm Password</label>
+                                            <label class="label_txt bold_ff">Confirm Password</label>
                                             <input type="password" [(ngModel)]="confirm_password"
                                                 formControlName="confirm_password" class="form-control"
                                                 [ngClass]="{ 'is-invalid': submitted && f['confirm_password'].errors }" />
@@ -148,18 +148,18 @@
         
                             </div>
                             <div class="col-xxl-6 col-xl-6  col-md-6 col-sm-6 col-xs-6 col-12 text-end ma-bt-5">
-                                <label class="account-txt">Already have an account?
-                                    <span class="link_txt" [routerLink]="['/pages/login']">Log In</span>
+                                <label class="account-txt normal_ff">Already have an account?
+                                    <span class="link_txt normal_ff" [routerLink]="['/pages/login']">Log In</span>
                                 </label>
                             </div>
                             <div class="col-12 txt-center mar-bt-1d5">
-                                <label class="title_txt">Let's Set Up your account</label>
+                                <label class="title_txt bold_ff">Let's Set Up your account</label>
                             </div>
                             <div class="col-xxl-12 col-xl-12  col-md-5 col-sm-5 col-xs-12 col-12">
                                 <div class="row">
                                     <div class="col-xxl-6 col-xl-6  col-md-6 col-sm-6 col-xs-12 col-12 mar-bt-1d5">
                                         <div class="form-group">
-                                            <label class="label_txt">Full Name</label>
+                                            <label class="label_txt bold_ff">Full Name</label>
                                             <input type="text" [(ngModel)]="name" formControlName="name" class="form-control"
                                                 [ngClass]="{ 'is-invalid': submitted && f['name'].errors }" />
                                             <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
@@ -169,7 +169,7 @@
                                     </div>
                                     <div class="col-xxl-6 col-xl-6  col-md-6 col-sm-6 col-xs-12 col-12 mar-bt-1d5">
                                         <div class="form-group">
-                                            <label class="label_txt">Email</label>
+                                            <label class="label_txt bold_ff">Email</label>
                                             <input type="text" [(ngModel)]="email_id" formControlName="email_id"
                                                 class="form-control"
                                                 [ngClass]="{ 'is-invalid': submitted && f['email_id'].errors }" />
@@ -181,7 +181,7 @@
                                     </div>
                                     <div class="col-xxl-6 col-xl-6  col-md-6 col-sm-6 col-xs-12 col-12 mar-bt-1d5">
                                         <div class="form-group">
-                                            <label class="label_txt">Mobile Number</label>
+                                            <label class="label_txt bold_ff">Mobile Number</label>
                                             <input type="text" [(ngModel)]="phone_number" formControlName="phone_number"
                                                 class="form-control"
                                                 [ngClass]="{ 'is-invalid': submitted && f['phone_number'].errors }" />
@@ -199,7 +199,7 @@
                                     </div>
                                     <div class="col-xxl-6 col-xl-6  col-md-6 col-sm-6 col-xs-12 col-12 mar-bt-1d5">
                                         <div class="form-group">
-                                            <label class="label_txt">Pass Word</label>
+                                            <label class="label_txt bold_ff">Pass Word</label>
                                             <input type="password" [(ngModel)]="set_password" formControlName="set_password"
                                                 class="form-control"
                                                 [ngClass]="{ 'is-invalid': submitted && f['set_password'].errors }" />
@@ -217,7 +217,7 @@
                                     </div>
                                     <div class="col-xxl-6 col-xl-6  col-md-6 col-sm-6 col-xs-12 col-12 mar-bt-1d5">
                                         <div class="form-group">
-                                            <label class="label_txt">Confirm Password</label>
+                                            <label class="label_txt bold_ff">Confirm Password</label>
                                             <input type="password" [(ngModel)]="confirm_password"
                                                 formControlName="confirm_password" class="form-control"
                                                 [ngClass]="{ 'is-invalid': submitted && f['confirm_password'].errors }" />

@@ -114,6 +114,10 @@ export class DashboardComponent implements OnInit {
         this.modalRef = this.modalService.open(this.modalContent, { size: 'xl' })
         this.modalRef.result.then()
       }
+    }, err => {
+      if (err.status == 401) {
+        this.appstate.signout();
+      }
     })
   }
 
@@ -166,6 +170,10 @@ export class DashboardComponent implements OnInit {
           this.viewpost(post_id)
         }
   
+      }, err => {
+        if (err.status == 401) {
+          this.appstate.signout();
+        }
       })
     }
    
@@ -203,6 +211,10 @@ export class DashboardComponent implements OnInit {
       } else {
 
       }
+    }, err => {
+      if (err.status == 401) {
+        this.appstate.signout();
+      }
     })
   }
 
@@ -214,6 +226,10 @@ export class DashboardComponent implements OnInit {
       this.appstate.postMethod('', 'posts/like/' + post_id + '/' + user_id, '').subscribe(res => {
         if (res.code == 0) {
 
+        }
+      }, err => {
+        if (err.status == 401) {
+          this.appstate.signout();
         }
       })
     }
@@ -227,6 +243,10 @@ export class DashboardComponent implements OnInit {
       this.appstate.postMethod('', 'posts/dislike/' + post_id + '/' + user_id, '').subscribe(res => {
         if (res.code == 0) {
 
+        }
+      }, err => {
+        if (err.status == 401) {
+          this.appstate.signout();
         }
       })
     }
@@ -309,6 +329,10 @@ console.log(this.croppedImage)
       if (res.code == 0) {
         this.explore_data = res.data
       }
+    }, err => {
+      if (err.status == 401) {
+        this.appstate.signout();
+      }
     })
   }
 
@@ -334,6 +358,10 @@ console.log(this.croppedImage)
       var user_id = localStorage.getItem("user_id"); 
       this.appstate.postMethod('','user/follow/'+ user_id+'/'+id,'').subscribe(res =>{
 
+      }, err => {
+        if (err.status == 401) {
+          this.appstate.signout();
+        }
       })
     }
    
@@ -344,6 +372,10 @@ console.log(this.croppedImage)
       var user_id = localStorage.getItem("user_id"); 
       this.appstate.postMethod('','user/follow/'+ user_id+'/'+id,'').subscribe(res =>{
 
+      }, err => {
+        if (err.status == 401) {
+          this.appstate.signout();
+        }
       })
     }
    

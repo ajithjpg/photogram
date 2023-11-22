@@ -12,42 +12,18 @@
                     <label class="bold_ff fs-13 flt-rgt">back</label>
                 </div>
                 <div class="col-12 message_bg">
-                    <div class="row">
-                        <ul class="chat-thread">
-                            <li>Are we meeting today?</li>
-                            <li>yes, what time suits you?</li>
-                            <li>I was thinking after lunch, I have a meeting in the morning</li>
-                            <li>Are we meeting today?</li>
-                            <li>yes, what time suits you?</li>
-                            <li>I was thinking after lunch, I have a meeting in the morning</li>
-                            <li>Are we meeting today?</li>
-                            <li>yes, what time suits you?</li>
-                            <li>I was thinking after lunch, I have a meeting in the morning</li>
-                            <li>Are we meeting today?</li>
-                            <li>yes, what time suits you?</li>
-                            <li>I was thinking after lunch, I have a meeting in the morning</li>
-                            <li>Are we meeting today?</li>
-                            <li>yes, what time suits you?</li>
-                            <li>I was thinking after lunch, I have a meeting in the morning</li>
-                            <li>Are we meeting today?</li>
-                            <li>yes, what time suits you?</li>
-                            <li>I was thinking after lunch, I have a meeting in the morning</li>
-                            <li>Are we meeting today?</li>
-                            <li>yes, what time suits you?</li>
-                            <li>I was thinking after lunch, I have a meeting in the morning</li>
-                            <li>Are we meeting today?</li>
-                            <li>yes, what time suits you?</li>
-                            <li>I was thinking after lunch, I have a meeting in the morning</li>
-                            <li>Are we meeting today?</li>
-                            <li>yes, what time suits you?</li>
-                            <li>I was thinking after lunch, I have a meeting in the morning</li>
-                            <li>Are we meeting today?</li>
-                            <li>yes, what time suits you?</li>
-                            <li>I was thinking after lunch, I have a meeting in the morning</li>
-                            <li>Are we meeting today?</li>
-                            <li>yes, what time suits you?</li>
-                            <li>I was thinking after lunch, I have a meeting in the morning</li>
-                        </ul>
+                    <div class="row" class="chat-thread">
+                        <div class="col-12 flt-rgt pa-1" *ngFor="let data of chatdata">
+                            <span *ngIf="data.sender_id == userid"><img src={{data.user_profile_image_url}}  class="chat_img flt-rgt ml-1"/></span>
+                            <label *ngIf="data.sender_id == userid" class="flt-rgt bg_chat">
+                              {{data.message}}
+                            </label> 
+                            
+                            <span *ngIf="data.sender_id != userid"><img src={{data.user_profile_image_url}}  class="chat_img"/></span>  
+                            <label *ngIf="data.sender_id != userid" class="bg_chat" >
+                                {{data.message}}
+                            </label>
+                        </div>
                     </div>
 
                 </div>
