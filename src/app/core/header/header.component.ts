@@ -26,4 +26,8 @@ export class HeaderComponent {
   public logout() {
     this.appservice.signout();
   }
+
+  handleSidebarToggle() {
+    this.appservice.sidebarExpanded = !this.appservice.sidebarExpanded
+  }
 }

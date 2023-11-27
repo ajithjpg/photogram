@@ -28,7 +28,7 @@ export class ProfileComponent implements OnInit {
     public device: DeviceDetectorService,
     private cd: ChangeDetectorRef
   ) {
-
+    
   }
   ngOnInit(): void {
     this.user_id = localStorage.getItem('user_id')
@@ -121,7 +121,9 @@ export class ProfileComponent implements OnInit {
     window.history.back();
   }
   public onload_data() {
-    if (!isNullOrUndefined(this.type)) {
+    if (isNullOrUndefined(this.type)) {
+      this.type = localStorage.getItem('user_id')
+    }
      
 
       this.appservice.getmethod('getprofile/' + this.type, '').subscribe(res => {
@@ -135,7 +137,7 @@ export class ProfileComponent implements OnInit {
         }
       })
     }
-  }
+  
 
   onFileSelected(event: any) {
     this.selectedFile = [];

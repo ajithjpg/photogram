@@ -1,26 +1,38 @@
-import { Component, ElementRef, NgZone, OnInit, ChangeDetectorRef, OnDestroy, ViewChild, HostListener, Inject, Injectable, PLATFORM_ID } from '@angular/core';
+import { Component, ElementRef,Output,Input, NgZone, OnInit,EventEmitter, ChangeDetectorRef, OnDestroy, ViewChild, HostListener, Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { isNullOrUndefined } from '@swimlane/ngx-datatable';
-import { Router } from '@angular/router';
+import { Router,NavigationEnd } from '@angular/router';
 import {AppState} from '../../app.service'
+import {filter} from'rxjs';
 @Component({
   selector: 'app-layout',
   templateUrl: './layout.component.html',
   styleUrls: ['./layout.component.css']
 })
 export class LayoutComponent implements OnInit {
+  
 public url = '';
   public loggedin = false;
+  sidebarExpanded = true;
   constructor(
     private router: Router,
     private ref: ChangeDetectorRef,
     public appstate:AppState
 
   ) {
-
+    this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe((event: NavigationEnd) => {
+      console.log(event)
+      if(event.url =='/profile' || event.url =='/edit_profile'){
+        this.appstate.sidebarExpanded = false;
+      }else{
+        this.appstate.sidebarExpanded = true;
+      }
+    })
   }
 
   ngOnInit(): void {
     this.getpagedata();
+
+    
 
   }
 
@@ -58,5 +70,7 @@ public url = '';
       this.router.navigate(['/pages/login']);
     }
   }
+
+  
 
 }

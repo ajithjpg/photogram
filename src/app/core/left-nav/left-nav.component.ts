@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input,Output,EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppState } from '../../app.service'
 @Component({
@@ -7,12 +7,16 @@ import { AppState } from '../../app.service'
   styleUrls: ['./left-nav.component.css']
 })
 export class LeftNavComponent implements OnInit {
+  noexp = ''
+  @Input() isExpanded: boolean = false;
+  @Output() toggleSidebar: EventEmitter<boolean> = new EventEmitter<boolean>();
   public homeactive = '';
   public exploreactive = '';
   public notificationactive = '';
   public messageactive = '';
   public bookmarksactive = '';
   public analyticsactive = '';
+  createpost_active = ''
   public url = '';
   constructor(
     public router: Router,
@@ -24,6 +28,9 @@ export class LeftNavComponent implements OnInit {
     var action = window.location.pathname.split('/');
     this.url = action[1];
     this.route_change(this.url);
+    if(this.appstate.sidebarExpanded == false){
+      
+    }
   }
 
   route_change(type: any) {
@@ -52,6 +59,14 @@ export class LeftNavComponent implements OnInit {
     } else {
       this.messageactive = '';
     }
+
+    if (type == 'Create_post') {
+      this.createpost_active = 'active';
+      this.router.navigate(["/Create_post"]);
+    } else {
+      this.createpost_active = '';
+    }
+
     if (type == 'bookmarks') {
       this.bookmarksactive = 'active';
       this.router.navigate(["/bookmarks"]);
@@ -66,6 +81,12 @@ export class LeftNavComponent implements OnInit {
     }
     if (type == 'profile') {
       this.router.navigate(["/profile"]);
+      
     }
   }
+
+  handleSidebarToggle(){
+    console.log(this.isExpanded)
+    this.toggleSidebar.emit(!this.isExpanded)
+  } 
 }

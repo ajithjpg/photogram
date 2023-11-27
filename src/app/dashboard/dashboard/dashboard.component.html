@@ -1,5 +1,5 @@
 <div class="row">
-        <div class="col-xxl-3 col-xl-3  col-md-3 col-sm-3 col-xs-0 col-12 d-none d-md-block">
+        <!-- <div class="col-xxl-3 col-xl-3  col-md-3 col-sm-3 col-xs-0 col-12 d-none d-md-block">
                 <div class="left">
                         <div class="profile" (click)="route_change('profile')">
                                 <div class="">
@@ -36,8 +36,8 @@
                         </div>
 
                 </div>
-        </div>
-        <div class="col-xxl-9 col-xl-9  col-md-9 col-sm-9 col-xs-12 col-12">
+        </div> -->
+        <div class="col-xxl-12 col-xl-12  col-md-12 col-sm-12 col-xs-12 col-12">
                 <div *ngIf="action =='home'">
                         <div *ngIf="postDetails.length !=0">
                                 <div class="feed" *ngFor="let feed of postDetails, let i = index">
@@ -56,8 +56,8 @@
                                                                         :format:timezone}}</small>
                                                         </div>
                                                 </div>
-                                                <div class="col-12 mt-2" style="padding: 1.5rem 3rem 0rem 3rem;">
-                                                        <img src="{{feed.img_url}}" width="100%" class="photo"
+                                                <div class="col-12 mt-2 text-center" style="padding: 1.5rem 3rem 0rem 3rem;">
+                                                        <img src="{{feed.img_url}}" width="70%" class="photo"
                                                                 style="object-fit: cover;" />
                                                 </div>
                                                 <div class=" col-12">

@@ -1,0 +1,41 @@
+<div class="sidebar" [ngClass]="{ 'expanded': appstate.sidebarExpanded}">
+    <div class="content">
+        <div class="left">
+            <div class="profile" (click)="route_change('profile')">
+                <div class="">
+                    <img src="../../../assets/img/cam.jpg" class="profile-img" />
+                </div>
+                <div class="handle" *ngIf="appstate.sidebarExpanded == true">
+                    <h4 class="sidenav_ff">Dilli Babu</h4>
+                    <p class="usr-name normal_ff" style="margin-bottom: 1px !important;">Dilli</p>
+                </div>
+            </div>
+        </div>
+        <div class="side-nav   row">
+            
+            <div class="col-12 menu-item sidenav_ff {{noexp}} {{homeactive}}" (click)="route_change('home')">
+                <span><i class="fas fa-home   mar-r-1"></i></span> <label *ngIf="appstate.sidebarExpanded == true">Home </label>
+            </div>
+            <div class="col-12 menu-item sidenav_ff {{noexp}} {{exploreactive}}" (click)="route_change('explore')">
+                <span><i class="fas fa-compass   mar-r-1"></i>
+                </span> <label *ngIf="appstate.sidebarExpanded == true">Explore</label>
+            </div>
+            <div class="col-12 menu-item sidenav_ff {{noexp}} {{notificationactive}}" (click)="route_change('notification')">
+                <span><i class="fas fa-bell   mar-r-1"></i></span> <label *ngIf="appstate.sidebarExpanded == true">Notifications</label>
+            </div>
+            <div class="col-12 menu-item sidenav_ff {{noexp}} {{messageactive}}" (click)="route_change('message')">
+                <span><i class="fab fa-facebook-messenger   mar-r-1"></i>
+                </span> <label *ngIf="appstate.sidebarExpanded == true">Messages</label>
+            </div>
+            <div class="col-12 menu-item sidenav_ff {{noexp}} {{createpost_active}}" (click)="route_change('Create_post')">
+                <span><i class="fas fa-plus-circle  mar-r-1"></i>
+                </span> <label *ngIf="appstate.sidebarExpanded == true">Create Post</label>
+            </div>
+            <div class="col-12 menu-item sidenav_ff {{noexp}} {{analyticsactive}}" (click)="route_change('analytics')">
+                <span><i class="fas fa-home   mar-r-1"></i></span> <label *ngIf="appstate.sidebarExpanded == true">Analytics</label>
+
+            </div>
+
+        </div>
+    </div>
+</div>
