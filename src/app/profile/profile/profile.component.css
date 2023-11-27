@@ -138,3 +138,7 @@
         margin-left: 0rem !important;
     }
 }
+
+.high_label{
+    border-bottom: 2px solid #222324;
+}

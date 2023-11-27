@@ -20,7 +20,8 @@
         <div ngbDropdown class="dropdown">
           
           <div class="" style="float: right;" id="dropdownMenuButton1" aria-expanded="true" ngbDropdownToggle>
-            <img src="../../../assets/img/cam.jpg" class="profile-img" />
+            <img *ngIf="profile_img ==''" src="../../../assets/img/cam.jpg" class="profile-img" />
+            <img *ngIf="profile_img !=''" src="{{profile_img}}" class="profile-img" />
           </div>
           <ul ngbDropdownMenu aria-labelledby="dropdownMenuButton1">
             <li (click)="route_change()"><a  ngbDropdownItem >Account</a></li>

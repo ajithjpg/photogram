@@ -35,9 +35,6 @@ export class ProfileComponent implements OnInit {
     var action = window.location.pathname.split('/');
     this.url = action[1];
     this.type = action[2]
-
-
-
     if (this.url == 'profile') {
       this.onload_data();
     }
@@ -55,11 +52,14 @@ export class ProfileComponent implements OnInit {
 
   editSave(datas: any) {
     datas['image_url'] = this.edit_Profile_img
-    console.log(datas)
+  
 
     this.appservice.postMethod(datas, 'profile/update/' + this.type, '').subscribe(res => {
       if (res.code == 0) {
+        this.appservice.showSuccess('Profile Updated Successfully');
         this.router.navigate(['/profile'])
+      }else{
+        this.appservice.showError('Something went Wrong');
       }
     }, err => {
       if (err.status == 401) {
@@ -124,8 +124,6 @@ export class ProfileComponent implements OnInit {
     if (isNullOrUndefined(this.type)) {
       this.type = localStorage.getItem('user_id')
     }
-     
-
       this.appservice.getmethod('getprofile/' + this.type, '').subscribe(res => {
         console.log(res);
         if (res.code == 0) {

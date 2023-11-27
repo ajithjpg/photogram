@@ -8,17 +8,21 @@ import { isNullOrUndefined } from '@swimlane/ngx-datatable';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-
+ public profile_img = ''
   constructor(
     public appservice: AppState,
     public router: Router,
   ) {
-
+    if (!isNullOrUndefined(localStorage.getItem('profile_img'))){
+      this.profile_img = localStorage.getItem('profile_img')
+    }else{
+      this.profile_img = ''
+    }
   }
 
   route_change() {
     var id = localStorage.getItem('user_id')
-    this.router.navigate(["profile/", id]);
+    this.router.navigate(["profile"]);
   }
 
 

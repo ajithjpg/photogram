@@ -1,13 +1,14 @@
 <div class="sidebar" [ngClass]="{ 'expanded': appstate.sidebarExpanded}">
     <div class="content">
         <div class="left">
-            <div class="profile" (click)="route_change('profile')">
+            <div class="profile cursor" (click)="route_change('profile')">
                 <div class="">
-                    <img src="../../../assets/img/cam.jpg" class="profile-img" />
+                    <img *ngIf="profile_img ==''" src="../../../assets/img/cam.jpg" class="profile-img" />
+                    <img *ngIf="profile_img !=''" src="{{profile_img}}" class="profile-img" />
                 </div>
                 <div class="handle" *ngIf="appstate.sidebarExpanded == true">
-                    <h4 class="sidenav_ff">Dilli Babu</h4>
-                    <p class="usr-name normal_ff" style="margin-bottom: 1px !important;">Dilli</p>
+                    <h4 class="sidenav_ff">{{user_name}}</h4>
+                    <!-- <p class="usr-name normal_ff" style="margin-bottom: 1px !important;">Dilli</p> -->
                 </div>
             </div>
         </div>

@@ -148,3 +148,13 @@ body {
 .mar-r-1 {
     margin-right: .5rem;
 }
+
+.primary{
+    background: #339a8b !important;
+    color: #fff !important;
+}
+
+.primary:hover{
+    background: #168271 !important;
+    color: #fff !important;
+}

@@ -58,6 +58,7 @@ export class LoginComponent {
           localStorage.setItem('user_name',res.name);
           localStorage.setItem('Loggin', "allow");
           localStorage.setItem('access_token',res.token);
+          localStorage.setItem('profile_img',res.user_details.profile_picture_url)
           this.appState.showSuccess("Loggin Success");
          this.router.navigate(['home']);
         }else{

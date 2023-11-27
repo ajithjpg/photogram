@@ -20,8 +20,8 @@ public url = '';
 
   ) {
     this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe((event: NavigationEnd) => {
-      console.log(event)
-      if(event.url =='/profile' || event.url =='/edit_profile'){
+      
+       if(event.url =='/profile' || event.url =='/edit_profile'){
         this.appstate.sidebarExpanded = false;
       }else{
         this.appstate.sidebarExpanded = true;

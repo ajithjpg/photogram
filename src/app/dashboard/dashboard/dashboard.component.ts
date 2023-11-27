@@ -28,21 +28,8 @@ export class DashboardComponent implements OnInit {
   public analyticsactive = '';
   public url = '';
   view_follow = ''
-  public feeds_data = [
-    { name: 'dilli', post: '../../../assets/img/feed-1.jpg', profile_img: '../../../assets/img/feed-1.jpg', post_desc: '' },
-    { name: 'dilli', post: '../../../assets/img/feed-2.jpg', profile_img: '../../../assets/img/feed-2.jpg', post_desc: '' },
-    { name: 'dilli', post: '../../../assets/img/feed-3.jpg', profile_img: '../../../assets/img/feed-3.jpg', post_desc: '' },
-    { name: 'dilli', post: '../../../assets/img/feed-4.jpg', profile_img: '../../../assets/img/feed-4.jpg', post_desc: '' },
-    { name: 'dilli', post: '../../../assets/img/feed-5.jpg', profile_img: '../../../assets/img/feed-5.jpg', post_desc: '' },
-  ];
+ 
 
-  public chat_data = [
-    { name: 'dilli', profile_img: '../../../assets/img/feed-1.jpg', msg: 'Hiii' },
-    { name: 'dilli', profile_img: '../../../assets/img/feed-2.jpg', msg: 'Hello' },
-    { name: 'dilli', profile_img: '../../../assets/img/feed-3.jpg', msg: 'Hello' },
-    { name: 'dilli', profile_img: '../../../assets/img/feed-4.jpg', msg: 'Hello' },
-    { name: 'dilli', profile_img: '../../../assets/img/feed-5.jpg', msg: 'Hiiii' },
-  ];
   selectedFile = [];
  post_image_url = ''
   imageUrl;
@@ -64,7 +51,6 @@ export class DashboardComponent implements OnInit {
     private modalService: NgbModal,
     private sanitizer: DomSanitizer
   ) {
-
     if(!isNullOrUndefined(localStorage.getItem('user_id'))){
       this.local_user_id = JSON.parse(localStorage.getItem('user_id')) 
     }else{
@@ -137,7 +123,9 @@ export class DashboardComponent implements OnInit {
         }
 
         this.modalRef = this.modalService.open(this.modalContent, { size: 'xl' })
-        this.modalRef.result.then()
+        this.modalRef.result.then((res)=>{
+          this.getpost(res.data[0]['user_id']);
+        })
       }
     }, err => {
       if (err.status == 401) {
@@ -153,6 +141,9 @@ export class DashboardComponent implements OnInit {
     this.image_render(event);
   }
 
+  closemodel(){
+    this.modalRef.close()
+  }
   fileChangeEvent(event: any): void {
     this.imageChangedEvent = event;
   }
@@ -184,23 +175,29 @@ export class DashboardComponent implements OnInit {
 
   addcommend(post_id) {
 
-    var datas = {
-      'comment_text': this.commend_txt
+    if(this.commend_txt !=''){
+      var datas = {
+        'comment_text': this.commend_txt
+      }
+      this.commend_txt = '';
+      if (!isNullOrUndefined(localStorage.getItem('user_id'))) {
+        var user_id = localStorage.getItem("user_id");
+        this.appstate.postMethod(datas, 'posts/commend/' + post_id + '/' + user_id, '').subscribe(res => {
+          if (res.code == 0) {
+            this.modalRef.close();
+            this.viewpost(post_id);
+          }
+    
+        }, err => {
+          if (err.status == 401) {
+            this.appstate.signout();
+          }
+        })
+      }
+    }else{
+      this.appstate.showError('Enter Your Comment');
     }
-    if (!isNullOrUndefined(localStorage.getItem('user_id'))) {
-      var user_id = localStorage.getItem("user_id");
-      this.appstate.postMethod(datas, 'posts/commend/' + post_id + '/' + user_id, '').subscribe(res => {
-        if (res.code == 0) {
-          this.modalRef.close()
-          this.viewpost(post_id)
-        }
-  
-      }, err => {
-        if (err.status == 401) {
-          this.appstate.signout();
-        }
-      })
-    }
+    
    
   }
 
@@ -328,14 +325,7 @@ export class DashboardComponent implements OnInit {
     params.append('post_text', this.desc);
     params.append('file', this.selectedFile[0]);
 
-    const datas  = {
-      "user_id":parseInt( localStorage.getItem('user_id')),
-      "post_text":this.desc,
-      "file":this.post_image_url
-     
-    }
-
-    this.appstate.postMethod(datas, 'posts/upload', '').subscribe(res => {
+    this.appstate.postMethod(params, 'posts/upload', '').subscribe(res => {
       if (res.code == 0) {
         this.router.navigate(["/home"]);
       } else {

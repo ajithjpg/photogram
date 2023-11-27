@@ -1,6 +1,7 @@
 import { Component, OnInit,Input,Output,EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
-import { AppState } from '../../app.service'
+import { AppState } from '../../app.service';
+import { isNullOrUndefined } from '@swimlane/ngx-datatable';
 @Component({
   selector: 'app-left-nav',
   templateUrl: './left-nav.component.html',
@@ -17,12 +18,24 @@ export class LeftNavComponent implements OnInit {
   public bookmarksactive = '';
   public analyticsactive = '';
   createpost_active = ''
+  public profile_img = '';
+  public user_name = '';
   public url = '';
   constructor(
     public router: Router,
     public appstate: AppState
   ) {
+    if (!isNullOrUndefined(localStorage.getItem('profile_img'))){
+      this.profile_img = localStorage.getItem('profile_img')
+    }else{
+      this.profile_img = ''
+    }
 
+    if (!isNullOrUndefined(localStorage.getItem('user_name'))){
+      this.user_name = localStorage.getItem('user_name')
+    }else{
+      this.user_name = ''
+    }
   }
   ngOnInit(): void {
     var action = window.location.pathname.split('/');

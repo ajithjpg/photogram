@@ -44,11 +44,11 @@
                                         <div class="row mb-2">
                                                 <div class="col-12 d-flex cursor"
                                                         [routerLink]="['/profile/'+feed.user_id]">
-                                                        <div class="pro-img">
+                                                        <div class="pro-img cursor">
                                                                 <img src="{{feed.user_profile_image_url}}"
                                                                         class="profile-img" />
                                                         </div>
-                                                        <div>
+                                                        <div class="cursor">
                                                                 <h4 class="fs-18 ls-1 font-weight-bold">
                                                                         {{feed.user_full_name}}
                                                                 </h4>
@@ -102,7 +102,7 @@
                                         <div class="modal-header">
                                                 <h4 class="modal-title">View Post</h4>
                                                 <button type="button" class="btn-close" aria-label="Close"
-                                                        (click)="modal.dismiss('Cross click')"></button>
+                                                (click)="closemodel()"></button>
                                         </div>
                                         <div class="modal-body">
                                                 <div class="row" style="height: 70vh;overflow: scroll;">
@@ -171,7 +171,7 @@
                                                                         style="width: 100%;border-radius: 8px;" />
                                                         </div>
                                                         <div class="col-2">
-                                                                <button type="button" class="btn btn-light"
+                                                                <button type="button" class="btn btn-light primary"
                                                                         (click)="addcommend(viewdata.post_id)">Send</button>
                                                         </div>
                                                 </div>
@@ -181,9 +181,13 @@
                                 </ng-template>
                         </div>
                         <div *ngIf="postDetails.length == 0">
-                                <div class="feed">
+                                <div class="feed_no">
                                         <div class=" col-12" style="text-align: center;">
-                                                <p class="normal_ff"><b>No Post Found</b> </p>
+                                                <p class="normal_ff">
+                                                        <img width="10%" src="../../../assets/img/create_post.png">
+                                                </p>
+                                                <p class="normal_ff fs-15">We couldn't find any posts. Please create a new post.</p>
+                                                <button class="btn btn-light primary" [routerLink]="['/Create_post']" >Create Post</button>
                                         </div>
                                 </div>
                         </div>
@@ -191,7 +195,7 @@
                 </div>
 
                 <div *ngIf="action =='explore'">
-                        <div class="profile container">
+                        <div class="profile container" *ngIf="explore_data.length !=0">
                                 <div class="row">
                                         <div class="col-4" *ngFor="let exp of explore_data">
                                                 <img (click)="viewpost(exp.post_id)" src="{{exp.img_url}}"
@@ -203,7 +207,7 @@
                                                 <div class="modal-header">
                                                         <h4 class="modal-title">View Post</h4>
                                                         <button type="button" class="btn-close" aria-label="Close"
-                                                                (click)="modal.dismiss('Cross click')"></button>
+                                                                (click)="closemodel()"></button>
                                                 </div>
                                                 <div class="modal-body">
                                                         <div class="row" style="height: 70vh;overflow: scroll;">
@@ -275,7 +279,7 @@
                                                                                 style="width: 100%;border-radius: 8px;" />
                                                                 </div>
                                                                 <div class="col-2">
-                                                                        <button type="button" class="btn btn-light"
+                                                                        <button type="button" class="btn btn-light primary"
                                                                                 (click)="addcommend(viewdata.post_id)">Send</button>
                                                                 </div>
                                                         </div>
@@ -285,10 +289,19 @@
                                         </ng-template>
                                 </div>
                         </div>
+                        <div class="feed_no" *ngIf="explore_data.length ==0">
+                                <div class=" col-12" style="text-align: center;">
+                                        <p class="normal_ff">
+                                                <img width="10%" src="../../../assets/img/create_post.png">
+                                        </p>
+                                        <p class="normal_ff fs-15">We couldn't find any posts. Please create a new post.</p>
+                                        <button class="btn btn-light primary" [routerLink]="['/Create_post']" >Create Post</button>
+                                </div>
+                        </div>
                 </div>
 
                 <div *ngIf="action =='notification'">
-                        <div class="profile container">
+                        <div class=" notification profile container">
                                 <div class="row">
                                         <div class="col-12">
                                                 <div style="margin-top: 3rem;">
@@ -424,19 +437,9 @@
                                         </div> -->
 
                                         <div class="row" style="margin-top: 5%;">
-                                                <div class="text-center col-md-8">
-                                                        <h5>Crop Image</h5>
-                                                        <image-cropper [imageChangedEvent]="imageChangedEvent"
-                                                                [maintainAspectRatio]="true" [aspectRatio]="4 / 4"
-                                                                [resizeToWidth]="256" format="png" outputType="base64"
-                                                                (imageCropped)="imageCropped($event)"
-                                                                (imageLoaded)="imageLoaded()"
-                                                                (cropperReady)="cropperReady()"
-                                                                (loadImageFailed)="loadImageFailed()"></image-cropper>
-                                                </div>
-                                                <div class="text-center col-md-4">
-                                                        <h5>Preview</h5>
-                                                        <img [src]="croppedImage" />
+                                               
+                                                <div class="text-center col-md-12">
+                                                        <img width="50%" [src]="imageUrl" />
                                                 </div>
 
                                                 <div style="width: 100%;" class="show_recurter mar-t-3">
