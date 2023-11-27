@@ -14,8 +14,8 @@ import {
 export class AppState {
   sidebarExpanded = true
   public action = '';
-  //public api_url = 'https://apiv1.selfmade.technology/'
- public api_url = 'http://localhost:8080/'
+  public api_url = 'https://apiv1.selfmade.technology/'
+//  public api_url = 'http://localhost:8080/'
   public domainirl = '';
  public email = ''
   constructor(

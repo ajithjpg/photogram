@@ -100,7 +100,7 @@
                                 </div>
                                 <ng-template #content let-modal>
                                         <div class="modal-header">
-                                                <h4 class="modal-title">View Post</h4>
+                                                <h4 class="modal-title bold_ff">View Post</h4>
                                                 <button type="button" class="btn-close" aria-label="Close"
                                                 (click)="closemodel()"></button>
                                         </div>
@@ -108,8 +108,8 @@
                                                 <div class="row" style="height: 70vh;overflow: scroll;">
                                                         <div
                                                                 class="col-xxl-6 col-xl-6  col-md-6 col-sm-6 col-xs-12 col-12">
-                                                                <p>
-                                                                        <img src="{{viewdata.img_url}}" width="100%" />
+                                                                <p style="position: fixed;">
+                                                                        <img src="{{viewdata.img_url}}" width="40%" />
                                                                 </p>
                                                         </div>
                                                         <div class="col-xxl-6 col-xl-6  col-md-6 col-sm-6 col-xs-12 col-12"
@@ -121,7 +121,7 @@
                                                                                         src="{{viewdata.user_profile_image_url}}"
                                                                                         (click)="view_profile(viewdata.user_id)" />
                                                                         </span>
-                                                                        <label style="margin-right: 10px;"
+                                                                        <label style="margin-right: 10px;" class="bold_ff"
                                                                                 (click)="view_profile(viewdata.user_id)"><b>{{viewdata.user_full_name}}</b></label>
                                                                         <span
                                                                                 [hidden]="local_user_id == viewdata.user_id">
@@ -143,7 +143,7 @@
                                                                                 Likes</small>
                                                                 </div>
                                                                 <div *ngIf="viewdata_comments.length != 0">
-                                                                        <h3><b>Comments</b></h3>
+                                                                        <h3 class="bold_ff"><b>Comments</b></h3>
                                                                 </div>
                                                                 <div *ngIf="viewdata_comments.length != 0">
                                                                         <diV *ngFor="let comments of viewdata_comments">
@@ -213,9 +213,9 @@
                                                         <div class="row" style="height: 70vh;overflow: scroll;">
                                                                 <div
                                                                         class="col-xxl-6 col-xl-6  col-md-6 col-sm-6 col-xs-12 col-12">
-                                                                        <p>
-                                                                                <img src="{{viewdata.img_url}}"
-                                                                                        width="100%" />
+                                                                        <p style="position: fixed;">
+                                                                                <img  src="{{viewdata.img_url}}"
+                                                                                        width="40%" />
                                                                         </p>
                                                                 </div>
                                                                 <div
