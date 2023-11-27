@@ -55,7 +55,8 @@ export class DashboardComponent implements OnInit {
   commend_txt = '';
   viewdata;
   viewdata_comments = [];
-  local_user_id = 0
+  local_user_id = 0;
+  chat_list = [];
   constructor(
     public router: Router,
     public appstate: AppState,
@@ -89,10 +90,34 @@ export class DashboardComponent implements OnInit {
       }
     }
 
+    if(this.action =='message'){
+      this.getchatlist();
+    }
+
 
     var action = window.location.pathname.split('/');
     this.url = action[1];
     this.route_change(this.url);
+  }
+
+  shownotify(){
+    this.appstate.showNotification('Web Notification', {
+      body: 'This is a web notification from your Angular app!'
+    })
+  }
+
+  getchatlist(){
+    this.appstate.getmethod('message/chat/user_list','').subscribe(res =>{
+      if(res.code == 0){
+        if(res.data.length !=0){
+          this.chat_list = res.data
+        }else{
+          this.chat_list = []
+        }
+      }else{
+        this.chat_list = []
+      }
+    })
   }
 
   viewpost(id) {
@@ -200,11 +225,11 @@ export class DashboardComponent implements OnInit {
       if (res.code == 0) {
         if (res.data.length != 0) {
           this.postDetails = res.data;
-          if(this.postDetails.length !=0){
-            for (let i = 0; i < this.postDetails.length; i++) {
-              this.postDetails[i]['img_url'] = this.getSanitizedURL(this.postDetails[i]['img_url'])
-            }
-          }
+          // if(this.postDetails.length !=0){
+          //   for (let i = 0; i < this.postDetails.length; i++) {
+          //     this.postDetails[i]['img_url'] = this.getSanitizedURL(this.postDetails[i]['img_url'])
+          //   }
+          // }
         }else{
           this.postDetails = [];
         }
@@ -297,11 +322,11 @@ export class DashboardComponent implements OnInit {
   }
 
   create_post() {
-console.log(this.croppedImage)
+   console.log(this.croppedImage)
     const params = new FormData();
     params.append('user_id', localStorage.getItem('user_id'));
     params.append('post_text', this.desc);
-    params.append('file', this.post_image_url);
+    params.append('file', this.selectedFile[0]);
 
     const datas  = {
       "user_id":parseInt( localStorage.getItem('user_id')),

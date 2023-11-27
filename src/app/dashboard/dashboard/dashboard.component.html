@@ -308,6 +308,7 @@
                                                 </div>
                                                 <div class="col-12">
                                                         <input class="w-100" type="search" />
+                                                        <button (click)="shownotify()">click</button>
                                                 </div>
                                                 <div class="col-12 mt-2">
                                                         <div class="row">
@@ -326,19 +327,18 @@
                                                         </div>
                                                 </div>
                                                 <div class="col-12 mt-3">
-                                                        <div class="row pa-1" *ngFor="let chat of chat_data">
+                                                        <div class="row pa-1" *ngFor="let chat of chat_list">
                                                                 <div class="col-1">
                                                                         <div>
-                                                                                <img src="{{chat.profile_img}}"
+                                                                                <img src="{{chat.user_profile}}"
                                                                                         class="profile-img">
                                                                         </div>
                                                                 </div>
-                                                                <div class="col-11" [routerLink]="['/direct/message/'+1]">
+                                                                <div class="col-11" [routerLink]="['/direct/message/'+chat.conversation_id]">
                                                                         <label class="fs-13 font-bold">
                                                                                 {{chat.name}}
                                                                         </label>
-                                                                        <span class="online"></span>
-                                                                        <p class="usr-name">{{chat.msg}}</p>
+                                                                        <p class="usr-name">{{chat.name}}</p>
                                                                 </div>
                                                         </div>
                                                 </div>
