@@ -13,10 +13,10 @@
     margin: 1rem 0;
     font-size: -38.1rem;
     line-height: 1.5;
-  
+
 }
 
-.feed_no{
+.feed_no {
     background: #fff;
     border-radius: 20px;
     padding: 1rem;
@@ -73,13 +73,14 @@
     border-radius: 10px;
     max-height: 200vh;
     min-height: 100vh;
-    
+
 }
 
-.notification{
+.notification {
     max-height: 200vh;
     min-height: 100vh;
 }
+
 .profile {
     padding: 1rem;
     background: #ffffff;
@@ -338,4 +339,52 @@
     to {
         stroke-dashoffset: 0;
     }
+}
+
+.cmd_txt {
+    border: 1px solid #bdbab7;
+    border-radius: 5px;
+    background: #f1f2f3;
+}
+
+
+
+
+
+
+
+
+
+
+
+.modal-body {
+    background-color: #5165ff;
+    border-color: #5165ff;
+}
+
+.intro-1 {
+    font-size: 20px
+}
+
+.close {
+    color: #fff
+}
+
+.close:hover {
+    color: #fff
+}
+
+.intro-2 {
+    font-size: 13px
+}
+
+.btn-primary {
+    color: #5165ff;
+    background-color: #fffaff;
+    border-color: #fffaff;
+    padding: 12px;
+    font-weight: 700;
+    border-radius: 41px;
+    padding-right: 20px;
+    padding-left: 20px;
 }

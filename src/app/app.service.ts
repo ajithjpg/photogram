@@ -10,12 +10,15 @@ import {
   ChangeDetectorRef, Inject, Injectable,
   PLATFORM_ID
 } from '@angular/core';
+import { webSocket, WebSocketSubject } from 'rxjs/webSocket';
 @Injectable()
 export class AppState {
+  private subject: WebSocketSubject<any>;
+
   sidebarExpanded = true
   public action = '';
-  public api_url = 'https://apiv1.selfmade.technology/'
-//  public api_url = 'http://localhost:8080/'
+  // public api_url = 'https://apiv1.selfmade.technology/'
+ public api_url = 'http://localhost:8080/'
   public domainirl = '';
  public email = ''
   constructor(
@@ -26,6 +29,8 @@ export class AppState {
   ) {
 
     this.domainirl = window.location.hostname;
+    this.connect()
+    this.showInfo('fiii')
   }
 
   public getHeaders() {
@@ -74,8 +79,12 @@ export class AppState {
     this.toastrService.success(Message, 'Success!');
   }
 
+  public shownotification(Message: any): void {
+    this.toastrService.info(Message, 'Success!');
+  }
+
   public showInfo(Message: any): void {
-    this.toastrService.info(Message, ' Info!');
+    this.toastrService.info(Message, ' New Notification!');
   }
 
   public showWarning(Message: any): void {
@@ -118,5 +127,35 @@ export class AppState {
       });
     }
   
+  }
+
+  public connect() {
+    this.subject = webSocket({
+      url: "ws://127.0.0.1:8081",
+      openObserver: {
+        next: () => {
+            console.log('connexion ok');
+        }
+      },
+      closeObserver: {
+        next: () => {
+            console.log('disconnect ok');
+        }
+      }
+    });
+
+    this.subject.subscribe(
+      msg => console.log('message received: ' + msg),
+      err => console.log(err),
+      () => console.log('complete')
+    );
+  }
+
+  public send(msg: any) {
+    this.subject.next(msg);
+  }
+
+  public disconnect() {
+    this.subject.complete();
   }
 }

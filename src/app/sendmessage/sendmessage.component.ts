@@ -12,6 +12,8 @@ export class SendmessageComponent {
   action = '';
   chatdata = [];
   userid = 0
+  profile_name = ''
+  profile_img = ''
   constructor(
     public appstate: AppState,
   ) {
@@ -35,7 +37,9 @@ export class SendmessageComponent {
     this.appstate.getmethod('message/' + id, '').subscribe(res => {
       if (res.code == 0) {
         if(res.data.length !=0){
-          this.chatdata = res.data
+          this.chatdata = res.data;
+          this.profile_name = res.profile_name;
+          this.profile_img = res.profile_img;
         }
 
       }

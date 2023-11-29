@@ -34,7 +34,7 @@ import { ToastrModule } from 'ngx-toastr';
     ToastrModule.forRoot({
       timeOut: 15000, // 15 seconds
       closeButton: true,
-      progressBar: false,
+      progressBar: true,
     }),
     TabsModule,
     BrowserAnimationsModule,

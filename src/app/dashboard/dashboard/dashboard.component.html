@@ -49,10 +49,10 @@
                                                                         class="profile-img" />
                                                         </div>
                                                         <div class="cursor">
-                                                                <h4 class="fs-18 ls-1 font-weight-bold">
+                                                                <h4 class="fs-18 ls-1 bold_ff">
                                                                         {{feed.user_full_name}}
                                                                 </h4>
-                                                                <small>{{feed.post_date | date
+                                                                <small class="normal_ff">{{feed.post_date | date
                                                                         :format:timezone}}</small>
                                                         </div>
                                                 </div>
@@ -70,13 +70,13 @@
                                                                         <i *ngIf="feed.islike == 1" style="color: red;"
                                                                                 class="fa fa-heart  mar-r-1 fs-24 cursor"
                                                                                 (click)="downlike(i,feed.post_id,feed.user_id)"></i>
-                                                                        <p>{{feed.likes}} <b>likes</b></p>
+                                                                        <p class="normal_ff">{{feed.likes}} <b>likes</b></p>
                                                                 </div>
                                                                 <div
                                                                         class="col-xxl-2 col-xl-2  col-md-2 col-sm-2 col-xs-4 col-4">
                                                                         <i (click)="viewpost(feed.post_id)"
                                                                                 class="far fa-comment   mar-r-1 fs-24"></i>
-                                                                        <p (click)="viewpost(feed.post_id)">
+                                                                        <p class="normal_ff" (click)="viewpost(feed.post_id)">
                                                                                 {{feed.comments}} <b>commend</b></p>
                                                                 </div>
                                                                 <div
@@ -92,7 +92,7 @@
                                                 </div>
 
                                                 <div class=" col-12" style="padding-left: 4rem;">
-                                                        <p><b>{{feed.user_full_name}}</b> {{feed.post_text}}
+                                                        <p class="normal_ff"><b>{{feed.user_full_name}}</b> {{feed.post_text}}
                                                         </p>
                                                 </div>
 
@@ -108,8 +108,8 @@
                                                 <div class="row" style="height: 70vh;overflow: scroll;">
                                                         <div
                                                                 class="col-xxl-6 col-xl-6  col-md-6 col-sm-6 col-xs-12 col-12">
-                                                                <p style="position: fixed;">
-                                                                        <img src="{{viewdata.img_url}}" width="40%" />
+                                                                <p >
+                                                                        <img src="{{viewdata.img_url}}" width="70%" />
                                                                 </p>
                                                         </div>
                                                         <div class="col-xxl-6 col-xl-6  col-md-6 col-sm-6 col-xs-12 col-12"
@@ -134,12 +134,12 @@
                                                                         </span>
                                                                 </div>
                                                                 <div>
-                                                                        <small>{{viewdata.post_date | date
+                                                                        <small class="normal_ff">{{viewdata.post_date | date
                                                                                 :format:timezone}}</small>
-                                                                        <p>{{viewdata.likes}} likes</p>
+                                                                        <p class="normal_ff">{{viewdata.likes}} likes</p>
                                                                 </div>
                                                                 <div>
-                                                                        <small>{{viewdata.post_text}}
+                                                                        <small class="normal_ff">{{viewdata.post_text}}
                                                                                 Likes</small>
                                                                 </div>
                                                                 <div *ngIf="viewdata_comments.length != 0">
@@ -152,13 +152,13 @@
                                                                                                 class="view_post_img" />
                                                                                 </span>
                                                                                 <label
-                                                                                        style="margin-right: 10px;"><b>{{comments.user_full_name}}</b></label>
+                                                                                        style="margin-right: 10px;" class="normal_ff"><b>{{comments.user_full_name}}</b></label>
                                                                                 <span>
-                                                                                        <small>{{comments.comment_date
+                                                                                        <small class="normal_ff">{{comments.comment_date
                                                                                                 | date
                                                                                                 :format:timezone}}</small>
                                                                                 </span>
-                                                                                <p>{{comments.comment_text}}</p>
+                                                                                <p class="normal_ff cmd_txt">{{comments.comment_text}}</p>
                                                                         </diV>
                                                                 </div>
                                                         </div>
@@ -168,7 +168,7 @@
                                                 <div class="row" style="width: 100%;">
                                                         <div class="col-10">
                                                                 <input type="text" [(ngModel)]="commend_txt"
-                                                                        style="width: 100%;border-radius: 8px;" />
+                                                                        style="width: 100%;border-radius: 8px;" class="normal_ff" />
                                                         </div>
                                                         <div class="col-2">
                                                                 <button type="button" class="btn btn-light primary"
@@ -213,9 +213,9 @@
                                                         <div class="row" style="height: 70vh;overflow: scroll;">
                                                                 <div
                                                                         class="col-xxl-6 col-xl-6  col-md-6 col-sm-6 col-xs-12 col-12">
-                                                                        <p style="position: fixed;">
+                                                                        <p >
                                                                                 <img  src="{{viewdata.img_url}}"
-                                                                                        width="40%" />
+                                                                                        width="70%" />
                                                                         </p>
                                                                 </div>
                                                                 <div
@@ -227,7 +227,7 @@
                                                                                                 src="{{viewdata.user_profile_image_url}}"
                                                                                                 (click)="view_profile(viewdata.user_id)" />
                                                                                 </span>
-                                                                                <label style="margin-right: 10px;"
+                                                                                <label style="margin-right: 10px;" class="bold_ff"
                                                                                         (click)="view_profile(viewdata.user_id)"><b>{{viewdata.user_full_name}}</b></label>
                                                                                 <span
                                                                                         [hidden]="local_user_id == viewdata.user_id">
@@ -240,16 +240,16 @@
                                                                                 </span>
                                                                         </div>
                                                                         <div>
-                                                                                <small>{{viewdata.post_date | date
+                                                                                <small class="normal_ff">{{viewdata.post_date | date
                                                                                         :format:timezone}}</small>
-                                                                                <p>{{viewdata.likes}} likes</p>
+                                                                                <p class="normal_ff">{{viewdata.likes}} likes</p>
                                                                         </div>
                                                                         <div>
-                                                                                <small>{{viewdata.post_text}}
+                                                                                <small class="normal_ff">{{viewdata.post_text}}
                                                                                         Likes</small>
                                                                         </div>
                                                                         <div *ngIf="viewdata_comments.length != 0">
-                                                                                <h3><b>Comments</b></h3>
+                                                                                <h3 class="normal_ff"><b>Comments</b></h3>
                                                                         </div>
                                                                         <div *ngIf="viewdata_comments.length != 0">
                                                                                 <diV
@@ -259,14 +259,13 @@
                                                                                                 <img src="{{comments.user_profile_image_url}}"
                                                                                                         class="view_post_img" />
                                                                                         </span>
-                                                                                        <label
-                                                                                                style="margin-right: 10px;"><b>{{comments.user_full_name}}</b></label>
+                                                                                        <label class="normal_ff" style="margin-right: 10px;"><b>{{comments.user_full_name}}</b></label>
                                                                                         <span>
-                                                                                                <small>{{comments.comment_date
+                                                                                                <small class="normal_ff">{{comments.comment_date
                                                                                                         | date
                                                                                                         :format:timezone}}</small>
                                                                                         </span>
-                                                                                        <p>{{comments.comment_text}}</p>
+                                                                                        <p class="normal_ff cmd_txt">{{comments.comment_text}}</p>
                                                                                 </diV>
                                                                         </div>
                                                                 </div>
@@ -276,7 +275,7 @@
                                                         <div class="row" style="width: 100%;">
                                                                 <div class="col-10">
                                                                         <input type="text" [(ngModel)]="commend_txt"
-                                                                                style="width: 100%;border-radius: 8px;" />
+                                                                                style="width: 100%;border-radius: 8px;" class="normal_ff" />
                                                                 </div>
                                                                 <div class="col-2">
                                                                         <button type="button" class="btn btn-light primary"
@@ -347,7 +346,7 @@
                                                                                         class="profile-img">
                                                                         </div>
                                                                 </div>
-                                                                <div class="col-11" [routerLink]="['/direct/message/'+chat.conversation_id]">
+                                                                <div class="col-11" [routerLink]="['/direct/message/'+chat.profile_id]">
                                                                         <label class="fs-13 font-bold">
                                                                                 {{chat.name}}
                                                                         </label>

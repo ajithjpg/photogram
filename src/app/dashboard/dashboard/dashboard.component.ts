@@ -38,6 +38,7 @@ export class DashboardComponent implements OnInit {
   explore_data = [];
   closeResult: string;
   @ViewChild('content') private modalContent: TemplateRef<DashboardComponent>
+  @ViewChild('staticBackdrop') private infoContent: TemplateRef<DashboardComponent>
   private modalRef: NgbModalRef
   commend_txt = '';
   viewdata;
@@ -97,6 +98,19 @@ export class DashboardComponent implements OnInit {
       if(res.code == 0){
         if(res.data.length !=0){
           this.chat_list = res.data
+          var user_id = JSON.parse(localStorage.getItem('user_id')) 
+          if(this.chat_list.length !=0){
+            for (let i = 0; i < this.chat_list.length; i++) {
+
+              if(this.chat_list[i]['user1_id'] != user_id ){
+                this.chat_list[i]['profile_id'] = this.chat_list[i]['user1_id']
+              }else if(this.chat_list[i]['user2_id'] != user_id){
+                this.chat_list[i]['profile_id'] = this.chat_list[i]['user2_id']
+              }
+             
+              
+            }
+          }
         }else{
           this.chat_list = []
         }
@@ -132,6 +146,12 @@ export class DashboardComponent implements OnInit {
         this.appstate.signout();
       }
     })
+  }
+
+  shownt(){
+    this.modalRef = this.modalService.open(this.infoContent, { size: 'xl' })
+    this.modalRef.result.then()
+    
   }
 
   onFileSelected(event: any) {

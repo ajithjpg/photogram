@@ -158,3 +158,9 @@ body {
     background: #168271 !important;
     color: #fff !important;
 }
+
+#toast-container>.toast-info {
+   background-color: #263238;
+   color: #fff;
+}
+

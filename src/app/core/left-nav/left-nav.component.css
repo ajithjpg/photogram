@@ -58,7 +58,7 @@
             }
         }
     }
-   
+
 
     .content {
         .link {
@@ -137,6 +137,14 @@
     margin-bottom: 10%;
 }
 
+.notify_out {
+    float: right;
+    border: 1px solid transparent;
+    border-radius: 24px;
+    margin-right: 10px;
+    /* padding: 1px 0px 0px 7px; */
+    color: red;
+}
 
 
 .handle {
@@ -157,6 +165,7 @@
     border-bottom-right-radius: 5px;
     border-right: 5px solid #379e8f;
     font-weight: bold;
+
     &.expanded {
         width: 96%;
     }

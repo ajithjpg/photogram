@@ -2,15 +2,17 @@
     <div class="row">
         <div class="col-12">
             <div class="row" class="chat_bg">
-                <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-6 col-6 ">
+                <div class="col-12 ">
                     <span>
-                        <img src="../../assets/img/3d image.png" class="profileimg" />
+                        <img *ngIf="profile_img ==''" src="../../assets/img/3d image.png" class="profileimg" />
+                        <img *ngIf="profile_img !=''" src="{{profile_img}}" class="profileimg" />
                     </span>
-                    <label style="margin-left: 1rem;" class="bold_ff fs-13">Dilli Babu</label>
+                    <label style="margin-left: 1rem;" class="bold_ff fs-13">{{profile_name}}</label>
+                    <div class="flt-rgt back_btn">
+                        <label class="bold_ff fs-13 cursor " [routerLink]="['/message']">back</label>
+                    </div>
                 </div>
-                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-6 col-6 mt-4rm">
-                    <label class="bold_ff fs-13 flt-rgt">back</label>
-                </div>
+                
                 <div class="col-12 message_bg">
                     <div class="row" class="chat-thread">
                         <div class="col-12 flt-rgt pa-1" *ngFor="let data of chatdata">
@@ -27,12 +29,13 @@
                     </div>
 
                 </div>
+                
                 <div class="col-12">
                     <div class="row">
                         <div class="col-10">
                             <form class="chat-window">
-                                <input [(ngModel)]="message" class="chat-window-message form-control"
-                                    name="chat-window-message" type="text" autocomplete="off" autofocus />
+                                <input [(ngModel)]="message" class="chat-window-message form-control normal_ff"
+                                    name="chat-window-message" style="font-size: 12px !important;" type="text" autocomplete="off" autofocus />
                             </form>
                         </div>
                         <div class="col-2">

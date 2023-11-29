@@ -63,12 +63,15 @@
     border-radius: 10px;
     background-color: rgba(132, 244, 213, 0.2);
 }
-.pa-1{
+
+.pa-1 {
     padding: 1rem !important
 }
-.ml-1{
-margin-left: .5rem;
+
+.ml-1 {
+    margin-left: .5rem;
 }
+
 .chat_img {
     width: 2.7rem;
     aspect-ratio: 1/1;
@@ -115,6 +118,12 @@ margin-left: .5rem;
 .chat-window {
     /* position: fixed;
     bottom: 18px; */
+}
+
+.back_btn {
+    position: absolute;
+    right: 30px;
+    top: 110px;
 }
 
 .chat-window-message {

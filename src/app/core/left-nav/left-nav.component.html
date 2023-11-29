@@ -8,7 +8,7 @@
                 </div>
                 <div class="handle" *ngIf="appstate.sidebarExpanded == true">
                     <h4 class="sidenav_ff">{{user_name}}</h4>
-                    <!-- <p class="usr-name normal_ff" style="margin-bottom: 1px !important;">Dilli</p> -->
+                    <p class="usr-name normal_ff" style="margin-bottom: 1px !important;">View Profile</p>
                 </div>
             </div>
         </div>
@@ -27,6 +27,7 @@
             <div class="col-12 menu-item sidenav_ff {{noexp}} {{messageactive}}" (click)="route_change('message')">
                 <span><i class="fab fa-facebook-messenger   mar-r-1"></i>
                 </span> <label *ngIf="appstate.sidebarExpanded == true">Messages</label>
+                <span class="notify_out sidenav_ff">1</span>
             </div>
             <div class="col-12 menu-item sidenav_ff {{noexp}} {{createpost_active}}" (click)="route_change('Create_post')">
                 <span><i class="fas fa-plus-circle  mar-r-1"></i>
