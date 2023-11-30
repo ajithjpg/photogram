@@ -37,7 +37,7 @@
 }
 
 .fs-10 {
-    font-size: 10px;
+    font-size: 10px !important;
 }
 
 .fs-11 {
@@ -162,5 +162,25 @@ body {
 #toast-container>.toast-info {
    background-color: #263238;
    color: #fff;
+}
+
+/* for mobile */
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+
+}
+
+/* for tab */
+@media only screen and (min-device-width : 481px) and (max-device-width :  768px) {
+
+}
+
+/* for laptop */
+@media only screen and (min-device-width :  768px) and (max-device-width :  1024px) {
+
+}
+
+/* for desktop */
+@media only screen and (min-device-width : 1025px) and (max-device-width :  1200px) {
+
 }
 

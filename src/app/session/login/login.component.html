@@ -62,79 +62,90 @@
                                 <button type="submit" class="btn btn-primary">Log In</button>
                             </div>
                             <div class="col-xxl-12 col-xl-12  col-md-12 col-sm-12 col-xs-12 col-12 txt-center">
-                                <label class="account-txt bold_ff" [routerLink]="['/pages/forgotten_password']">Forgot PassWord
+                                <label class="account-txt bold_ff" [routerLink]="['/pages/forgotten_password']">Forgot
+                                    PassWord
                                     ?</label>
-                                <span class="link_txt bold_ff" [routerLink]="['/pages/forgotten_password']">click Here</span>
+                                <span class="link_txt bold_ff" [routerLink]="['/pages/forgotten_password']">click
+                                    Here</span>
                             </div>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
+    </div>
+</div>
 
-        <div style="overflow: hidden !important;
-        scroll-behavior: unset !important;" class="col-12 img-outlint left" *ngIf="ismob ==true">
-            <div class="row">
+<div style="overflow: hidden !important;
+        scroll-behavior: unset !important; height: 95vh;" class="col-12 img-outlint_mob left" *ngIf="ismob ==true">
+    <div class="row">
 
-                <div class="col-xxl-5 col-xl-5  col-md-5 col-sm-5 col-xs-12 col-12 border-outline ">
-                    <form [formGroup]="loginform" novalidate class="sign-in-formm"
-                        (ngSubmit)="save_login(loginform.value)">
+        <div class="col-12 circle1" >
+
+        </div >
+
+        <!-- <div class="col-12 circle2">
+
+        </div >
+
+        <div class="col-12 circle3">
+
+        </div > -->
+
+        <div class="col-xxl-5 col-xl-5  col-md-5 col-sm-5 col-xs-12 col-12 border-outline ">
+            <form [formGroup]="loginform" novalidate class="sign-in-formm" (ngSubmit)="save_login(loginform.value)">
+                <div class="row">
+                    <div class="col-xxl-6 col-xl-6  col-md-6 col-sm-6 col-xs-6 col-12 ma-bt-5">
+                        <div>
+                            <img src="../../../assets/img/photogram-logo.png" width="75%" />
+                        </div>
+
+                    </div>
+                    <div class="col-xxl-6 col-xl-6  col-md-6 col-sm-6 col-xs-6 col-12 text-end ma-bt-5">
+                        <label class="account-txt normal_ff">Don't have an account?</label>
+                        <span class="link_txt normal_ff" [routerLink]="['/pages/signin']">Sign Up</span>
+                    </div>
+                    <div class="col-12 txt-center mar-bt-1d5">
+                        <label class="title_txt bold_ff">Login to your account</label>
+                    </div>
+                    <div class="col-xxl-12 col-xl-12  col-md-5 col-sm-5 col-xs-12 col-12">
                         <div class="row">
-                            <div class="col-xxl-6 col-xl-6  col-md-6 col-sm-6 col-xs-6 col-12 ma-bt-5">
-                                <div>
-                                    <img src="../../../assets/img/photogram-logo.png" width="75%" />
+
+                            <div class=" col-12">
+                                <div class="col-xxl-12 col-xl-12  col-md-5 col-sm-5 col-xs-12 col-12 mar-bt-1d5">
+                                    <label class="label_txt bold_ff">Email Id</label>
+                                    <input type="text" formControlName="email_id" class="form-control"
+                                        [ngClass]="{ 'is-invalid': submitted && l['email_id'].errors }" />
+                                    <div *ngIf="submitted && l['email_id'].errors" class="invalid-feedback">
+                                        <div *ngIf="l['email_id'].errors['required']">email_id is required</div>
+
+                                    </div>
                                 </div>
-
-                            </div>
-                            <div class="col-xxl-6 col-xl-6  col-md-6 col-sm-6 col-xs-6 col-12 text-end ma-bt-5">
-                                <label class="account-txt normal_ff">Don't have an account?</label>
-                                <span class="link_txt normal_ff" [routerLink]="['/pages/signin']">Sign Up</span>
-                            </div>
-                            <div class="col-12 txt-center mar-bt-1d5">
-                                <label class="title_txt bold_ff">Login to your account</label>
-                            </div>
-                            <div class="col-xxl-12 col-xl-12  col-md-5 col-sm-5 col-xs-12 col-12">
-                                <div class="row">
-
-                                    <div class=" col-12">
-                                        <div
-                                            class="col-xxl-12 col-xl-12  col-md-5 col-sm-5 col-xs-12 col-12 mar-bt-1d5">
-                                            <label class="label_txt bold_ff">Email Id</label>
-                                            <input type="text" formControlName="email_id" class="form-control"
-                                                [ngClass]="{ 'is-invalid': submitted && l['email_id'].errors }" />
-                                            <div *ngIf="submitted && l['email_id'].errors" class="invalid-feedback">
-                                                <div *ngIf="l['email_id'].errors['required']">email_id is required</div>
-
-                                            </div>
+                                <div class="col-xxl-12 col-xl-12  col-md-12 col-sm-12 col-xs-12 col-12 mar-bt-1d5">
+                                    <label class="label_txt bold_ff">Pass Word</label>
+                                    <input type="text" formControlName="password" class="form-control"
+                                        [ngClass]="{ 'is-invalid': submitted && l['password'].errors }" />
+                                    <div *ngIf="submitted && l['password'].errors" class="invalid-feedback">
+                                        <div *ngIf="l['password'].errors['required']">Pass Word is required
                                         </div>
-                                        <div
-                                            class="col-xxl-12 col-xl-12  col-md-12 col-sm-12 col-xs-12 col-12 mar-bt-1d5">
-                                            <label class="label_txt bold_ff">Pass Word</label>
-                                            <input type="text" formControlName="password" class="form-control"
-                                                [ngClass]="{ 'is-invalid': submitted && l['password'].errors }" />
-                                            <div *ngIf="submitted && l['password'].errors" class="invalid-feedback">
-                                                <div *ngIf="l['password'].errors['required']">Pass Word is required
-                                                </div>
 
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="col-xxl-12 col-xl-12  col-md-12 col-sm-12 col-xs-12 col-12 txt-center mar-bt-1d5">
-                                <button type="submit" class="btn btn-primary bold_ff">Log In</button>
-                            </div>
-                            <div class="col-xxl-12 col-xl-12  col-md-12 col-sm-12 col-xs-12 col-12 txt-center">
-                                <label class="account-txt bold_ff" [routerLink]="['/pages/forgotten_password']">Forgot PassWord
-                                    ?</label>
-                                <span class="link_txt bold_ff" [routerLink]="['/pages/forgotten_password']">click Here</span>
-                            </div>
                         </div>
-                    </form>
+                    </div>
+                    <div class="col-xxl-12 col-xl-12  col-md-12 col-sm-12 col-xs-12 col-12 txt-center mar-bt-1d5">
+                        <button type="submit" class="btn btn-primary bold_ff">Log In</button>
+                    </div>
+                    <div class="col-xxl-12 col-xl-12  col-md-12 col-sm-12 col-xs-12 col-12 txt-center">
+                        <label class="account-txt bold_ff" [routerLink]="['/pages/forgotten_password']">Forgot
+                            PassWord
+                            ?</label>
+                        <span class="link_txt bold_ff" [routerLink]="['/pages/forgotten_password']">click
+                            Here</span>
+                    </div>
                 </div>
-            </div>
+            </form>
         </div>
-
     </div>
 </div>

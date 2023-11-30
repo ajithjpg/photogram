@@ -15,17 +15,29 @@
                 
                 <div class="col-12 message_bg">
                     <div class="row" class="chat-thread">
-                        <div class="col-12 flt-rgt pa-1" *ngFor="let data of chatdata">
+                        <div class="col-12 flt-rgt pa-1" *ngFor="let data of appstate.chat_data">
+                            <!-- {{data |json}} -->
                             <span *ngIf="data.sender_id == userid"><img src={{data.user_profile_image_url}}  class="chat_img flt-rgt ml-1"/></span>
-                            <label *ngIf="data.sender_id == userid" class="flt-rgt bg_chat">
-                              {{data.message}}
+                            <label *ngIf="data.sender_id == userid" class="flt-rgt bg_chat sidenav_ff own_msg" >
+                                <span class="chat-inner_txt">{{data.user_full_name}}</span><br/>
+                              <span>{{data.message}}</span><br/>
+                              <span class="fs-10 normal_ff">{{data.date_on | date: 'dd-MM-yyyy hh:mm:ss'}}</span>
                             </label> 
                             
                             <span *ngIf="data.sender_id != userid"><img src={{data.user_profile_image_url}}  class="chat_img"/></span>  
-                            <label *ngIf="data.sender_id != userid" class="bg_chat" >
-                                {{data.message}}
+                            <label *ngIf="data.sender_id != userid" class="bg_chat sidenav_ff othermessage" >
+                                <span class="chat-inner_txt">{{data.user_full_name}}</span><br/>
+                                <span>{{data.message}}</span><br/>
+                              <span class="fs-10 normal_ff">{{data.date_on | date: 'dd-MM-yyyy hh:mm:ss'}}</span>
                             </label>
+                           
                         </div>
+                        <div class="col-12 ">
+                            <p *ngIf="type_status == 'yes'" style="opacity: 0.6;font-style: italic;">
+                                <small class="normal_ff">Typing...</small>
+                            </p>
+                        </div>
+                        
                     </div>
 
                 </div>
@@ -34,7 +46,7 @@
                     <div class="row">
                         <div class="col-10">
                             <form class="chat-window">
-                                <input [(ngModel)]="message" class="chat-window-message form-control normal_ff"
+                                <input (keypress)="typingdect($event)" (blur)="typingdect($event)" (focus)="typingdect($event)" [(ngModel)]="message" class="chat-window-message form-control normal_ff"
                                     name="chat-window-message" style="font-size: 12px !important;" type="text" autocomplete="off" autofocus />
                             </form>
                         </div>

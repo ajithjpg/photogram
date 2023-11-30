@@ -84,9 +84,23 @@
 /* Chat - Avatar */
 .bg_chat {
     padding: 1px 15px 1px 15px;
-    background: #dcf6ff;
+    /* background: #dcf6ff; */
     margin-bottom: 5px;
-    border-radius: 12px;
+    word-wrap: break-word;
+    max-width: 65%;
+    min-width: 20%;
+}
+
+.own_msg{
+    background-color: #fff;
+    color: #222323;
+    border-radius: 21px 1px 23px 22px;
+}
+
+.othermessage{
+    background: #1b9987;
+    color: #fff;
+    border-radius: 23px 24px 23px 0px;
 }
 
 /* Chat - Speech Bubble Arrow */
@@ -134,6 +148,11 @@
     border: 0;
     border-bottom: 1px solid rgba(25, 147, 147, 0.2);
     outline: none;
+}
+
+.chat-inner_txt {
+    font-weight: bold;
+    text-transform: capitalize;
 }
 
 /* Small screens */

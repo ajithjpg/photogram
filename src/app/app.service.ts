@@ -4,6 +4,7 @@ import { isNullOrUndefined } from '@swimlane/ngx-datatable';
 import { Router, ActivatedRoute } from '@angular/router';
 import { throwError as observableThrowError, Observable, Subject } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
+import { } from '../app/sendmessage/sendmessage.component'
 import {
   Component,
   OnInit,
@@ -11,16 +12,22 @@ import {
   PLATFORM_ID
 } from '@angular/core';
 import { webSocket, WebSocketSubject } from 'rxjs/webSocket';
+
+import { io } from "socket.io-client";
+
 @Injectable()
 export class AppState {
   private subject: WebSocketSubject<any>;
+  private socket: any;
 
   sidebarExpanded = true
-  public action = '';
+  public action = ''
   // public api_url = 'https://apiv1.selfmade.technology/'
- public api_url = 'http://localhost:8080/'
+  public api_url = 'http://localhost:8080/'
+  readonly uri: string = 'http://localhost:3000';
   public domainirl = '';
- public email = ''
+  public email = '';
+  public chat_data = [];
   constructor(
     private http: HttpClient,
     public router: Router,
@@ -29,15 +36,37 @@ export class AppState {
   ) {
 
     this.domainirl = window.location.hostname;
-    this.connect()
-    this.showInfo('fiii')
+
+
+    // this.showInfo('fiii')
+    this.conn();
+    this.getMessage('messages').subscribe(data => {
+      var user_id = parseInt(localStorage.getItem('user_id'))
+      if (this.chat_data.length != 0) {
+        for (let i = 0; i < this.chat_data.length; i++) {
+          if (this.chat_data[i]['receiver_id'] != user_id) {
+            data['user_full_name'] = this.chat_data[i]['user_full_name'];
+            data['user_profile_image_url'] = this.chat_data[i]['user_profile_image_url'];
+          }
+        }
+        const audioplay = new Audio('../app/sendmessage/message_tone.mp3');
+        audioplay.play()
+      }
+
+
+      this.chat_data.push(data);
+    })
+
+
   }
+
+
 
   public getHeaders() {
 
     let headers = new HttpHeaders({
       'Accept': 'application/json',
-      'authorization':'Bearer_'+localStorage.getItem('access_token')
+      'authorization': 'Bearer_' + localStorage.getItem('access_token')
     });
 
     // let headers = new HttpHeaders();
@@ -57,7 +86,7 @@ export class AppState {
   }
 
   public postMethod(data: any, apiLink: string, query: string): Observable<any> {
-    return this.http.post(this.api_url + apiLink  + query, data, { headers: this.getHeaders() });
+    return this.http.post(this.api_url + apiLink + query, data, { headers: this.getHeaders() });
 
   }
 
@@ -67,7 +96,7 @@ export class AppState {
   }
 
   public postBeforeMethod(data: any, apiLink: string, query: string): Observable<any> {
-    return this.http.post(this.api_url + apiLink  + query, data, { headers: this.getBeforeHeaders() });
+    return this.http.post(this.api_url + apiLink + query, data, { headers: this.getBeforeHeaders() });
   }
 
   public getBeforemethod(apiLink: string, query: string): Observable<any> {
@@ -100,7 +129,7 @@ export class AppState {
     this.router.navigate(["/pages/login"])
   }
 
- 
+
 
   requestPermission(): Promise<NotificationPermission> {
     if (!('Notification' in window)) {
@@ -126,36 +155,43 @@ export class AppState {
         }
       });
     }
-  
+
   }
 
-  public connect() {
-    this.subject = webSocket({
-      url: "ws://127.0.0.1:8081",
-      openObserver: {
-        next: () => {
-            console.log('connexion ok');
-        }
-      },
-      closeObserver: {
-        next: () => {
-            console.log('disconnect ok');
-        }
+
+
+
+
+
+
+
+  // socket
+  conn() {
+    this.socket = io(this.api_url, {
+      query: {
+        token: 'Bearer_' + localStorage.getItem('access_token')
       }
+
     });
-
-    this.subject.subscribe(
-      msg => console.log('message received: ' + msg),
-      err => console.log(err),
-      () => console.log('complete')
-    );
   }
 
-  public send(msg: any) {
-    this.subject.next(msg);
+  disconn() {
+    this.socket.disconnect()
   }
 
-  public disconnect() {
-    this.subject.complete();
+  getMessage(type): Observable<any> {
+    return new Observable<any>((observer) => {
+      this.socket.on(type, (message: any) => {
+
+        observer.next(message);
+      });
+    });
   }
+
+  sendMessage(type, message): void {
+    this.socket.emit(type, message);
+  }
+
+  // socket
+
 }
