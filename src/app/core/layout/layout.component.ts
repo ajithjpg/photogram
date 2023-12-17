@@ -50,7 +50,6 @@ public url = '';
   
       if (this.url == 'pages') {
         if (action[2] != '404') {
-
           this.router.navigate(["/home"]);
         } else {
           this.loggedin = false;
@@ -67,7 +66,12 @@ public url = '';
         this.router.navigate(["/home"]);
       }
     } else {
-      this.router.navigate(['/pages/login']);
+      var action = window.location.pathname.split('/');
+      var url = action[1];
+      if(url != 'pages'){
+        this.router.navigate(['/pages/login']);
+      }
+      
     }
   }
 

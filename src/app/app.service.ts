@@ -22,9 +22,9 @@ export class AppState {
 
   sidebarExpanded = true
   public action = ''
-  // public api_url = 'https://apiv1.selfmade.technology/'
-  public api_url = 'http://localhost:8080/'
-  readonly uri: string = 'http://localhost:3000';
+   public api_url = 'https://apiv1.selfmade.technology/'
+  //public api_url = 'http://localhost:8080/'
+
   public domainirl = '';
   public email = '';
   public chat_data = [];
@@ -49,9 +49,11 @@ export class AppState {
             data['user_profile_image_url'] = this.chat_data[i]['user_profile_image_url'];
           }
         }
-        const audioplay = new Audio('../app/sendmessage/message_tone.mp3');
-        audioplay.play()
+        const audioplay = new Audio('../assets/message_tone.mp3');
+        audioplay.play();
       }
+
+      
 
 
       this.chat_data.push(data);

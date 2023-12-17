@@ -24,15 +24,15 @@
 }
 
 
-.normal_ff{
+.normal_ff {
     font-family: normal_ff !important;
 }
 
-.sidenav_ff{
+.sidenav_ff {
     font-family: sidenav_ff !important;
 }
 
-.bold_ff{
+.bold_ff {
     font-family: bold_ff !important;
 }
 
@@ -79,24 +79,29 @@
 .fs-20 {
     font-size: 20px;
 }
-.fs-21{
+
+.fs-21 {
     font-size: 21px;
 }
-.fs-22{
+
+.fs-22 {
     font-size: 22px;
 }
-.fs-23{
+
+.fs-23 {
     font-size: 23px;
 }
-.fs-24{
+
+.fs-24 {
     font-size: 24px;
 }
 
 body {
     background: red;
 }
-.cursor{
-    cursor:pointer
+
+.cursor {
+    cursor: pointer
 }
 
 .btn-primary {
@@ -149,38 +154,115 @@ body {
     margin-right: .5rem;
 }
 
-.primary{
+.primary {
     background: #339a8b !important;
     color: #fff !important;
 }
 
-.primary:hover{
+.primary:hover {
     background: #168271 !important;
     color: #fff !important;
 }
 
 #toast-container>.toast-info {
-   background-color: #263238;
-   color: #fff;
+    background-color: #263238;
+    color: #fff;
 }
+
+
 
 /* for mobile */
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+    .content {
+        margin-left: 0px !important;
+        transition: 0.3s;
 
+        &.sidebarExpanded {
+            margin-left: 0px !important;
+        }
+    }
+
+    .box-mob-shw {
+        box-shadow: 1px 1px 9px 1px #c6bfbf !important;
+    }
+
+    .mob_display_none {
+        display: none !important;
+    }
+
+    .mob_over_scroll {
+        overflow: scroll !important;
+    }
+
+
+    .over_flw_mob {
+        scroll-behavior: unset !important;
+        overflow: hidden !important;
+    }
+
+    .over_flw_mob_x {
+        overflow-x: hidden !important;
+    }
+
+    .over_flw_mob_y {
+        overflow-y: hidden !important;
+    }
+
+    .feed_no {
+        background: #fff;
+        border-radius: 20px;
+        padding: 1rem;
+        margin: 0rem 0 !important;
+        font-size: -38.1rem;
+        line-height: 1.5;
+        min-height: 70 vh !important;
+        max-height: 70vh !important;
+    }
+
+    .mob_fs_26 {
+        font-size: 26px !important;
+    }
+
+    .mob_disply_block {
+        display: block !important;
+    }
+
+    .mob_w_100 {
+        width: 100% !important;
+    }
+
+    .mob-mt-123 {
+        margin-top: -123% !important;
+    }
+
+    .mob_edit_profile {
+        width: 100% !important;
+        margin-left: 0rem !important;
+        margin-top: 10px !important;
+    }
+    .min_hight_100vh{
+        min-height: 100vh !important;
+    }
+    .email-send-outlet{
+        margin: 0% !important;
+    }
 }
 
 /* for tab */
-@media only screen and (min-device-width : 481px) and (max-device-width :  768px) {
-
-}
+@media only screen and (min-device-width : 481px) and (max-device-width : 768px) {}
 
 /* for laptop */
-@media only screen and (min-device-width :  768px) and (max-device-width :  1024px) {
-
-}
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {}
 
 /* for desktop */
-@media only screen and (min-device-width : 1025px) and (max-device-width :  1200px) {
-
+@media only screen and (min-device-width : 1025px) and (max-device-width : 1200px) {
+    .web_display_hide {
+        display: none !important;
+    }
 }
 
+@media screen and (min-width: 1200px) {
+    .web_display_hide {
+        display: none !important;
+    }
+}
