@@ -266,3 +266,144 @@ body {
         display: none !important;
     }
 }
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 430px) {
+
+    .mob_display_hide{
+        display: none !important;
+    }
+}
+
+
+@media only screen and (min-device-width : 431px) and (max-device-width : 900px) {
+
+    .tab_display_hide{
+        display: none !important;
+    }
+    .sidebar {
+        position: fixed;
+        left: 0;
+        top: 7% !important;
+    
+        height: 100vh;
+        transition: 0.3s;
+    
+    
+        width: 60px;
+        text-align: center;
+    
+        &.expanded {
+            width: 235px;
+            text-align: start;
+        }
+    
+        background: #fff;
+        color: #000;
+    
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+    
+            background: #0f1017;
+    
+            h1 {
+                font-size: 20px;
+                color: #6d6e7e;
+                margin: 0;
+                flex: 1;
+                transition: 0.3s;
+    
+                margin-left: -100px;
+            }
+    
+            .chevron {
+                color: #6d6e7e;
+                cursor: pointer;
+                transition: 0.3s;
+                margin-left: -25px;
+    
+                padding: 10px;
+                min-width: 20px;
+                height: 20px;
+                display: block;
+                text-align: center;
+    
+                &::before {
+                    transition: 0.3s;
+                    transform: rotate(45deg);
+                }
+    
+                &:hover {
+                    color: white;
+                }
+            }
+        }
+    
+    
+        .content {
+            .link {
+                .children {
+                    .content {
+                        background: #27283a;
+    
+                        padding-left: 10px;
+    
+                        &.active {
+                            background: #191a27;
+                        }
+                    }
+                }
+    
+                .content {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    padding: 10px;
+    
+                    cursor: pointer;
+    
+                    transition: 0.3s;
+    
+                    &:hover {
+                        background: #0f1017;
+    
+                        .title {
+                            color: white;
+                        }
+    
+                        svg {
+                            fill: white;
+                        }
+                    }
+    
+                    &.active {
+                        background: #0f1017;
+    
+                        .title {
+                            color: white;
+                        }
+                    }
+    
+                    .icon {
+                        flex: 0 0 30px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        margin-right: 0px;
+                    }
+    
+                    .title {
+                        flex: 1;
+    
+                        color: #6d6e7e;
+                        transition: 0.3s;
+                        max-width: 0px;
+                        overflow: hidden;
+                    }
+                }
+            }
+        }
+    }
+}

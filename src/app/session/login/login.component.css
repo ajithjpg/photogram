@@ -231,3 +231,19 @@
         transform: scale(1)
     }
 }
+
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 410px) {
+
+    .mob_display_hide{
+        display: none !important;
+    }
+}
+
+
+@media only screen and (min-device-width : 420px) and (max-device-width : 900px) {
+
+    .tab_display_hide{
+        display: none !important;
+    }
+}
